@@ -35,12 +35,17 @@ class DriftProfileRepository implements ProfileRepository {
   Map<String, String> _snapshots = {};
   List<_CachedTransaction> _transactions = [];
 
+  /// `false` se l'ultima lettura non è arrivata in fondo: [_snapshots] e
+  /// [_transactions] non sono affidabili.
+  bool _cached = true;
+
   @override
   Future<Json?> load() => db.transaction(() async {
     final row = await _profileRow();
     _revision = row?.revision;
     _snapshots = {};
     _transactions = [];
+    _cached = row == null;
     if (row == null) return null;
     final (profile, transactions) = await _read(row);
     _snapshots = {
@@ -48,6 +53,7 @@ class DriftProfileRepository implements ProfileRepository {
         e.key: jsonEncode(e.value),
     };
     _transactions = transactions;
+    _cached = true;
     return profile;
   });
 
@@ -73,23 +79,25 @@ class DriftProfileRepository implements ProfileRepository {
               null) {
         throw StateError('Titolo non registrato: $gameId');
       }
-      if (current == null) {
-        // Nessun profilo: nessuna riga pesante da conservare.
-        _snapshots = {};
-        _transactions = [];
-        await _clear(db.saveSnapshots);
-        await _clear(db.profileTransactions);
-      } else if (beforeImport) {
-        final (previous, _) = await _read(current);
+      if (current != null && beforeImport) {
+        final content = await _backupContent(current);
         await db
             .into(db.backups)
             .insertOnConflictUpdate(
               BackupsCompanion.insert(
                 gameId: Value(gameId),
                 createdAt: DateTime.now().toUtc().toIso8601String(),
-                content: jsonEncode(previous),
+                content: content,
               ),
             );
+      }
+      if (current == null || !_cached) {
+        // Nessun profilo, o ultima lettura fallita (righe corrotte): la cache
+        // non descrive le righe pesanti, quindi si riscrivono da zero.
+        _snapshots = {};
+        _transactions = [];
+        await _clear(db.saveSnapshots);
+        await _clear(db.profileTransactions);
       }
       final revision = (current?.revision ?? 0) + 1;
       await db
@@ -114,6 +122,7 @@ class DriftProfileRepository implements ProfileRepository {
     _revision = revision;
     _snapshots = snapshots;
     _transactions = cached;
+    _cached = true;
   }
 
   @override
@@ -122,6 +131,31 @@ class DriftProfileRepository implements ProfileRepository {
       db.backups,
     )..where((t) => t.gameId.equals(gameId))).getSingleOrNull();
     return row == null ? null : utf8.encode(row.content);
+  }
+
+  /// Copia del profilo corrente prima di un import. Se non è leggibile (è il
+  /// caso tipico in cui si importa un backup) conserva il testo grezzo delle
+  /// colonne JSON, come il vecchio archivio conservava il file originale:
+  /// altrimenti la decodifica fallirebbe e l'import non potrebbe ripararlo.
+  Future<String> _backupContent(ProfileRow current) async {
+    try {
+      final (previous, _) = await _read(current);
+      return jsonEncode(previous);
+    } on FormatException catch (e) {
+      Future<List<String>> raw(String sql) => db
+          .customSelect(sql, variables: [Variable(gameId)])
+          .map((r) => r.read<String>('v'))
+          .get();
+      return jsonEncode({
+        'unreadable': '$e',
+        'saveSnapshots': await raw(
+          'SELECT data AS v FROM save_snapshots WHERE game_id = ? ORDER BY rowid',
+        ),
+        'transactions': await raw(
+          'SELECT "before" AS v FROM profile_transactions WHERE game_id = ? ORDER BY seq',
+        ),
+      });
+    }
   }
 
   Future<ProfileRow?> _profileRow() => (db.select(

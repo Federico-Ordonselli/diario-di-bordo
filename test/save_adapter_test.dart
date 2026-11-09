@@ -125,7 +125,7 @@ void main() {
     );
     expect(adapter.apply(slot2, raw, 1)['inventory']['gale'], 99);
   });
-  test('Counter e forzieri indipendenti dalla checklist Excel', () {
+  test('Counter e forzieri indipendenti dalla checklist', () {
     final s = adapter.apply(catalog.fresh(), raw, 1);
     final next = adapter.edit(s, 'postcards', null);
     expect(next['saveValues']['postcards'], null);

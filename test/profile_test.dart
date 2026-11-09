@@ -40,6 +40,18 @@ void main() {
     expect(jsonEncode(ProfileValidator(catalog).profile(p)), jsonEncode(p));
   });
 
+  test('Gli asset dell’app non contengono progressi personali', () {
+    final app = appCatalog(), template = app.fresh();
+    final blank = app.empty()..updatedAt = template.updatedAt;
+    expect(jsonEncode(template), jsonEncode(blank));
+    expect(template.plan.rewards.values.toSet(), {0});
+    expect(template.settings.values.where((v) => v != null && v != ''), []);
+    expect(app.evidence['items'], isEmpty);
+    final s = app.empty();
+    expect(identical(Engine(app).applyEvidence(s), s), true);
+    expect(ProfileValidator(app).validate(jsonDecode(jsonEncode(s))), s);
+  });
+
   test('Profile è il JSON stesso: nessuna copia, scritture visibili', () {
     final json = copyJson(catalog.initial), p = Profile(json);
     expect(identical(p, json), true);

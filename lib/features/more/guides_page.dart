@@ -66,7 +66,7 @@ class _GuidesPageState extends ConsumerState<GuidesPage> {
                 ),
                 LinkButtons(section['links'] as List),
                 text(
-                  'Excel · ${selected['sheet']} · riga ${section['row']}',
+                  'Checklist di origine · ${selected['sheet']} · riga ${section['row']}',
                   color: muted,
                 ),
               ],

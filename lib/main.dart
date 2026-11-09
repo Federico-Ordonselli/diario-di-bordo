@@ -15,9 +15,9 @@ Future<void> main() async {
         jsonDecode(await rootBundle.loadString('assets/datasets/$name.json'))
             as Json;
     final data = await Future.wait(
-      ['synthesis', 'completion', 'evidence', 'initial-profile'].map(read),
+      ['synthesis', 'completion', 'initial-profile'].map(read),
     );
-    final catalog = Catalog(data[0], data[1], data[2], data[3]);
+    final catalog = Catalog(data[0], data[1], data[2]);
     final path = await appDatabasePath();
     final repository = DriftProfileRepository(
       openAppDatabase(path),

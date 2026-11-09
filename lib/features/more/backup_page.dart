@@ -33,7 +33,11 @@ class _BackupPageState extends ConsumerState<BackupPage> {
 
   Future<void> restore() async {
     final chosen = candidate!, current = ref.read(profileProvider).profile;
-    if (!await ref.exportJson(current, 'kh1fm-prima-importazione')) return;
+    final exported = await ref.exportJson(
+      current,
+      'diario-bordo-prima-importazione',
+    );
+    if (!exported) return;
     if (!identical(current, ref.read(profileProvider).profile)) {
       ref.report('Il profilo è cambiato: ricontrolla l’anteprima.');
       return;
@@ -52,7 +56,7 @@ class _BackupPageState extends ConsumerState<BackupPage> {
       }
       await ref.exportBytes(
         bytes,
-        'kh1fm-backup-precedente.json',
+        'diario-bordo-backup-precedente.json',
         'application/json',
       );
     } catch (e) {
@@ -86,7 +90,8 @@ class _BackupPageState extends ConsumerState<BackupPage> {
                 runSpacing: 8,
                 children: [
                   FilledButton.icon(
-                    onPressed: () => ref.exportJson(state, 'kh1fm-backup'),
+                    onPressed: () =>
+                        ref.exportJson(state, 'diario-bordo-backup'),
                     icon: const Icon(Icons.download),
                     label: const Text('Esporta backup JSON'),
                   ),

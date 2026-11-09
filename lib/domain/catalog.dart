@@ -7,7 +7,15 @@ String normalize(String value) =>
     value.toLowerCase().replaceAll(RegExp('[^a-z0-9]'), '');
 
 class Catalog {
-  Catalog(this.synthesis, this.workbook, this.evidence, this.initial) {
+  /// [evidence] = progressi importati una tantum da fonti esterne (la vecchia
+  /// app lo usava per gli screenshot degli achievement). L'app non ne fornisce:
+  /// resta per la parità col motore originale e per i backup che lo citano.
+  Catalog(
+    this.synthesis,
+    this.workbook,
+    this.initial, {
+    this.evidence = const {'id': null, 'items': [], 'facts': []},
+  }) {
     for (final item in items) {
       itemsById[item['id'] as String] = item;
     }
@@ -18,7 +26,7 @@ class Catalog {
       materialsById[material['id'] as String] = material;
     }
   }
-  final Json synthesis, workbook, evidence, initial;
+  final Json synthesis, workbook, initial, evidence;
   final Map<String, Json> itemsById = {}, recipesById = {}, materialsById = {};
   List<Json> get materials => (synthesis['materials'] as List).cast<Json>();
   List<Json> get recipes => (synthesis['recipes'] as List).cast<Json>();
@@ -30,12 +38,14 @@ class Catalog {
   List<Json> get guides => (workbook['guides'] as List).cast<Json>();
 
   /// Profilo dall'asset `initial-profile.json`: forma completa del profilo e
-  /// base della validazione, ma con le scorte di partenza del dataset storico.
+  /// base della validazione. Nell'app è già neutro; i test usano il profilo
+  /// di partenza della vecchia app (`test/fixtures/legacy-initial-profile.json`).
   Profile fresh() =>
       Profile(copyJson(initial))
         ..updatedAt = DateTime.now().toUtc().toIso8601String();
 
-  /// Profilo di un nuovo utente: stessa forma di [fresh], nessun progresso.
+  /// Profilo di un nuovo utente: stessa forma di [fresh], nessun progresso,
+  /// qualunque sia il template.
   /// Scorte e conteggi a 0, nessuna ricetta creata, fonti sconosciute.
   Profile empty() {
     final p = fresh();

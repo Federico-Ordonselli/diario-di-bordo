@@ -99,7 +99,11 @@ class _SavePageState extends ConsumerState<SavePage> {
 
   Future<void> apply(Json raw) async {
     final current = ref.read(profileProvider).profile;
-    if (!await ref.exportJson(current, 'kh1fm-prima-importazione')) return;
+    final exported = await ref.exportJson(
+      current,
+      'diario-bordo-prima-importazione',
+    );
+    if (!exported) return;
     if (!identical(current, ref.read(profileProvider).profile)) {
       ref.report('Il profilo è cambiato: ricontrolla l’anteprima.');
       return;
@@ -306,10 +310,6 @@ class _ActiveSnapshot extends ConsumerWidget {
           children: [
             for (final e in (active['interpretation'] as Json).entries)
               text('${e.key}: ${e.value}'),
-            TextButton(
-              onPressed: () => ref.exportDocument('KH1FM_Report_Save.md'),
-              child: const Text('Esporta report originale'),
-            ),
           ],
         ),
         ExpansionTile(
@@ -375,7 +375,7 @@ class _Counters extends ConsumerWidget {
       children: [
         heading('Trinità e cartoline · contatori del save'),
         text(
-          'I contatori non identificano le singole voci dell’Excel.',
+          'I contatori non identificano le singole voci della checklist.',
           color: muted,
         ),
         Wrap(
@@ -439,7 +439,7 @@ class _ChestListState extends ConsumerState<_ChestList> {
       children: [
         heading('Casse mappate'),
         text(
-          'Mappatura parziale: ${widget.active['chestCoverage']['mappedTotal'] ?? '?'} casse. Restano separate dai 268 tesori dell’Excel.',
+          'Mappatura parziale: ${widget.active['chestCoverage']['mappedTotal'] ?? '?'} casse. Restano separate dai 268 tesori della checklist.',
           color: muted,
         ),
         SearchField(

@@ -411,7 +411,8 @@ class Engine {
   }
 
   Profile applyEvidence(Profile s) {
-    if (s.appliedEvidence.contains(catalog.evidence['id'])) return s;
+    final id = catalog.evidence['id'] as String?;
+    if (id == null || s.appliedEvidence.contains(id)) return s;
     return transact(
       s,
       'Progressi dagli screenshot: 21 achievement e sblocchi certi',
@@ -419,7 +420,7 @@ class Engine {
         for (final item in catalog.evidence['items'] as List) {
           n.completion[item['id'] as String] = true;
         }
-        n.appliedEvidence.add(catalog.evidence['id'] as String);
+        n.appliedEvidence.add(id);
         for (final unlock in ['Trio Bianco', 'Trio Giallo', 'Stop']) {
           n.settings.setFlag(unlock, true);
         }

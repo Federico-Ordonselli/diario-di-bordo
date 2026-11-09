@@ -380,7 +380,6 @@ class SaveAdapter {
         'gameTotal': slot['chests']?['game_total'],
         'complete': slot['chests']?['coverage_complete'] ?? false,
       },
-      'reportPath': '/KH1FM_Report_Save.md',
     };
   }
 

@@ -5,7 +5,6 @@ import '../../app/router.dart';
 import '../../application/profile_providers.dart';
 import '../../domain/catalog.dart';
 import '../../ui/common.dart';
-import '../../ui/ref_actions.dart';
 import '../../ui/widgets.dart';
 
 const _families = [
@@ -48,7 +47,7 @@ class DiaryPage extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
               text(
-                'La percentuale misura le 794 voci dell’Excel. Trofei e attività sono indipendenti; i dalmata si contano per gruppi di tre.',
+                'La percentuale misura le ${count['total']} voci della checklist. Trofei e attività sono indipendenti; i dalmata si contano per gruppi di tre.',
                 color: muted,
               ),
             ],
@@ -68,31 +67,14 @@ class DiaryPage extends ConsumerWidget {
               ],
             ),
           ),
-        if (state.appliedEvidence.contains(catalog.evidence['id']))
-          Panel(
-            child: ExpansionTile(
-              title: const Text('Screenshot · 21 achievement confermati'),
-              children: [
-                for (final fact in catalog.evidence['facts'] as List)
-                  text(fact as String),
-              ],
-            ),
-          ),
         Panel(
-          child: Wrap(
-            spacing: 12,
-            children: [
-              FilledButton.icon(
-                onPressed: () => context.go(Routes.guide('tips')),
-                icon: const Icon(Icons.menu_book),
-                label: const Text('Guide e boss segreti'),
-              ),
-              OutlinedButton(
-                onPressed: () =>
-                    ref.exportDocument('KH1_Final_Mix_Sintesi_Tracking.pdf'),
-                child: const Text('Esporta dossier PDF'),
-              ),
-            ],
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: FilledButton.icon(
+              onPressed: () => context.go(Routes.guide('tips')),
+              icon: const Icon(Icons.menu_book),
+              label: const Text('Guide e boss segreti'),
+            ),
           ),
         ),
       ],

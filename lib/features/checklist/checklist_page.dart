@@ -158,9 +158,6 @@ class ChecklistItem extends ConsumerWidget {
     final categoryData = catalog.categories.firstWhere(
       (c) => c['id'] == item['categoryId'],
     );
-    final evidence = (catalog.evidence['items'] as List).where(
-      (e) => e['id'] == id,
-    );
     return Panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,12 +207,9 @@ class ChecklistItem extends ConsumerWidget {
                 text(comment as String, color: gold),
               LinkButtons(item['links'] as List),
               text(
-                'Excel · ${categoryData['sheet']} · riga ${item['row']}',
+                'Checklist di origine · ${categoryData['sheet']} · riga ${item['row']}',
                 color: muted,
               ),
-              if (state.appliedEvidence.contains(catalog.evidence['id']) &&
-                  evidence.isNotEmpty)
-                text(evidence.first['reason'] as String),
               Provenance('completion.$id'),
             ],
           ),

@@ -80,19 +80,9 @@ class FarmSource extends ConsumerWidget {
                   : 'Lucky Strike: $lucky attivi · ×${[1, 1.5, 2, 2.5][lucky]} sulle probabilità base, massimo 100%. Le garanzie restano condizionate.',
               color: gold,
             ),
-          Wrap(
-            spacing: 8,
-            children: [
-              TextButton(
-                onPressed: () => ref.openExternal(source['url'] as String),
-                child: const Text('Guida dettagliata ↗'),
-              ),
-              TextButton(
-                onPressed: () =>
-                    ref.exportDocument('KH1_Final_Mix_Sintesi_Tracking.pdf'),
-                child: Text('Dossier · pagina ${source['page']}'),
-              ),
-            ],
+          TextButton(
+            onPressed: () => ref.openExternal(source['url'] as String),
+            child: const Text('Guida dettagliata ↗'),
           ),
         ],
       ),

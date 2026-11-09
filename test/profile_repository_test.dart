@@ -1,17 +1,14 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:drift/drift.dart' hide isNull;
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/application/profile_providers.dart';
 import 'package:diario_bordo/data/database/database.dart';
 import 'package:diario_bordo/data/drift_profile_repository.dart';
-import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/domain/profile_repository.dart';
 import 'package:diario_bordo/domain/validation.dart';
-import 'package:diario_bordo/storage/profile_store.dart';
 import 'fakes.dart';
 import 'test_catalog.dart';
 
@@ -135,17 +132,6 @@ void contract(String name, Future<ProfileRepository> Function() create) {
 }
 
 void main() {
-  final directories = <Directory>[];
-  tearDownAll(() async {
-    for (final d in directories) {
-      await d.delete(recursive: true);
-    }
-  });
-  contract('JSON su file', () async {
-    final dir = await Directory.systemTemp.createTemp('kh-repo-');
-    directories.add(dir);
-    return JsonProfileRepository(ProfileStore(dir));
-  });
   contract('in memoria', () async => InMemoryProfileRepository());
   contract('SQLite (drift in memoria)', () async {
     final db = AppDatabase(NativeDatabase.memory());

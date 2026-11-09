@@ -63,20 +63,6 @@ extension RefActions on WidgetRef {
     '$prefix-${DateTime.now().toIso8601String().substring(0, 10)}.json',
     'application/json',
   );
-
-  /// Esporta un documento incluso negli asset.
-  Future<void> exportDocument(String name) async {
-    try {
-      final data = await rootBundle.load('assets/documents/$name');
-      await exportBytes(
-        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
-        name,
-        name.endsWith('.pdf') ? 'application/pdf' : 'text/markdown',
-      );
-    } catch (e) {
-      report(e);
-    }
-  }
 }
 
 Future<Json?> pickJson() async {

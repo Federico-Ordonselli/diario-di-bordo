@@ -6,7 +6,6 @@ The original row, columns, links, comments and section headings remain traceable
 import json
 import posixpath
 import re
-import shutil
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
@@ -132,16 +131,16 @@ def extract(path):
                     if text:
                         sections.append({"row": rownum, "fields": cells, "text": text, "links": [link for ref, link in links.items() if int(re.sub(r"\D", "", ref)) == rownum]})
                 guides.append({"id": "materials" if name == "Synthesis Materials" else "tips", "label": "Materiali di sintesi" if name == "Synthesis Materials" else "Consigli e boss segreti", "sheet": name, "sections": sections})
-        return {"version": "kh1fm-checklist-1.03", "source": path.name, "download": "/KH1_Final_Mix_Checklist.xlsx", "categories": categories, "guides": guides}
+        return {"version": "kh1fm-checklist-1.03", "source": path.name.removeprefix("Copia di "), "categories": categories, "guides": guides}
 
 
 if __name__ == "__main__":
-    workbooks = list(ROOT.glob("*.xlsx"))
+    # L’Excel originale contiene artwork ufficiale: sta in private/ (fuori da git).
+    workbooks = list((ROOT / "private/radice").glob("*.xlsx"))
     if len(workbooks) != 1:
-        raise SystemExit("Expected exactly one .xlsx in the project root")
+        raise SystemExit("Expected exactly one .xlsx in private/radice")
     data = extract(workbooks[0])
     (ROOT / "legacy/web/src/completion-data.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-    # L’Excel originale contiene artwork ufficiale: resta in legacy/web/public, non va negli asset dell’app.
     synthesis = json.loads((ROOT / "assets/datasets/synthesis.json").read_text())
     def normalized(name):
         return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
@@ -154,7 +153,6 @@ if __name__ == "__main__":
                 enriched["recipeId"] = recipe_ids[normalized(item["title"])]
             items.append(enriched)
     (ROOT / "assets/datasets/completion.json").write_text(json.dumps(dict(data, items=items), ensure_ascii=False, indent=2) + "\n")
-    shutil.copyfile(workbooks[0], ROOT / "legacy/web/public/KH1_Final_Mix_Checklist.xlsx")
     for category in data["categories"]:
         print(f'{category["label"]}: {len(category["items"])}')
     print("Total:", sum(len(c["items"]) for c in data["categories"]))

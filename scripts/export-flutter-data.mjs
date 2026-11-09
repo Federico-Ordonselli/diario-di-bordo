@@ -7,10 +7,11 @@ import {normalizeSlot,previewSaveImport,applySaveImport} from '../legacy/web/src
 const write=(name,value)=>fs.writeFileSync(name,JSON.stringify(value,null,2)+'\n');
 write('assets/datasets/synthesis.json',data);
 write('assets/datasets/completion.json',{...workbook,items:completionItems});
-write('assets/datasets/evidence.json',{id:'achievements-screenshots-2026-10-09',items:screenshotEvidence,facts:screenshotFacts});
-write('assets/datasets/initial-profile.json',initialState());
+write('test/fixtures/evidence.json',{id:'achievements-screenshots-2026-10-09',items:screenshotEvidence,facts:screenshotFacts});
+// Profilo di partenza della vecchia app (contiene progressi personali): solo per i
+// fixture di parità. Il template dell'app, assets/datasets/initial-profile.json, è neutro.
+write('test/fixtures/legacy-initial-profile.json',initialState());
 fs.copyFileSync('legacy/web/public/KH1FM_Save_Analizzato.json','test/analyzed-save-2026-10-09.json');
-for(const name of ['KH1_Final_Mix_Sintesi_Tracking.pdf'])fs.copyFileSync('legacy/web/public/'+name,'assets/documents/'+name);
 const raw=JSON.parse(fs.readFileSync('legacy/web/public/KH1FM_Save_Analizzato.json'));
 const base=initialState();
 const scenarios=[['initial',base],['evidence',applyScreenshotProgress(base)],['no-rewards',{...base,plan:{...base.plan,rewards:{dark_matter:0,orichalcum:0}}}],['first-15',{...base,plan:{...base.plan,mode:'15'}}],['selected',{...base,plan:{...base.plan,mode:'selected',selected:['ultima_weapon']}}],['unknown-producers',{...base,inventory:{...base.inventory,dark_matter:null,mythril:null}}]];
