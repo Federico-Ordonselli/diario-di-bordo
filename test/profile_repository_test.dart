@@ -1,7 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:drift/drift.dart' hide isNull;
+import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/application/profile_providers.dart';
+import 'package:diario_bordo/data/database/database.dart';
+import 'package:diario_bordo/data/drift_profile_repository.dart';
 import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/profile.dart';
@@ -10,8 +14,62 @@ import 'package:diario_bordo/storage/profile_store.dart';
 import 'fakes.dart';
 import 'test_catalog.dart';
 
-/// Lo stesso contratto vale per ogni implementazione di [ProfileRepository]:
-/// quando arriverà quella SQLite basterà aggiungerla qui.
+/// Profilo con tutte le strutture popolate: snapshot, override (anche un
+/// ambito vuoto), cronologia, sessione, piano, valori `null` e tipi misti.
+Profile richProfile(Catalog catalog) {
+  final p = catalog.fresh();
+  final recipe = catalog.recipes.first['id'] as String;
+  final item = catalog.items.firstWhere((i) => i['recipeId'] == null);
+  Json snapshot(String id, int slot) => {
+    'id': id,
+    'slotNumber': slot,
+    'savedAt': '2026-10-0${slot}T10:00:00+02:00',
+    'source': {'filename': 'save.png', 'size_bytes': 10},
+    'observations': {
+      'inventory.gale': {'value': 3, 'label': 'Gale', 'path': 'a.b'},
+    },
+    'chests': [
+      {'id': 1, 'opened': true},
+    ],
+    'importedAt': '2026-10-09T10:00:00Z',
+  };
+  p
+    ..['saveSnapshots'] = {'s1': snapshot('s1', 1), 's2': snapshot('s2', 2)}
+    ..activeSaveId = 's2'
+    ..['saveValues'] = {'chest.1': true, 'postcards': 6, 'trinity.Blue': null}
+    ..['manualOverrides'] = {
+      'app': <String, dynamic>{},
+      'save.png#slot:2': {'inventory.gale': 4, 'settings.Stop': true},
+    }
+    ..completion[item['id'] as String] = null
+    ..appliedEvidence.add('evidence-1')
+    ..session['gale'] = 2
+    ..settings.setFlag('Stop', true)
+    ..['settings']['level'] = 42
+    ..plan.mode = PlanMode.selected
+    ..plan.selected.add(recipe)
+    ..setCollection(
+      catalog.collections.first['id'] as String,
+      CollectionStatus.collected,
+    );
+  p.transactions = [
+    for (var i = 0; i < 3; i++)
+      ProfileTransaction({
+        'label': 'Operazione $i',
+        'at': '2026-10-1${i}T10:00:00Z',
+        'origin': 'manual',
+        'before': {
+          ...copyJson(p)
+            ..remove('transactions')
+            ..remove('saveSnapshots'),
+          'storyPoint': 'p$i',
+        },
+      }),
+  ];
+  return p;
+}
+
+/// Lo stesso contratto vale per ogni implementazione di [ProfileRepository].
 void contract(String name, Future<ProfileRepository> Function() create) {
   group('Contratto ProfileRepository: $name', () {
     final catalog = testCatalog();
@@ -39,6 +97,39 @@ void contract(String name, Future<ProfileRepository> Function() create) {
       final backup = await repository.previousBackup();
       expect(jsonDecode(utf8.decode(backup!)), first.json);
     });
+
+    test(
+      'Profilo completo: rilettura identica, anche dopo modifiche',
+      () async {
+        final repository = await create(), profile = richProfile(catalog);
+        await repository.save(profile);
+        final loaded = Profile((await repository.load())!);
+        expect(loaded.json, profile.json);
+        expect(
+          jsonEncode(loaded),
+          jsonEncode(profile),
+          reason: 'ordine chiavi',
+        );
+
+        // Cronologia che scorre, snapshot rimosso, override e scorte cambiati.
+        loaded
+          ..transactions = [
+            ...loaded.transactions.skip(1),
+            ProfileTransaction({
+              'label': 'Nuova',
+              'at': '2026-10-20T10:00:00Z',
+              'origin': 'save',
+              'before': <String, dynamic>{'storyPoint': 'nuovo'},
+            }),
+          ]
+          ..saveSnapshots.remove('s1')
+          ..activeSaveId = null
+          ..manualOverrides.remove('app')
+          ..inventory['gale'] = 9;
+        await repository.save(loaded);
+        expect((await repository.load())!, loaded.json);
+      },
+    );
   });
 }
 
@@ -55,6 +146,72 @@ void main() {
     return JsonProfileRepository(ProfileStore(dir));
   });
   contract('in memoria', () async => InMemoryProfileRepository());
+  contract('SQLite (drift in memoria)', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    return DriftProfileRepository(db);
+  });
+
+  group('DriftProfileRepository', () {
+    final catalog = testCatalog();
+    late AppDatabase db;
+    setUp(() => db = AppDatabase(NativeDatabase.memory()));
+    tearDown(() => db.close());
+
+    test('Scrittura concorrente da un altro processo: conflitto', () async {
+      final first = DriftProfileRepository(db),
+          second = DriftProfileRepository(db);
+      await first.save(catalog.fresh());
+      await second.load();
+      await second.save(catalog.fresh()..inventory['gale'] = 1);
+      await expectLater(
+        first.save(catalog.fresh()),
+        throwsA(isA<ProfileConflict>()),
+      );
+      expect(Profile((await first.load())!).inventory['gale'], 1);
+    });
+
+    test('La cronologia scrive solo le voci nuove', () async {
+      final repository = DriftProfileRepository(db);
+      final profile = richProfile(catalog);
+      await repository.save(profile);
+      Future<List<int>> seqs() async => [
+        for (final t in await (db.select(
+          db.profileTransactions,
+        )..orderBy([(t) => OrderingTerm(expression: t.seq)])).get())
+          t.seq,
+      ];
+      final before = await seqs();
+      profile.transactions = [
+        ...profile.transactions.skip(1),
+        ProfileTransaction({
+          'label': 'Nuova',
+          'at': '2026-10-20T10:00:00Z',
+          'origin': 'manual',
+          'before': <String, dynamic>{},
+        }),
+      ];
+      await repository.save(profile);
+      expect(await seqs(), [...before.skip(1), before.last + 1]);
+    });
+
+    test('Ogni titolo ha il suo profilo', () async {
+      final main = DriftProfileRepository(db),
+          other = DriftProfileRepository(db, gameId: 'altro');
+      await main.save(richProfile(catalog));
+      expect(await other.load(), isNull);
+      await other.save(catalog.fresh());
+      expect(Profile((await main.load())!).saveSnapshots, hasLength(2));
+      expect(Profile((await other.load())!).saveSnapshots, isEmpty);
+    });
+
+    test('JSON corrotto nel database: FormatException', () async {
+      final repository = DriftProfileRepository(db);
+      await repository.save(richProfile(catalog));
+      await db.customStatement("UPDATE save_snapshots SET data = '[1'");
+      await expectLater(repository.load(), throwsFormatException);
+    });
+  });
 
   group('ProfileNotifier con repository in memoria', () {
     final catalog = testCatalog();

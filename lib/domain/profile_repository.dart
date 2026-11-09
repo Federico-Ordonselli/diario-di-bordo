@@ -23,3 +23,11 @@ abstract interface class ProfileRepository {
   /// Copia conservata prima dell'ultima importazione, `null` se assente.
   Future<Uint8List?> previousBackup();
 }
+
+/// L'archivio è stato modificato da un altro processo dopo l'ultima lettura.
+class ProfileConflict implements Exception {
+  const ProfileConflict();
+  @override
+  String toString() =>
+      'Il profilo è cambiato in un’altra finestra. Ricarica prima di continuare.';
+}
