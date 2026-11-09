@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:diario_bordo/application/profile_providers.dart';
 import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/domain/catalog.dart';
-import 'package:diario_bordo/domain/engine.dart';
 import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/domain/profile_repository.dart';
-import 'package:diario_bordo/storage/controller.dart';
 import 'package:diario_bordo/storage/profile_store.dart';
 import 'fakes.dart';
 import 'test_catalog.dart';
@@ -57,31 +56,52 @@ void main() {
   });
   contract('in memoria', () async => InMemoryProfileRepository());
 
-  group('ProfileController con repository in memoria', () {
+  group('ProfileNotifier con repository in memoria', () {
     final catalog = testCatalog();
 
     test('Primo avvio salva il profilo iniziale con le evidence', () async {
       final repository = InMemoryProfileRepository();
-      final controller = ProfileController(Engine(catalog), repository);
-      await controller.initialize();
-      expect(controller.blocked, false);
+      final container = profileContainer(catalog, repository);
+      addTearDown(container.dispose);
+      await container.read(profileProvider.notifier).initialize();
+      final view = container.read(profileProvider);
+      expect(view.blocked, false);
+      expect(view.busy, false);
       expect(repository.saves, 1);
-      expect(
-        controller.state.appliedEvidence,
-        contains(catalog.evidence['id']),
-      );
-      controller.dispose();
+      expect(view.profile.appliedEvidence, contains(catalog.evidence['id']));
     });
 
     test('Archivio non decodificabile blocca senza sovrascrivere', () async {
       final repository = InMemoryProfileRepository('[1, 2]');
-      final controller = ProfileController(Engine(catalog), repository);
-      await controller.initialize();
-      expect(controller.blocked, true);
-      expect(controller.error, contains('Archivio non leggibile'));
+      final container = profileContainer(catalog, repository);
+      addTearDown(container.dispose);
+      await container.read(profileProvider.notifier).initialize();
+      final view = container.read(profileProvider);
+      expect(view.blocked, true);
+      expect(view.error, contains('Archivio non leggibile'));
       expect(repository.stored, '[1, 2]');
       expect(repository.saves, 0);
-      controller.dispose();
+    });
+
+    test('I listener vedono busy durante il salvataggio', () async {
+      final container = profileContainer(catalog, InMemoryProfileRepository());
+      addTearDown(container.dispose);
+      final notifier = container.read(profileProvider.notifier);
+      await notifier.initialize();
+      final busy = <bool>[];
+      container.listen(profileProvider, (_, next) => busy.add(next.busy));
+      final engine = container.read(engineProvider);
+      final before =
+          container.read(profileProvider).profile.inventory['gale'] as int;
+      expect(
+        await notifier.commit((s) => engine.increment(s, 'gale', 1)),
+        true,
+      );
+      expect(busy, [true, false]);
+      expect(
+        container.read(profileProvider).profile.inventory['gale'],
+        before + 1,
+      );
     });
   });
 }

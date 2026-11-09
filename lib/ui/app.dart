@@ -4,6 +4,7 @@ import 'dart:isolate';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,7 @@ import '../domain/profile.dart';
 import '../domain/save_adapter.dart';
 import '../domain/save_decoder.dart';
 import '../domain/validation.dart';
-import '../storage/controller.dart';
+import '../application/profile_providers.dart';
 import '../storage/game_save_locator.dart';
 import 'widgets.dart';
 
@@ -49,8 +50,7 @@ const pageIcons = [
 ];
 
 class DiaryApp extends StatelessWidget {
-  const DiaryApp({super.key, required this.controller});
-  final ProfileController controller;
+  const DiaryApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp(
     title: 'Diario di Bordo',
@@ -75,22 +75,24 @@ class DiaryApp extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
     ),
-    home: DiaryHome(controller: controller),
+    home: const DiaryHome(),
   );
 }
 
-class DiaryHome extends StatefulWidget {
-  const DiaryHome({super.key, required this.controller});
-  final ProfileController controller;
+class DiaryHome extends ConsumerStatefulWidget {
+  const DiaryHome({super.key});
   @override
-  State<DiaryHome> createState() => _DiaryHomeState();
+  ConsumerState<DiaryHome> createState() => _DiaryHomeState();
 }
 
-class _DiaryHomeState extends State<DiaryHome> {
-  ProfileController get controller => widget.controller;
-  Catalog get catalog => controller.engine.catalog;
-  Engine get engine => controller.engine;
-  Profile get state => controller.state;
+class _DiaryHomeState extends ConsumerState<DiaryHome> {
+  // Letture puntuali, valide anche nei callback dopo un `await`; la
+  // sottoscrizione ai cambiamenti è il `ref.watch` in testa a `build`.
+  ProfileNotifier get controller => ref.read(profileProvider.notifier);
+  ProfileViewState get view => ref.read(profileProvider);
+  Engine get engine => ref.read(engineProvider);
+  Catalog get catalog => engine.catalog;
+  Profile get state => view.profile;
   Json get plan => engine.plan(state);
   int page = 0;
   String category = 'all',
@@ -452,119 +454,118 @@ class _DiaryHomeState extends State<DiaryHome> {
     ),
   );
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-    animation: controller,
-    builder: (context, _) {
-      final desktop = MediaQuery.sizeOf(context).width >= 1000;
-      final overall = catalog.summary(state);
-      final body = ListView(
-        controller: scroll,
-        padding: EdgeInsets.all(desktop ? 32 : 16),
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      pages[page],
-                      style: const TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    text('Il tuo viaggio verso il 100%', color: muted),
-                  ],
-                ),
-              ),
-              if (desktop)
-                Text(
-                  '${overall['done']} / ${overall['total']}',
-                  style: const TextStyle(fontSize: 24, color: gold),
-                ),
-            ],
-          ),
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            spacing: 12,
-            runSpacing: 8,
-            children: [
-              Text(
-                controller.busy
-                    ? 'Salvataggio…'
-                    : controller.blocked
-                    ? 'Archivio da recuperare'
-                    : '● Salvataggio automatico',
-                style: const TextStyle(color: muted),
-              ),
-              OutlinedButton.icon(
-                onPressed:
-                    controller.busy ||
-                        controller.blocked ||
-                        (state['transactions'] as List).isEmpty
-                    ? null
-                    : () => update(engine.undo),
-                icon: const Icon(Icons.undo, size: 18),
-                label: const Text('Annulla ultima operazione'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          text(
-            '${state['settings']['level'] == null ? 'Profilo locale' : 'Sora · livello ${state['settings']['level']}'}'
-            '${state['activeSaveId'] == null ? '' : ' · ${state['saveSnapshots'][state['activeSaveId']]['location']['save_label'] ?? 'Luogo da verificare'}'}'
-            ' · ${engine.distinct(state)}/33 sintesi',
-            color: gold,
-          ),
-          const SizedBox(height: 8),
-          if (controller.error != null)
-            Panel(
+  Widget build(BuildContext context) {
+    final view = ref.watch(profileProvider);
+    final desktop = MediaQuery.sizeOf(context).width >= 1000;
+    final overall = catalog.summary(state);
+    final body = ListView(
+      controller: scroll,
+      padding: EdgeInsets.all(desktop ? 32 : 16),
+      children: [
+        Row(
+          children: [
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text(controller.error!, color: Colors.orangeAccent),
-                  Wrap(
-                    spacing: 12,
-                    children: [
-                      TextButton(
-                        onPressed: controller.initialize,
-                        child: const Text('Ricarica archivio'),
-                      ),
-                      TextButton(
-                        onPressed: () => navigate(12),
-                        child: const Text('Apri Backup'),
-                      ),
-                      if (!controller.blocked)
-                        TextButton(
-                          onPressed: controller.dismissError,
-                          child: const Text('Chiudi'),
-                        ),
-                    ],
+                  Text(
+                    pages[page],
+                    style: const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  text('Il tuo viaggio verso il 100%', color: muted),
                 ],
               ),
             ),
-          if (page >= 4 && page <= 10) planSelector(),
-          ...content(),
-        ],
-      );
-      return Scaffold(
-        appBar: desktop ? null : AppBar(title: const Text('Diario di Bordo')),
-        drawer: desktop ? null : Drawer(child: navigation(false)),
-        body: SafeArea(
-          child: Row(
-            children: [
-              if (desktop) navigation(true),
-              Expanded(
-                child: AbsorbPointer(absorbing: controller.busy, child: body),
+            if (desktop)
+              Text(
+                '${overall['done']} / ${overall['total']}',
+                style: const TextStyle(fontSize: 24, color: gold),
               ),
-            ],
-          ),
+          ],
         ),
-      );
-    },
-  );
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 12,
+          runSpacing: 8,
+          children: [
+            Text(
+              view.busy
+                  ? 'Salvataggio…'
+                  : view.blocked
+                  ? 'Archivio da recuperare'
+                  : '● Salvataggio automatico',
+              style: const TextStyle(color: muted),
+            ),
+            OutlinedButton.icon(
+              onPressed:
+                  view.busy ||
+                      view.blocked ||
+                      (state['transactions'] as List).isEmpty
+                  ? null
+                  : () => update(engine.undo),
+              icon: const Icon(Icons.undo, size: 18),
+              label: const Text('Annulla ultima operazione'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        text(
+          '${state['settings']['level'] == null ? 'Profilo locale' : 'Sora · livello ${state['settings']['level']}'}'
+          '${state['activeSaveId'] == null ? '' : ' · ${state['saveSnapshots'][state['activeSaveId']]['location']['save_label'] ?? 'Luogo da verificare'}'}'
+          ' · ${engine.distinct(state)}/33 sintesi',
+          color: gold,
+        ),
+        const SizedBox(height: 8),
+        if (view.error != null)
+          Panel(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                text(view.error!, color: Colors.orangeAccent),
+                Wrap(
+                  spacing: 12,
+                  children: [
+                    TextButton(
+                      onPressed: controller.initialize,
+                      child: const Text('Ricarica archivio'),
+                    ),
+                    TextButton(
+                      onPressed: () => navigate(12),
+                      child: const Text('Apri Backup'),
+                    ),
+                    if (!view.blocked)
+                      TextButton(
+                        onPressed: controller.dismissError,
+                        child: const Text('Chiudi'),
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        if (page >= 4 && page <= 10) planSelector(),
+        ...content(),
+      ],
+    );
+    return Scaffold(
+      appBar: desktop ? null : AppBar(title: const Text('Diario di Bordo')),
+      drawer: desktop ? null : Drawer(child: navigation(false)),
+      body: SafeArea(
+        child: Row(
+          children: [
+            if (desktop) navigation(true),
+            Expanded(
+              child: AbsorbPointer(absorbing: view.busy, child: body),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   List<Widget> content() => switch (page) {
     0 => diary(),
     1 => checklist(),
@@ -1132,35 +1133,37 @@ class _DiaryHomeState extends State<DiaryHome> {
     builder: (context) => Dialog(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 720, maxHeight: 760),
-        child: AnimatedBuilder(
-          animation: controller,
-          builder: (context, _) => SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: heading(
-                        catalog.materialsById[id]!['name'] as String,
+        child: Consumer(
+          builder: (context, ref, _) {
+            ref.watch(profileProvider);
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: heading(
+                          catalog.materialsById[id]!['name'] as String,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.close),
-                    ),
-                  ],
-                ),
-                quantityControls(id),
-                provenance('inventory.$id'),
-                for (final f in catalog.farming.where(
-                  (f) => f['material'] == id,
-                ))
-                  farmSource(f),
-              ],
-            ),
-          ),
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                  quantityControls(id),
+                  provenance('inventory.$id'),
+                  for (final f in catalog.farming.where(
+                    (f) => f['material'] == id,
+                  ))
+                    farmSource(f),
+                ],
+              ),
+            );
+          },
         ),
       ),
     ),
@@ -2130,7 +2133,7 @@ class _DiaryHomeState extends State<DiaryHome> {
             'Il backup JSON include inventario, checklist, piano, cronologia, snapshot e override. Compatibile con i backup della precedente app.',
           ),
           SelectableText(
-            'Archivio: ${controller.repository.location}',
+            'Archivio: ${ref.read(profileRepositoryProvider).location}',
             style: const TextStyle(color: muted),
           ),
           const SizedBox(height: 16),
@@ -2146,7 +2149,9 @@ class _DiaryHomeState extends State<DiaryHome> {
               OutlinedButton(
                 onPressed: () async {
                   try {
-                    final bytes = await controller.repository.previousBackup();
+                    final bytes = await ref
+                        .read(profileRepositoryProvider)
+                        .previousBackup();
                     if (bytes == null) {
                       throw const FormatException('Nessun backup precedente.');
                     }

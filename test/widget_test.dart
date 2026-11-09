@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:diario_bordo/domain/engine.dart';
-import 'package:diario_bordo/storage/controller.dart';
+import 'package:diario_bordo/application/profile_providers.dart';
 import 'package:diario_bordo/ui/app.dart';
 import 'package:diario_bordo/ui/widgets.dart';
 import 'fakes.dart';
@@ -11,15 +12,14 @@ void main() {
   testWidgets('Il diario si adatta a desktop e telefono senza overflow', (
     tester,
   ) async {
-    final c = ProfileController(
-      Engine(testCatalog()),
-      InMemoryProfileRepository(),
-    );
+    final c = profileContainer(testCatalog(), InMemoryProfileRepository());
     try {
       for (final size in [const Size(1440, 1000), const Size(390, 844)]) {
         tester.view.devicePixelRatio = 1;
         tester.view.physicalSize = size;
-        await tester.pumpWidget(DiaryApp(controller: c));
+        await tester.pumpWidget(
+          UncontrolledProviderScope(container: c, child: const DiaryApp()),
+        );
         await tester.pumpAndSettle();
         expect(find.text('IL VIAGGIO VERSO IL 100%'), findsOneWidget);
         expect(tester.takeException(), null);
@@ -35,15 +35,18 @@ void main() {
     testWidgets('Navigazione in tutte le sezioni a ${size.width.toInt()}px', (
       tester,
     ) async {
-      final c = ProfileController(
-        Engine(testCatalog()),
-        InMemoryProfileRepository(),
+      final c = profileContainer(
+        testCatalog(),
+        InMemoryProfileRepository(jsonEncode(fixture()['imported'])),
       );
-      c.state = fixture()['imported'];
+      await c.read(profileProvider.notifier).initialize();
+      expect(c.read(profileProvider).blocked, false);
       tester.view.devicePixelRatio = 1;
       tester.view.physicalSize = size;
       try {
-        await tester.pumpWidget(DiaryApp(controller: c));
+        await tester.pumpWidget(
+          UncontrolledProviderScope(container: c, child: const DiaryApp()),
+        );
         await tester.pumpAndSettle();
         for (final label in pages) {
           if (size.width < 1000) {

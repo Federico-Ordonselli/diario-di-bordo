@@ -1,35 +1,39 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/application/profile_providers.dart';
 import 'package:diario_bordo/domain/profile.dart';
-import 'package:diario_bordo/storage/controller.dart';
 import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/storage/profile_store.dart';
+import 'fakes.dart';
 import 'test_catalog.dart';
 
 void main() {
   test('Errore di scrittura conserva lo stato mostrato', () async {
     final dir = await Directory.systemTemp.createTemp('kh-controller-');
-    final controller = ProfileController(
-      Engine(testCatalog()),
+    final container = profileContainer(
+      testCatalog(),
       JsonProfileRepository(ProfileStore(dir)),
     );
+    final notifier = container.read(profileProvider.notifier);
+    final engine = container.read(engineProvider);
     try {
-      await controller.initialize();
-      final previous = controller.state;
+      await notifier.initialize();
+      final previous = container.read(profileProvider).profile;
       final foreign = ProfileStore(dir);
       await foreign.loadRaw();
       final newer = Profile({...previous, 'storyPoint': 'another-window'});
       await foreign.save(newer);
-      final accepted = await controller.commit(
-        (s) => controller.engine.increment(s, 'gale', 1),
+      final accepted = await notifier.commit(
+        (s) => engine.increment(s, 'gale', 1),
       );
+      final view = container.read(profileProvider);
       expect(accepted, false);
-      expect(identical(controller.state, previous), true);
-      expect(controller.error, contains('altra finestra'));
+      expect(identical(view.profile, previous), true);
+      expect(view.busy, false);
+      expect(view.error, contains('altra finestra'));
     } finally {
-      controller.dispose();
+      container.dispose();
       await dir.delete(recursive: true);
     }
   });
@@ -37,35 +41,31 @@ void main() {
     'Profilo corrotto conservato, operazioni bloccate e recupero con backup',
     () async {
       final dir = await Directory.systemTemp.createTemp('kh-corrupt-');
-      final store = ProfileStore(dir), engine = Engine(testCatalog());
-      final controller = ProfileController(
-        engine,
-        JsonProfileRepository(store),
-      );
+      final store = ProfileStore(dir), catalog = testCatalog();
+      final container = profileContainer(catalog, JsonProfileRepository(store));
+      final notifier = container.read(profileProvider.notifier);
+      final engine = container.read(engineProvider);
       try {
         await store.profile.writeAsString('{broken');
-        await controller.initialize();
-        expect(controller.blocked, true);
+        await notifier.initialize();
+        expect(container.read(profileProvider).blocked, true);
         expect(
-          await controller.commit((s) => engine.increment(s, 'gale', 1)),
+          await notifier.commit((s) => engine.increment(s, 'gale', 1)),
           false,
         );
         expect(await store.profile.readAsString(), '{broken');
         expect(
-          await controller.commit(
-            (_) => engine.catalog.fresh(),
-            importing: true,
-          ),
+          await notifier.commit((_) => catalog.fresh(), importing: true),
           true,
         );
-        expect(controller.blocked, false);
+        expect(container.read(profileProvider).blocked, false);
         expect(await store.backup.readAsString(), '{broken');
         expect(
           jsonDecode(await store.profile.readAsString())['schemaVersion'],
           2,
         );
       } finally {
-        controller.dispose();
+        container.dispose();
         await dir.delete(recursive: true);
       }
     },

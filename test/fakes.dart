@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:diario_bordo/application/profile_providers.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/domain/profile_repository.dart';
@@ -36,3 +38,15 @@ class InMemoryProfileRepository implements ProfileRepository {
   Future<Uint8List?> previousBackup() async =>
       backup == null ? null : utf8.encode(backup!);
 }
+
+/// Container con le dipendenze del profilo iniettate; va chiuso con
+/// `dispose()` (o registrato con `addTearDown(container.dispose)`).
+ProviderContainer profileContainer(
+  Catalog catalog,
+  ProfileRepository repository,
+) => ProviderContainer(
+  overrides: [
+    catalogProvider.overrideWithValue(catalog),
+    profileRepositoryProvider.overrideWithValue(repository),
+  ],
+);
