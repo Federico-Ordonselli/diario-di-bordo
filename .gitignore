@@ -18,3 +18,7 @@ ios/Pods/
 ios/.symlinks/
 macos/Pods/
 macos/.symlinks/
+
+# Note di lavoro (non pubblicate)
+/CLAUDE.md
+/memoria.md

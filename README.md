@@ -1,112 +1,53 @@
-# Diario di Bordo — Flutter
+# Diario di Bordo
 
-L’overview completa e aggiornata è in [OVERVIEW.md](OVERVIEW.md).
+App per tenere traccia del completamento di **Kingdom Hearts 1** (Final Mix): checklist delle 794 voci, sintesi, inventario dei materiali, farming e lettura del salvataggio. Funziona offline, senza account. Pensata soprattutto per il telefono, gira anche su Linux.
 
-Diario personale offline per Kingdom Hearts 1 Final Mix. Il progetto principale è ora Flutter/Dart: interfaccia Material 3 scura, accenti oro, navigazione laterale su desktop e menu su telefono. I controlli sono in italiano; il contenuto originale delle guide rimane in inglese.
+> **App non ufficiale.** Non è affiliata, approvata o sponsorizzata da Square Enix o Disney. *Kingdom Hearts* e tutti i nomi, i personaggi e i marchi collegati appartengono ai rispettivi proprietari, che ne detengono tutti i diritti. L'app non contiene loghi, artwork, musiche o file del gioco: è uno strumento gratuito, fatto da un fan per seguire i propri progressi.
 
-Sono stati trasferiti tutti i dataset e le sezioni dell’app precedente: **794 obiettivi in 15 categorie**, 34 materiali, 33 ricette, 30 fonti uniche, guide, farming, piano, sessione, snapshot dei save, preparazione e backup. La vecchia implementazione React è conservata in `legacy/web/`, per recupero e confronto. Flutter non usa React, Node, un browser o un server locale a runtime.
+<p>
+  <img src="screenshots/android-diario.png" width="200" alt="Diario: percentuale di completamento e percorso per categoria">
+  <img src="screenshots/android-checklist.png" width="200" alt="Checklist con ricerca e filtri">
+  <img src="screenshots/android-sintesi.png" width="200" alt="Sintesi: dashboard delle ricette">
+  <img src="screenshots/android-save.png" width="200" alt="Import del salvataggio">
+</p>
 
-## Avvio Linux
+<img src="screenshots/linux-diario.png" alt="Versione Linux con navigazione laterale">
 
-Serve **Flutter stable ≥ 3.35, Dart ≥ 3.9**, con gli strumenti desktop Linux (Clang, CMake, Ninja, GTK 3 e pkg-config). Installazione: [documentazione Flutter](https://docs.flutter.dev/install).
+## Cosa fa
+
+- **Diario:** percentuale di completamento e avanzamento per categoria (rapporti di Ansem, dalmata, tesori, trofei…).
+- **Checklist:** 794 voci, con ricerca e filtri per categoria, stato, mondo e gruppo. Una voce può essere completata, da completare o da verificare.
+- **Sintesi:** inventario dei materiali, 33 ricette con i gruppi di sblocco, piano di sintesi con i materiali mancanti, fonti di farming e collezionabili.
+- **Save:** legge il file di salvataggio della versione PC (`KHFM_WW.png`) e mostra le differenze slot per slot. Non importa nulla senza conferma.
+- **Backup:** export e import del profilo in JSON. Le ultime 100 operazioni si possono annullare.
+
+## Come è fatta
+
+Flutter/Dart, con un codice unico per Android, iOS e desktop.
+
+- **Architettura a livelli.** Il dominio è Dart puro (motore delle regole, validazione, decoder del save) ed è separato dai dati (repository) e dall'interfaccia (feature).
+- **Riverpod** per lo stato e **go_router** per la navigazione: barra in basso su telefono, NavigationRail sugli schermi larghi.
+- **SQLite con drift.** Lo schema è versionato, le migrazioni sono testate (v1 → v2) e c'è un controllo delle chiavi esterne dopo ogni upgrade. Il modello dati è predisposto per più titoli (`game_id`).
+- **Test** su tre livelli: unità del dominio, repository su drift in memoria con test di migrazione, widget con override dei provider. I test di parità confrontano il motore con i risultati della versione precedente dell'app. Il decoder è verificato su un salvataggio reale incluso come fixture in `test/fixtures/`.
+
+```
+lib/
+  domain/        regole, validazione, decoder del save (Dart puro)
+  data/          repository drift, schema e migrazioni
+  application/   provider Riverpod
+  features/      diario, checklist, sintesi, save, altro
+  app/           router e shell di navigazione
+```
+
+## Avvio
+
+Serve Flutter stable (Dart ≥ 3.9).
 
 ```bash
-cd /home/federico/progetti/khapp
-./scripts/flutter/bootstrap.sh
-./scripts/flutter/check.sh
-./scripts/desktop/launch.sh
+flutter pub get
+flutter test
+flutter run            # dispositivo o emulatore collegato
+flutter run -d linux
 ```
 
-`bootstrap.sh` genera i runner mancanti per Android, iOS, macOS e Windows dai template dell’SDK installato, senza sovrascrivere i file Dart o il runner Linux già incluso. Configura i permessi macOS per i file selezionati e il nome dell’app. Eseguire il bootstrap richiede l’SDK e l’accesso iniziale alle dipendenze pub. I runner Android, iOS, macOS e Windows sono stati generati con Flutter 3.47.7 e sono ora presenti nel progetto.
-
-`check.sh` formatta il Dart, esegue analisi e test e compila il bundle Linux. I dati stanno in un database SQLite (`diario_bordo.sqlite`, drift) nella cartella di supporto della piattaforma; il percorso effettivo è visibile in Altro → Backup. Al primo avvio il profilo è **vuoto** (0/794): i progressi si inseriscono a mano, oppure si recupera un backup JSON (anche il vecchio `data/profile.json`) da Altro → Backup → Importa. Il JSON importato non viene modificato.
-
-Il launcher desktop imposta `KH_DATA_DIR` sulla cartella `data/` del progetto, quindi il database personale resta lì (ignorato da git). Per aggiornare il collegamento desktop, dopo la compilazione:
-
-```bash
-./scripts/desktop/install.sh
-```
-
-`KH_DATA_DIR` (solo desktop, per sviluppo) sceglie la cartella del database. Per lo sviluppo con il proprio profilo, o su un archivio di prova:
-
-```bash
-KH_DATA_DIR="$PWD/data" flutter run -d linux
-KH_DATA_DIR=/tmp/diario-bordo-prova flutter run -d linux
-```
-
-## Android, iOS e altri desktop
-
-Il codice Dart è condiviso tra le piattaforme native. Dopo il bootstrap:
-
-```bash
-flutter devices
-flutter run -d <id-dispositivo>
-flutter build apk --release
-```
-
-iOS e macOS richiedono macOS/Xcode e la configurazione di firma; Windows richiede Windows e gli strumenti Visual Studio. Le build di queste piattaforme non sono state eseguite in questo ambiente. Per distribuire Linux, conserva **tutto** `build/linux/x64/release/bundle/`, non soltanto il binario. Il web non è un target di questa conversione: la persistenza è nativa su file.
-
-## Funzioni e regole conservate
-
-- **Diario / Checklist:** tutte le 794 voci, ricerca in nomi, requisiti, note e ricompense; filtri per categoria, stato, mondo e gruppo; caricamento di 40 voci alla volta. Dettagli espandibili con colonne, commenti, riga Excel, collegamenti e provenienza. Lo stato sconosciuto resta distinto da quello incompleto.
-- **Guide:** sezioni dell’Excel, fonti dei materiali, consigli e boss segreti. Excel, PDF e report sono inclusi negli asset ed esportabili senza Internet. I link esterni richiedono una connessione.
-- **Dashboard / Inventario:** scorte confermate o sconosciute, quantità da 0 a 999999, incrementi ripetuti, +5/+10, fonti di farming e deficit. I filtri dell’inventario mantengono le righe selezionate mentre aggiorni le scorte.
-- **Ricette:** gruppi I–VI con gli stessi requisiti di sblocco. “Segna già sintetizzato” corregge lo storico; “Sintetizza adesso” verifica gruppo e materiali, consuma gli ingredienti e registra la produzione. Ricette e checklist condividono `everCrafted`.
-- **Piano:** tutta la sintesi, prime 15 oppure ricette selezionate. Espansione Dark Matter → Mythril → ingredienti, ricompense future separate dall’inventario, deficit incerti e simulazione dell’ordine eseguibile. Le tre Lucid Gem aggiuntive del percorso rimangono incluse.
-- **Farming / Sessione:** metodi, condizioni, reset, probabilità, regole speciali, Lucky Strike e contatori di sessione. Raccolte +1/+5 aggiornano inventario e sessione insieme.
-- **Collezionabili:** raccolta retroattiva distinta da raccolta attuale; solo quella attuale modifica inventario e ricompense future.
-- **Preparazione:** edizione, livello, MP, Lucky Strike, Munny e disponibilità delle abilità. I campi si confermano con Invio o quando perdono il focus.
-- **Save:** apertura degli snapshot JSON analizzati, confronto di un singolo slot, scelta per ogni conflitto, backup prima dell’importazione. Conserva osservazioni, fonte, hash, confidenza, slot, date e override. Contatori di Trinità/cartoline e casse mappate sono indipendenti dalle checklist Excel. Lo storico della sintesi non viene dedotto dagli oggetti posseduti.
-- **Backup:** export/import JSON compatibili con schema 1 e 2 della vecchia app. Anteprima e copia precedente su disco. Ripristinare un backup sostituisce anche la cronologia con quella del backup; per tornare al profilo precedente importa la copia precedente. L’importazione di uno slot, invece, è una transazione annullabile.
-
-I progressi degli screenshot sono importati una sola volta anche sui nuovi profili; i marcatori già presenti e quelli conservati dopo un annullamento impediscono la riapplicazione.
-
-## Persistenza e migrazione
-
-Il formato del profilo resta schema 2, dataset `kh1fm-2026-10-09` e checklist `kh1fm-checklist-1.03`. Lo schema 1 viene migrato all’apertura e all’importazione, inclusa la cronologia. Le operazioni conservano fino a 100 stati precedenti.
-
-Le scritture usano un file temporaneo con flush e rename, un lock del file e un confronto con la revisione letta: una finestra con un profilo vecchio deve ricaricare prima di scrivere. Un errore di persistenza non cambia lo stato visualizzato. Un profilo illeggibile viene conservato e blocca le modifiche fino al ripristino da backup. Prima di un’importazione, il file precedente viene salvato atomicamente in `before-import.json`.
-
-La versione React archiviata non partecipa al lock nativo: chiudila prima di usare Flutter sul medesimo profilo. I dati personali in `data/` restano esclusi da Git.
-
-Su Android/iOS l’esportazione usa il pannello di condivisione del sistema; su desktop usa una finestra di salvataggio. I backup vengono creati prima dell’importazione; annullare l’esportazione interrompe la sostituzione. Un nuovo telefono parte con un profilo iniziale: trasferisci i progressi usando il backup JSON.
-
-## Struttura
-
-```text
-lib/main.dart                    caricamento asset e avvio
-lib/domain/catalog.dart          cataloghi e conteggi
-lib/domain/engine.dart           calcoli e transazioni
-lib/domain/save_adapter.dart     snapshot, conflitti e importazione
-lib/domain/validation.dart       validazione e migrazione dei backup
-lib/storage/                     archivio nativo e controller
-lib/ui/                          navigazione, pagine e controlli
-assets/datasets/                 dataset completi e stato iniziale
-assets/documents/                PDF, report (niente Excel: contiene artwork ufficiale)
-linux/                          runner nativo Linux
-scripts/flutter/                 bootstrap e verifiche
-scripts/desktop/                 avvio e collegamento nativo
-legacy/web/                      implementazione React precedente
-```
-
-`python3 scripts/import-checklist.py` rigenera le checklist dall’Excel originale con la sola libreria standard Python. `node scripts/flutter/verify-data.mjs` confronta dataset, documenti e compatibilità del profilo personale senza modificarlo. `node scripts/export-flutter-data.mjs` esporta i dati e le fixture di confronto dal motore originale; è uno strumento di manutenzione, non una dipendenza dell’app.
-
-## Stato delle verifiche
-
-Flutter **3.47.7 stable** e Dart **3.13.5** sono installati in `/home/federico/.local/share/flutter`, con comandi disponibili in Bash, Zsh e Fish. La toolchain Linux risulta pronta secondo `flutter doctor`.
-
-Verifiche completate: `flutter analyze` senza problemi, **31 test Flutter superati**, build Linux release riuscita e avvio del binario nativo verificato sia con un profilo temporaneo sia con l’archivio reale. L’avvio diretto da `/tmp` senza `KH_DATA_DIR` ha letto 456/794 obiettivi, 12/33 sintesi e livello 54; il checksum del profilo è rimasto invariato. Sono passati anche i 34 test del motore originale e i confronti dei dataset/documenti. Il profilo personale è stato validato in Dart senza modificarlo: stato e piano coincidono con il motore originale.
-
-Android SDK non installato; build APK, iOS, macOS e Windows non eseguite. L’importazione/esportazione tramite dialoghi nativi e condivisione mobile richiede ancora una verifica interattiva sui rispettivi sistemi.
-
-I test Flutter includono:
-
-- parità di piano e simulazione in sei scenari con risultati del motore JavaScript;
-- parità delle transazioni, dei tre slot normalizzati, dell’anteprima e dell’importazione;
-- quantità sconosciute, sblocchi, sessioni, migrazione, annullamento e cronologia;
-- conflitti manuali, separazione degli slot e validazione dei contatori;
-- persistenza, revisione e backup su un archivio temporaneo;
-- scelta dell’archivio per avvio diretto, sviluppo, override esplicito e bundle autonomo;
-- navigazione in tutte le 13 sezioni su desktop/telefono e controlli a pressione prolungata.
-
-Per ripetere le verifiche esegui `./scripts/flutter/check.sh`. Il dettaglio della migrazione si trova in `docs/flutter-migration.md`.
+Al primo avvio il profilo è vuoto. I progressi si segnano a mano, oppure si legge il proprio salvataggio dalla schermata Save.
