@@ -38,6 +38,24 @@ void main() {
     expect(undone['activeSaveId'], null);
     expect((undone['saveSnapshots'] as Json).length, 1);
   });
+  test('Profilo nuovo (vuoto): il primo save non ha conflitti', () {
+    final s = catalog.empty(), p = adapter.preview(s, raw, 1);
+    final conflicts = (p['rows'] as List).where((r) => r['conflict'] == true);
+    expect(conflicts.map((r) => r['key']), isEmpty);
+    expect(
+      adapter.apply(s, raw, 1)['inventory']['gale'],
+      (p['rows'] as List).firstWhere(
+        (r) => r['key'] == 'inventory.gale',
+      )['value'],
+    );
+  });
+  test('Profilo nuovo: una quantità inserita a mano resta un conflitto', () {
+    final s = engine.quantity(catalog.empty(), 'gale', 77),
+        p = adapter.preview(s, raw, 1);
+    final conflicts = (p['rows'] as List).where((r) => r['conflict'] == true);
+    expect(conflicts.map((r) => r['key']), ['inventory.gale']);
+    expect(adapter.apply(s, raw, 1)['inventory']['gale'], 77);
+  });
   test(
     'Le modifiche manuali sono conflitti e si possono risolvere esplicitamente',
     () {

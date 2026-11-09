@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:isolate';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,9 +16,12 @@ final saveReferenceProvider = FutureProvider<Json>((ref) async {
   return SaveAdapter(ref.watch(engineProvider)).validate(jsonDecode(text));
 });
 
+/// Decodifica [bytes] in un isolate per non bloccare l'interfaccia. Lavora
+/// sui byte e non su un percorso: su Android il file scelto non ha un path.
 /// Top-level di proposito: una closure creata in un metodo di State
 /// condivide il contesto con `this`, e l'isolate rifiuterebbe di copiarlo.
-Future<Json> decodeSaveInIsolate(String path, Json reference, String name) =>
-    Isolate.run(
-      () => decodeSave(File(path).readAsBytesSync(), reference, filename: name),
-    );
+Future<Json> decodeSaveInIsolate(
+  Uint8List bytes,
+  Json reference,
+  String name,
+) => Isolate.run(() => decodeSave(bytes, reference, filename: name));

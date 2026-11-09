@@ -389,9 +389,16 @@ class SaveAdapter {
       s.manualOverrides['app'] ?? <String, dynamic>{},
     );
     if (s.activeSaveId == null) {
-      final baseline = catalog.fresh().inventory, inventory = s.inventory;
+      // Prima del primo save, una quantità è una modifica manuale se differisce
+      // da entrambi i profili di partenza possibili: `fresh()` (vecchia app,
+      // parità col motore originale) ed `empty()` (profili nuovi). Senza il
+      // secondo, gli zeri di un profilo nuovo diventerebbero tutti conflitti.
+      final legacy = catalog.fresh().inventory,
+          blank = catalog.empty().inventory,
+          inventory = s.inventory;
       for (final m in catalog.materials) {
-        if (inventory[m['id']] != baseline[m['id']]) {
+        final value = inventory[m['id']];
+        if (value != legacy[m['id']] && value != blank[m['id']]) {
           values['inventory.${m['id']}'] = inventory[m['id']];
         }
       }

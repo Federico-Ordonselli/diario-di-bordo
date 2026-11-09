@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +5,7 @@ import '../../application/profile_providers.dart';
 import '../../domain/catalog.dart';
 import '../../domain/profile.dart';
 import '../../domain/save_adapter.dart';
-import '../../storage/game_save_locator.dart';
+import '../../storage/save_file.dart';
 import '../../ui/common.dart';
 import '../../ui/ref_actions.dart';
 import '../../ui/widgets.dart';
@@ -38,38 +37,33 @@ class _SavePageState extends ConsumerState<SavePage> {
     });
   }
 
-  /// Legge il PNG del gioco (trovato da solo o scelto) e apre l'anteprima.
-  /// La decodifica gira in un isolate per non bloccare l'interfaccia.
+  /// Legge il PNG del gioco (trovato da solo su desktop, o scelto) e apre
+  /// l'anteprima. Da qui in poi si lavora solo sui byte.
   Future<void> readGameSave({bool choose = false}) async {
     final reference = ref.read(saveReferenceProvider).value;
     if (reference == null || readingSave) return;
     setState(() => readingSave = true);
     try {
-      final found = GameSaveLocator.find();
-      final String path;
+      final GameSaveFile save;
       if (choose) {
         final picked = await openFile(
-          initialDirectory: found?.parent.path,
-          acceptedTypeGroups: [
-            const XTypeGroup(
-              label: 'Save PNG',
-              extensions: ['png'],
-              mimeTypes: ['image/png'],
-            ),
-          ],
+          initialDirectory: suggestedSaveDirectory(),
+          acceptedTypeGroups: const [saveTypeGroup],
         );
         if (picked == null) return;
-        path = picked.path;
-      } else if (found == null) {
-        throw const FormatException(
-          'Save del gioco non trovato. Usa “Apri save PNG” oppure imposta KH_SAVE_PATH.',
-        );
+        save = await readPickedSave(picked);
       } else {
-        path = found.path;
+        save =
+            await readLocatedSave() ??
+            (throw const FormatException(
+              'Save del gioco non trovato. Usa “Apri save PNG” oppure imposta KH_SAVE_PATH.',
+            ));
       }
-      final modified = File(path).lastModifiedSync();
-      final name = path.split(Platform.pathSeparator).last;
-      final decoded = await decodeSaveInIsolate(path, reference, name);
+      final decoded = await decodeSaveInIsolate(
+        save.bytes,
+        reference,
+        save.name,
+      );
       adapter.validate(decoded);
       if (!mounted) return;
       setState(() {
@@ -77,8 +71,7 @@ class _SavePageState extends ConsumerState<SavePage> {
         slot = decoded['recommended_slot'] as int;
         staged = true;
         decisions = {};
-        saveOrigin =
-            '$path · file modificato ${modified.toString().substring(0, 19)}';
+        saveOrigin = save.origin;
       });
     } catch (e) {
       ref.report(e);
@@ -144,19 +137,25 @@ class _SavePageState extends ConsumerState<SavePage> {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  FilledButton.icon(
-                    onPressed: ready ? () => readGameSave() : null,
-                    icon: readingSave
+                  if (canLocateGameSave)
+                    FilledButton.icon(
+                      onPressed: ready ? () => readGameSave() : null,
+                      icon: readingSave
+                          ? const SizedBox.square(
+                              dimension: 16,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Icon(Icons.sync),
+                      label: const Text('Leggi il save dal gioco'),
+                    ),
+                  (canLocateGameSave ? OutlinedButton.icon : FilledButton.icon)(
+                    onPressed: ready ? () => readGameSave(choose: true) : null,
+                    icon: readingSave && !canLocateGameSave
                         ? const SizedBox.square(
                             dimension: 16,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        : const Icon(Icons.sync),
-                    label: const Text('Leggi il save dal gioco'),
-                  ),
-                  OutlinedButton.icon(
-                    onPressed: ready ? () => readGameSave(choose: true) : null,
-                    icon: const Icon(Icons.image_outlined),
+                        : const Icon(Icons.image_outlined),
                     label: const Text('Apri save PNG'),
                   ),
                   OutlinedButton.icon(

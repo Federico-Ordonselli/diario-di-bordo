@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -201,4 +202,27 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
     expect(count, stopped);
   });
+
+  for (final platform in [TargetPlatform.linux, TargetPlatform.android]) {
+    testWidgets(
+      'Save su ${platform.name}: ricerca automatica solo su desktop',
+      (tester) async {
+        debugDefaultTargetPlatformOverride = platform;
+        final c = await importedApp(tester, const Size(390, 844));
+        try {
+          c.read(routerProvider).go(Routes.save);
+          await tester.pumpAndSettle();
+          expect(find.text('Apri save PNG'), findsOneWidget);
+          expect(
+            find.text('Leggi il save dal gioco'),
+            platform == TargetPlatform.linux ? findsOneWidget : findsNothing,
+          );
+          expect(tester.takeException(), null);
+        } finally {
+          await closeApp(tester, c);
+          debugDefaultTargetPlatformOverride = null;
+        }
+      },
+    );
+  }
 }
