@@ -3,15 +3,20 @@ import 'package:drift/drift.dart';
 import '../../domain/catalog.dart';
 import '../../domain/profile.dart';
 
+import 'schema_versions.dart';
+
 part 'database.g.dart';
 
-/// Titolo a cui appartengono le righe finché lo schema non avrà la tabella
-/// `games` (v2): ogni tabella del profilo ha già la colonna `game_id`.
+/// Titolo predefinito: unico titolo con dataset, registrato in `games` alla
+/// creazione del database e dalla migrazione v1→v2.
 const defaultGameId = 'kh1fm';
+const defaultGameName = 'Kingdom Hearts Final Mix';
 
 /// Colonna `game_id`, parte della chiave primaria di ogni tabella del profilo.
+/// Il default è un letterale (= [defaultGameId]): `drift_dev` copia
+/// l'espressione negli schemi versionati generati, che non vedono le costanti.
 mixin GameScoped on Table {
-  TextColumn get gameId => text().withDefault(const Constant(defaultGameId))();
+  TextColumn get gameId => text().withDefault(const Constant('kh1fm'))();
 }
 
 /// Valore JSON qualsiasi (scalare o `null`) per le tabelle chiave → valore i cui
@@ -56,6 +61,16 @@ class PlanModeConverter extends TypeConverter<PlanMode, String> {
   String toSql(PlanMode value) => value.wire;
 }
 
+/// Titoli gestiti (schema v2). Un profilo esiste solo per un titolo registrato.
+@DataClassName('GameRow')
+class Games extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 /// Una riga per titolo: i campi scalari del profilo più la revisione usata per
 /// rilevare scritture concorrenti (concorrenza ottimistica).
 @DataClassName('ProfileRow')
@@ -71,6 +86,11 @@ class Profiles extends Table with GameScoped {
 
   @override
   Set<Column> get primaryKey => {gameId};
+
+  @override
+  List<String> get customConstraints => [
+    'FOREIGN KEY (game_id) REFERENCES games (id)',
+  ];
 }
 
 /// Quantità per materiale; `null` = scorta non confermata.
@@ -235,6 +255,7 @@ class Backups extends Table with GameScoped {
 /// dump` deve poterlo eseguire. L'apertura su dispositivo è in `connection.dart`.
 @DriftDatabase(
   tables: [
+    Games,
     Profiles,
     Inventory,
     Completion,
@@ -256,11 +277,43 @@ class Backups extends Table with GameScoped {
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
+  /// v1: profilo per `game_id`. v2: tabella `games`, `profiles.game_id` → FK.
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-    beforeOpen: (details) => customStatement('PRAGMA foreign_keys = ON'),
+    onCreate: (m) async {
+      await m.createAll();
+      await registerGame(defaultGameId, defaultGameName);
+    },
+    onUpgrade: stepByStep(
+      from1To2: (m, schema) async {
+        await m.createTable(schema.games);
+        // Le righe v1 appartengono tutte al titolo predefinito: registrarlo
+        // prima di ricostruire `profiles` con la FK.
+        await registerGame(defaultGameId, defaultGameName);
+        await customStatement(
+          'INSERT OR IGNORE INTO games (id, name) '
+          'SELECT game_id, game_id FROM profiles',
+        );
+        await m.alterTable(TableMigration(schema.profiles));
+      },
+    ),
+    beforeOpen: (details) async {
+      await customStatement('PRAGMA foreign_keys = ON');
+      if (details.hadUpgrade) {
+        final broken = await customSelect('PRAGMA foreign_key_check').get();
+        if (broken.isNotEmpty) {
+          throw StateError('Migrazione v${details.versionBefore}: FK violate');
+        }
+      }
+    },
+  );
+
+  /// Registra un titolo se assente (idempotente).
+  Future<void> registerGame(String id, String name) => into(games).insert(
+    GamesCompanion.insert(id: id, name: name),
+    mode: InsertMode.insertOrIgnore,
   );
 }

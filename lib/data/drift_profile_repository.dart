@@ -66,6 +66,13 @@ class DriftProfileRepository implements ProfileRepository {
     final (revision, cached) = await db.transaction(() async {
       final current = await _profileRow();
       if (current?.revision != _revision) throw const ProfileConflict();
+      if (current == null &&
+          await (db.select(
+                db.games,
+              )..where((g) => g.id.equals(gameId))).getSingleOrNull() ==
+              null) {
+        throw StateError('Titolo non registrato: $gameId');
+      }
       if (current == null) {
         // Nessun profilo: nessuna riga pesante da conservare.
         _snapshots = {};

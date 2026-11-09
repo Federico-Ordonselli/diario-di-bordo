@@ -201,9 +201,31 @@ void main() {
           other = DriftProfileRepository(db, gameId: 'altro');
       await main.save(richProfile(catalog));
       expect(await other.load(), isNull);
+      await db.registerGame('altro', 'Altro titolo');
       await other.save(catalog.fresh());
       expect(Profile((await main.load())!).saveSnapshots, hasLength(2));
       expect(Profile((await other.load())!).saveSnapshots, isEmpty);
+    });
+
+    test('Titolo non registrato: salvataggio rifiutato', () async {
+      final other = DriftProfileRepository(db, gameId: 'sconosciuto');
+      expect(await other.load(), isNull);
+      await expectLater(other.save(catalog.fresh()), throwsStateError);
+      expect(await db.select(db.profiles).get(), isEmpty);
+      // Anche scrivendo a mano la FK lo impedisce.
+      await expectLater(
+        db.customStatement(
+          'INSERT INTO profiles (game_id, schema_version, dataset_version, '
+          "updated_at, plan_mode) VALUES ('sconosciuto', 2, 'x', 'x', 'all')",
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('Database nuovo: titolo predefinito già registrato', () async {
+      expect((await db.select(db.games).get()).map((g) => g.id), [
+        defaultGameId,
+      ]);
     });
 
     test('JSON corrotto nel database: FormatException', () async {

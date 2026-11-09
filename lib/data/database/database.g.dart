@@ -3,6 +3,208 @@
 part of 'database.dart';
 
 // ignore_for_file: type=lint
+class $GamesTable extends Games with TableInfo<$GamesTable, GameRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $GamesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, name];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'games';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<GameRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  GameRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return GameRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+    );
+  }
+
+  @override
+  $GamesTable createAlias(String alias) {
+    return $GamesTable(attachedDatabase, alias);
+  }
+}
+
+class GameRow extends DataClass implements Insertable<GameRow> {
+  final String id;
+  final String name;
+  const GameRow({required this.id, required this.name});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    return map;
+  }
+
+  GamesCompanion toCompanion(bool nullToAbsent) {
+    return GamesCompanion(id: Value(id), name: Value(name));
+  }
+
+  factory GameRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return GameRow(
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+    };
+  }
+
+  GameRow copyWith({String? id, String? name}) =>
+      GameRow(id: id ?? this.id, name: name ?? this.name);
+  GameRow copyWithCompanion(GamesCompanion data) {
+    return GameRow(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GameRow(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is GameRow && other.id == this.id && other.name == this.name);
+}
+
+class GamesCompanion extends UpdateCompanion<GameRow> {
+  final Value<String> id;
+  final Value<String> name;
+  final Value<int> rowid;
+  const GamesCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  GamesCompanion.insert({
+    required String id,
+    required String name,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name);
+  static Insertable<GameRow> custom({
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  GamesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? name,
+    Value<int>? rowid,
+  }) {
+    return GamesCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GamesCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $ProfilesTable extends Profiles
     with TableInfo<$ProfilesTable, ProfileRow> {
   @override
@@ -17,7 +219,7 @@ class $ProfilesTable extends Profiles
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _schemaVersionMeta = const VerificationMeta(
     'schemaVersion',
@@ -614,7 +816,7 @@ class $InventoryTable extends Inventory
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _materialIdMeta = const VerificationMeta(
     'materialId',
@@ -882,7 +1084,7 @@ class $CompletionTable extends Completion
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
   @override
@@ -1140,7 +1342,7 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, RecipeRow> {
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _recipeIdMeta = const VerificationMeta(
     'recipeId',
@@ -1467,7 +1669,7 @@ class $CollectionsTable extends Collections
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _collectionIdMeta = const VerificationMeta(
     'collectionId',
@@ -1738,7 +1940,7 @@ class $PlayerSettingsTable extends PlayerSettings
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _keyMeta = const VerificationMeta('key');
   @override
@@ -2000,7 +2202,7 @@ class $SaveValuesTable extends SaveValues
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _keyMeta = const VerificationMeta('key');
   @override
@@ -2262,7 +2464,7 @@ class $OverrideScopesTable extends OverrideScopes
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _scopeMeta = const VerificationMeta('scope');
   @override
@@ -2472,7 +2674,7 @@ class $ManualOverridesTable extends ManualOverrides
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _scopeMeta = const VerificationMeta('scope');
   @override
@@ -2783,7 +2985,7 @@ class $PlanRecipesTable extends PlanRecipes
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _recipeIdMeta = const VerificationMeta(
     'recipeId',
@@ -2996,7 +3198,7 @@ class $PlanRewardsTable extends PlanRewards
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _materialIdMeta = const VerificationMeta(
     'materialId',
@@ -3260,7 +3462,7 @@ class $SessionMaterialsTable extends SessionMaterials
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _materialIdMeta = const VerificationMeta(
     'materialId',
@@ -3524,7 +3726,7 @@ class $AppliedEvidenceTable extends AppliedEvidence
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _evidenceIdMeta = const VerificationMeta(
     'evidenceId',
@@ -3741,7 +3943,7 @@ class $SaveSnapshotsTable extends SaveSnapshots
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
@@ -4155,7 +4357,7 @@ class $ProfileTransactionsTable extends ProfileTransactions
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _seqMeta = const VerificationMeta('seq');
   @override
@@ -4555,7 +4757,7 @@ class $BackupsTable extends Backups with TableInfo<$BackupsTable, BackupRow> {
     false,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
-    defaultValue: const Constant(defaultGameId),
+    defaultValue: const Constant('kh1fm'),
   );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
@@ -4806,6 +5008,7 @@ class BackupsCompanion extends UpdateCompanion<BackupRow> {
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
+  late final $GamesTable games = $GamesTable(this);
   late final $ProfilesTable profiles = $ProfilesTable(this);
   late final $InventoryTable inventory = $InventoryTable(this);
   late final $CompletionTable completion = $CompletionTable(this);
@@ -4834,6 +5037,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
+    games,
     profiles,
     inventory,
     completion,
@@ -4853,6 +5057,143 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   ];
 }
 
+typedef $$GamesTableCreateCompanionBuilder =
+    GamesCompanion Function({
+      required String id,
+      required String name,
+      Value<int> rowid,
+    });
+typedef $$GamesTableUpdateCompanionBuilder =
+    GamesCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<int> rowid,
+    });
+
+class $$GamesTableFilterComposer extends Composer<_$AppDatabase, $GamesTable> {
+  $$GamesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$GamesTableOrderingComposer
+    extends Composer<_$AppDatabase, $GamesTable> {
+  $$GamesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$GamesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $GamesTable> {
+  $$GamesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$GamesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $GamesTable,
+          GameRow,
+          $$GamesTableFilterComposer,
+          $$GamesTableOrderingComposer,
+          $$GamesTableAnnotationComposer,
+          $$GamesTableCreateCompanionBuilder,
+          $$GamesTableUpdateCompanionBuilder,
+          (GameRow, BaseReferences<_$AppDatabase, $GamesTable, GameRow>),
+          GameRow,
+          PrefetchHooks Function()
+        > {
+  $$GamesTableTableManager(_$AppDatabase db, $GamesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$GamesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$GamesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$GamesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => GamesCompanion(id: id, name: name, rowid: rowid),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String name,
+                Value<int> rowid = const Value.absent(),
+              }) => GamesCompanion.insert(id: id, name: name, rowid: rowid),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$GamesTable, GameRow>(table),
+                  BaseReferences<_$AppDatabase, $GamesTable, GameRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$GamesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $GamesTable,
+      GameRow,
+      $$GamesTableFilterComposer,
+      $$GamesTableOrderingComposer,
+      $$GamesTableAnnotationComposer,
+      $$GamesTableCreateCompanionBuilder,
+      $$GamesTableUpdateCompanionBuilder,
+      (GameRow, BaseReferences<_$AppDatabase, $GamesTable, GameRow>),
+      GameRow,
+      PrefetchHooks Function()
+    >;
 typedef $$ProfilesTableCreateCompanionBuilder =
     ProfilesCompanion Function({
       Value<String> gameId,
@@ -7859,6 +8200,8 @@ typedef $$BackupsTableProcessedTableManager =
 class $AppDatabaseManager {
   final _$AppDatabase _db;
   $AppDatabaseManager(this._db);
+  $$GamesTableTableManager get games =>
+      $$GamesTableTableManager(_db, _db.games);
   $$ProfilesTableTableManager get profiles =>
       $$ProfilesTableTableManager(_db, _db.profiles);
   $$InventoryTableTableManager get inventory =>
