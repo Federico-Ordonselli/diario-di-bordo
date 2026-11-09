@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:kh_diario/domain/catalog.dart';
+import 'package:diario_bordo/domain/catalog.dart';
 
 Catalog testCatalog() {
   Json read(String name) =>

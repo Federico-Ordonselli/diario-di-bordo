@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kh_diario/domain/catalog.dart';
-import 'package:kh_diario/domain/engine.dart';
-import 'package:kh_diario/domain/save_adapter.dart';
-import 'package:kh_diario/domain/validation.dart';
+import 'package:diario_bordo/domain/catalog.dart';
+import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/domain/save_adapter.dart';
+import 'package:diario_bordo/domain/validation.dart';
 import 'test_catalog.dart';
 
 void main() {

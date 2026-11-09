@@ -1,4 +1,4 @@
-package it.khdiario.kh_diario
+package io.github.federicoordonselli.diariobordo
 
 import io.flutter.embedding.android.FlutterActivity
 

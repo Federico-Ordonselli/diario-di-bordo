@@ -35,7 +35,7 @@ class ProfileStore {
         if (manifest.existsSync() &&
             catalog.existsSync() &&
             RegExp(
-              r'^name:\s*kh_diario\s*$',
+              r'^name:\s*diario_bordo\s*$',
               multiLine: true,
             ).hasMatch(manifest.readAsStringSync())) {
           return Directory('${candidate.path}/data');
@@ -45,7 +45,7 @@ class ProfileStore {
         candidate = parent;
       }
     }
-    return Directory('$applicationSupport/kh-diario');
+    return Directory('$applicationSupport/diario-bordo');
   }
 
   static Future<ProfileStore> open() async {

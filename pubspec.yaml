@@ -1,5 +1,5 @@
-name: kh_diario
-description: Diario offline per Kingdom Hearts Final Mix, checklist e laboratorio.
+name: diario_bordo
+description: Diario di bordo offline per il completamento al 100%, checklist e laboratorio di sintesi. Tracker non ufficiale.
 publish_to: none
 version: 2.0.0+1
 environment:

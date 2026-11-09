@@ -52,7 +52,7 @@ class DiaryApp extends StatelessWidget {
   final ProfileController controller;
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: 'Diario KH • Final Mix',
+    title: 'Diario di Bordo',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       useMaterial3: true,
@@ -212,11 +212,7 @@ class _DiaryHomeState extends State<DiaryHome> {
       await exportBytes(
         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
         name,
-        name.endsWith('.pdf')
-            ? 'application/pdf'
-            : name.endsWith('.xlsx')
-            ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            : 'text/markdown',
+        name.endsWith('.pdf') ? 'application/pdf' : 'text/markdown',
       );
     } catch (e) {
       report(e);
@@ -415,7 +411,7 @@ class _DiaryHomeState extends State<DiaryHome> {
                           ),
                         ),
                         Text(
-                          'Kingdom Hearts\nFinal Mix',
+                          'Tracker non ufficiale',
                           style: TextStyle(color: muted, fontSize: 12),
                         ),
                       ],
@@ -476,10 +472,7 @@ class _DiaryHomeState extends State<DiaryHome> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    text(
-                      'Kingdom Hearts Final Mix · il tuo viaggio verso il 100%',
-                      color: muted,
-                    ),
+                    text('Il tuo viaggio verso il 100%', color: muted),
                   ],
                 ),
               ),
@@ -555,7 +548,7 @@ class _DiaryHomeState extends State<DiaryHome> {
         ],
       );
       return Scaffold(
-        appBar: desktop ? null : AppBar(title: const Text('Diario KH')),
+        appBar: desktop ? null : AppBar(title: const Text('Diario di Bordo')),
         drawer: desktop ? null : Drawer(child: navigation(false)),
         body: SafeArea(
           child: Row(
@@ -676,10 +669,6 @@ class _DiaryHomeState extends State<DiaryHome> {
               onPressed: () => openGuide('tips'),
               icon: const Icon(Icons.menu_book),
               label: const Text('Guide e boss segreti'),
-            ),
-            OutlinedButton(
-              onPressed: () => document('KH1_Final_Mix_Checklist.xlsx'),
-              child: const Text('Esporta Excel'),
             ),
             OutlinedButton(
               onPressed: () => document('KH1_Final_Mix_Sintesi_Tracking.pdf'),
@@ -932,10 +921,6 @@ class _DiaryHomeState extends State<DiaryHome> {
             ],
           ),
         ),
-      OutlinedButton(
-        onPressed: () => document('KH1_Final_Mix_Checklist.xlsx'),
-        child: const Text('Esporta Excel originale'),
-      ),
     ];
   }
 

@@ -8,26 +8,26 @@ entry() {
   cat <<EOF
 [Desktop Entry]
 Type=Application
-Name=Diario KH
-GenericName=Tracker Kingdom Hearts Final Mix
-Comment=Diario 100% e sintesi di Kingdom Hearts Final Mix
+Name=Diario di Bordo
+GenericName=Tracker di completamento
+Comment=Diario 100% e sintesi (tracker non ufficiale)
 Exec="$ROOT/scripts/desktop/launch.sh"
 Icon=$ROOT/assets/branding/icon.svg
 Terminal=false
 Categories=Game;
-Keywords=kingdom hearts;kh1;sintesi;checklist;
-StartupWMClass=it.khdiario.app
+Keywords=diario;tracker;sintesi;checklist;
+StartupWMClass=io.github.federicoordonselli.diariobordo
 EOF
 }
 
 APPS="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
 DESK="$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")"
 mkdir -p "$APPS"
-entry >"$APPS/kh-diario.desktop"
-chmod +x "$APPS/kh-diario.desktop"
+entry >"$APPS/diario-bordo.desktop"
+chmod +x "$APPS/diario-bordo.desktop"
 if [ -d "$DESK" ]; then
-  entry >"$DESK/kh-diario.desktop"
-  chmod +x "$DESK/kh-diario.desktop"
+  entry >"$DESK/diario-bordo.desktop"
+  chmod +x "$DESK/diario-bordo.desktop"
 fi
 command -v update-desktop-database >/dev/null && update-desktop-database "$APPS" 2>/dev/null || true
-echo "Collegamento installato: $APPS/kh-diario.desktop${DESK:+ e $DESK/kh-diario.desktop}"
+echo "Collegamento installato: $APPS/diario-bordo.desktop${DESK:+ e $DESK/diario-bordo.desktop}"

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kh_diario/storage/game_save_locator.dart';
+import 'package:diario_bordo/storage/game_save_locator.dart';
 
 void main() {
   late Directory home;

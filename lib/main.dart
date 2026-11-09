@@ -22,11 +22,11 @@ Future<void> main() async {
       await ProfileStore.open(),
     );
     await controller.initialize();
-    debugPrint('Diario KH: archivio ${controller.store.profile.path}');
+    debugPrint('Diario di Bordo: archivio ${controller.store.profile.path}');
     if (!controller.blocked) {
       final summary = catalog.summary(controller.state);
       debugPrint(
-        'Diario KH: ${summary['done']}/${summary['total']} obiettivi, ${controller.engine.distinct(controller.state)}/33 sintesi, livello ${controller.state['settings']['level'] ?? '?'}',
+        'Diario di Bordo: ${summary['done']}/${summary['total']} obiettivi, ${controller.engine.distinct(controller.state)}/33 sintesi, livello ${controller.state['settings']['level'] ?? '?'}',
       );
     }
     runApp(DiaryApp(controller: controller));

@@ -10,7 +10,7 @@ assert.deepEqual(synthesis,JSON.parse(JSON.stringify(data)));
 const completion=JSON.parse(read('assets/datasets/completion.json'));
 assert.deepEqual(completion.items,JSON.parse(JSON.stringify(completionItems)));
 assert.deepEqual(completion.categories,workbook.categories);
-for(const name of ['KH1_Final_Mix_Checklist.xlsx','KH1_Final_Mix_Sintesi_Tracking.pdf'])assert.equal(read('assets/documents/'+name).compare(read('legacy/web/public/'+name)),0);
+for(const name of ['KH1_Final_Mix_Sintesi_Tracking.pdf'])assert.equal(read('assets/documents/'+name).compare(read('legacy/web/public/'+name)),0);
 assert.equal(read('assets/documents/KH1FM_Report_Save.md').compare(read('KH1FM_Report_Save.md')),0);
 assert.equal(read('assets/datasets/analyzed-save.json').compare(read('KH1FM_Save_Analizzato.json')),0);
 if(fs.existsSync(new URL('data/profile.json',root)))validateState(JSON.parse(read('data/profile.json')));

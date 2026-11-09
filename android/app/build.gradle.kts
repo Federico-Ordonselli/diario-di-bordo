@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "it.khdiario.kh_diario"
+    namespace = "io.github.federicoordonselli.diariobordo"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "it.khdiario.kh_diario"
+        applicationId = "io.github.federicoordonselli.diariobordo"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

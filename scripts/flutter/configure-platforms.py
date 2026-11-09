@@ -14,8 +14,8 @@ for platform in ('ios', 'macos'):
     if path.exists():
         with path.open('rb') as source:
             data = plistlib.load(source)
-        data['CFBundleDisplayName'] = 'Diario KH'
-        data['CFBundleName'] = 'Diario KH'
+        data['CFBundleDisplayName'] = 'Diario di Bordo'
+        data['CFBundleName'] = 'Diario di Bordo'
         if platform == 'ios':
             schemes = data.get('LSApplicationQueriesSchemes', [])
             data['LSApplicationQueriesSchemes'] = sorted(set(schemes + ['http', 'https']))
@@ -23,5 +23,5 @@ for platform in ('ios', 'macos'):
             plistlib.dump(data, target)
 path = root / 'android/app/src/main/AndroidManifest.xml'
 if path.exists():
-    text = path.read_text().replace('android:label="kh_diario"', 'android:label="Diario KH"')
+    text = path.read_text().replace('android:label="diario_bordo"', 'android:label="Diario di Bordo"')
     path.write_text(text)

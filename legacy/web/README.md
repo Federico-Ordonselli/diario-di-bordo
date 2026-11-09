@@ -44,7 +44,7 @@ Apri **http://127.0.0.1:5173**. Lascia aperto il terminale durante l’uso; `Ctr
 
 ### Collegamento sul desktop
 
-`./scripts/desktop/install.sh` crea **Diario KH** nel menu applicazioni e sulla Scrivania. Il collegamento avvia il server (se non è già acceso) e apre l'app in una finestra di Chrome a sé, con un profilo dedicato. **⏻ Chiudi app**, accanto ad «Annulla ultima operazione», chiude la finestra e ferma il server; anche la X della finestra lo ferma. Un server avviato a mano con `npm start` o `npm run dev` resta acceso. Log del server: `$XDG_RUNTIME_DIR/kh-diario-server.log`.
+`./scripts/desktop/install.sh` crea **Diario di Bordo** nel menu applicazioni e sulla Scrivania. Il collegamento avvia il server (se non è già acceso) e apre l'app in una finestra di Chrome a sé, con un profilo dedicato. **⏻ Chiudi app**, accanto ad «Annulla ultima operazione», chiude la finestra e ferma il server; anche la X della finestra lo ferma. Un server avviato a mano con `npm start` o `npm run dev` resta acceso. Log del server: `$XDG_RUNTIME_DIR/diario-bordo-server.log`.
 
 Per modificare il codice:
 

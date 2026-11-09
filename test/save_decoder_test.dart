@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kh_diario/domain/catalog.dart';
-import 'package:kh_diario/domain/engine.dart';
-import 'package:kh_diario/domain/save_adapter.dart';
-import 'package:kh_diario/domain/save_decoder.dart';
+import 'package:diario_bordo/domain/catalog.dart';
+import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/domain/save_adapter.dart';
+import 'package:diario_bordo/domain/save_decoder.dart';
 import 'test_catalog.dart';
 
 Json readJson(String path) => jsonDecode(File(path).readAsStringSync()) as Json;

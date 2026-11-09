@@ -141,7 +141,7 @@ if __name__ == "__main__":
         raise SystemExit("Expected exactly one .xlsx in the project root")
     data = extract(workbooks[0])
     (ROOT / "legacy/web/src/completion-data.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-    shutil.copyfile(workbooks[0], ROOT / "assets/documents/KH1_Final_Mix_Checklist.xlsx")
+    # L’Excel originale contiene artwork ufficiale: resta in legacy/web/public, non va negli asset dell’app.
     synthesis = json.loads((ROOT / "assets/datasets/synthesis.json").read_text())
     def normalized(name):
         return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")

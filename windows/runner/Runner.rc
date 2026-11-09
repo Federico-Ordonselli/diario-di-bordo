@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "it.khdiario" "\0"
-            VALUE "FileDescription", "kh_diario" "\0"
+            VALUE "CompanyName", "Federico Ordonselli" "\0"
+            VALUE "FileDescription", "diario_bordo" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "kh_diario" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 it.khdiario. All rights reserved." "\0"
-            VALUE "OriginalFilename", "kh_diario.exe" "\0"
-            VALUE "ProductName", "kh_diario" "\0"
+            VALUE "InternalName", "diario_bordo" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Federico Ordonselli. All rights reserved." "\0"
+            VALUE "OriginalFilename", "diario_bordo.exe" "\0"
+            VALUE "ProductName", "diario_bordo" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

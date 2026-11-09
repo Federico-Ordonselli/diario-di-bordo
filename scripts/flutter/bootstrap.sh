@@ -7,7 +7,7 @@ cd "$ROOT"
 PLATFORMS="${1:-android,ios,linux,macos,windows}"
 SCAFFOLD="$(mktemp -d "${TMPDIR:-/tmp}/kh-flutter-scaffold.XXXXXX")"
 trap 'rm -rf "$SCAFFOLD"' EXIT
-flutter create --no-pub --project-name kh_diario --org it.khdiario --platforms "$PLATFORMS" "$SCAFFOLD"
+flutter create --no-pub --project-name diario_bordo --org io.github.federicoordonselli --platforms "$PLATFORMS" "$SCAFFOLD"
 IFS=',' read -ra TARGETS <<< "$PLATFORMS"
 for platform in "${TARGETS[@]}"; do
   case "$platform" in android|ios|linux|macos|windows) ;; *) echo "Piattaforma non supportata: $platform" >&2; exit 1 ;; esac

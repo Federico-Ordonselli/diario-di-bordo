@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kh_diario/domain/engine.dart';
-import 'package:kh_diario/storage/controller.dart';
-import 'package:kh_diario/storage/profile_store.dart';
+import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/storage/controller.dart';
+import 'package:diario_bordo/storage/profile_store.dart';
 import 'test_catalog.dart';
 
 void main() {

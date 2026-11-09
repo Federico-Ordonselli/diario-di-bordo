@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kh_diario/storage/profile_store.dart';
+import 'package:diario_bordo/storage/profile_store.dart';
 
 void main() {
   late Directory temporary, project;
   setUp(() {
     temporary = Directory.systemTemp.createTempSync('kh-location-');
     project = Directory('${temporary.path}/project')..createSync();
-    File('${project.path}/pubspec.yaml').writeAsStringSync('name: kh_diario\n');
+    File('${project.path}/pubspec.yaml').writeAsStringSync('name: diario_bordo\n');
     Directory('${project.path}/assets/datasets').createSync(recursive: true);
     File(
       '${project.path}/assets/datasets/initial-profile.json',
@@ -19,7 +19,7 @@ void main() {
         configured: configured,
         executable:
             executable ??
-            '${project.path}/build/linux/x64/release/bundle/kh_diario',
+            '${project.path}/build/linux/x64/release/bundle/diario_bordo',
         workingDirectory: cwd ?? temporary.path,
         applicationSupport: '${temporary.path}/support',
       );
@@ -52,7 +52,7 @@ void main() {
       ).writeAsStringSync('name: another_app\n');
       expect(
         resolve(cwd: project.path).path,
-        '${temporary.path}/support/kh-diario',
+        '${temporary.path}/support/diario-bordo',
       );
     },
   );

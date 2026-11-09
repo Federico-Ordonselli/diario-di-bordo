@@ -1,4 +1,4 @@
-# Diario KH — Flutter
+# Diario di Bordo — Flutter
 
 L’overview completa e aggiornata è in [OVERVIEW.md](OVERVIEW.md).
 
@@ -34,7 +34,7 @@ KH_DATA_DIR="$PWD/data" flutter run -d linux
 Anche avviata direttamente senza `KH_DATA_DIR`, la build nel progetto ritrova automaticamente `data/` a partire dal percorso del binario o dalla cartella di lavoro. Un bundle autonomo fuori dal progetto usa la cartella di supporto fornita da `path_provider`. `KH_DATA_DIR` mantiene la priorità; il percorso effettivo è visibile in Backup. Per un profilo di prova usa una cartella separata:
 
 ```bash
-KH_DATA_DIR=/tmp/kh-diario-prova flutter run -d linux
+KH_DATA_DIR=/tmp/diario-bordo-prova flutter run -d linux
 ```
 
 ## Android, iOS e altri desktop
@@ -85,7 +85,7 @@ lib/domain/validation.dart       validazione e migrazione dei backup
 lib/storage/                     archivio nativo e controller
 lib/ui/                          navigazione, pagine e controlli
 assets/datasets/                 dataset completi e stato iniziale
-assets/documents/                Excel, PDF, report
+assets/documents/                PDF, report (niente Excel: contiene artwork ufficiale)
 linux/                          runner nativo Linux
 scripts/flutter/                 bootstrap e verifiche
 scripts/desktop/                 avvio e collegamento nativo
