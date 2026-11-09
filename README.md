@@ -51,3 +51,7 @@ flutter run -d linux
 ```
 
 Al primo avvio il profilo è vuoto. I progressi si segnano a mano, oppure si legge il proprio salvataggio dalla schermata Save.
+
+## Licenza
+
+Il codice è distribuito con la [PolyForm Noncommercial 1.0.0](LICENSE.md): puoi usarlo, studiarlo, modificarlo e condividerlo liberamente, ma **non per scopi commerciali**. Non è una licenza open source in senso stretto (OSI), proprio per via di questo limite. La licenza riguarda solo il codice di questo progetto, non *Kingdom Hearts* né i suoi contenuti.

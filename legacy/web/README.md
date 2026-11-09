@@ -36,7 +36,7 @@ Le modifiche manuali sono conservate e i conflitti mostrano una scelta esplicita
 È consigliato Node.js 24 LTS (per lo sviluppo: almeno 22.12).
 
 ```bash
-cd /home/federico/progetti/khapp
+cd khapp
 npm start
 ```
 
