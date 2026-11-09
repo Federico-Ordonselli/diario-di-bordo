@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/engine.dart';
 import 'package:diario_bordo/domain/profile.dart';
+import 'package:diario_bordo/domain/validation.dart';
 import 'test_catalog.dart';
 
 void main() {
@@ -21,6 +22,22 @@ void main() {
     expect(p.settings.level, isNull);
     expect(p.activeSave, isNull);
     expect(p.transactions, isEmpty);
+  });
+
+  test('Profilo vuoto: stessa forma, nessun progresso, valido', () {
+    final p = catalog.empty(), template = catalog.fresh();
+    expect(p.inventory.keys, template.inventory.keys);
+    expect(p.inventory.values.toSet(), {0});
+    expect(p.everCrafted.values.toSet(), {false});
+    expect(p.craftCount.values.toSet(), {0});
+    for (final c in catalog.collections) {
+      expect(p.collection(c['id'] as String), CollectionStatus.unknown);
+    }
+    expect(p.completion, isEmpty);
+    expect(p.appliedEvidence, isEmpty);
+    expect(catalog.summary(p)['done'], 0);
+    expect(engine.distinct(p), 0);
+    expect(jsonEncode(ProfileValidator(catalog).profile(p)), jsonEncode(p));
   });
 
   test('Profile è il JSON stesso: nessuna copia, scritture visibili', () {

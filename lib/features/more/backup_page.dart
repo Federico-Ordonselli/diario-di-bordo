@@ -105,7 +105,7 @@ class _BackupPageState extends ConsumerState<BackupPage> {
             children: [
               heading('Importa e ripristina'),
               text(
-                'Scegli un backup della vecchia app oppure data/profile.json. Prima della sostituzione viene esportata e conservata una copia del profilo attuale.',
+                'Scegli un backup JSON esportato da questa app o dalla versione precedente (anche il vecchio profile.json). Prima della sostituzione viene esportata e conservata una copia del profilo attuale.',
               ),
               OutlinedButton.icon(
                 onPressed: choose,

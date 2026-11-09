@@ -10,6 +10,7 @@ import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/domain/profile_repository.dart';
+import 'package:diario_bordo/domain/validation.dart';
 import 'package:diario_bordo/storage/profile_store.dart';
 import 'fakes.dart';
 import 'test_catalog.dart';
@@ -216,7 +217,7 @@ void main() {
   group('ProfileNotifier con repository in memoria', () {
     final catalog = testCatalog();
 
-    test('Primo avvio salva il profilo iniziale con le evidence', () async {
+    test('Primo avvio salva un profilo vuoto, senza evidence', () async {
       final repository = InMemoryProfileRepository();
       final container = profileContainer(catalog, repository);
       addTearDown(container.dispose);
@@ -225,7 +226,23 @@ void main() {
       expect(view.blocked, false);
       expect(view.busy, false);
       expect(repository.saves, 1);
-      expect(view.profile.appliedEvidence, contains(catalog.evidence['id']));
+      expect(view.profile.appliedEvidence, isEmpty);
+      expect(view.profile.transactions, isEmpty);
+      expect(catalog.summary(view.profile)['done'], 0);
+      expect(container.read(engineProvider).distinct(view.profile), 0);
+    });
+
+    test('Profilo esistente caricato senza riscriverlo', () async {
+      final stored = richProfile(catalog);
+      final repository = InMemoryProfileRepository(jsonEncode(stored));
+      final container = profileContainer(catalog, repository);
+      addTearDown(container.dispose);
+      await container.read(profileProvider.notifier).initialize();
+      expect(repository.saves, 0);
+      expect(
+        jsonEncode(container.read(profileProvider).profile),
+        jsonEncode(ProfileValidator(catalog).profile(stored)),
+      );
     });
 
     test('Archivio non decodificabile blocca senza sovrascrivere', () async {

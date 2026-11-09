@@ -12,7 +12,7 @@ final catalogProvider = Provider<Catalog>(
   (ref) => throw UnimplementedError('catalogProvider va sovrascritto'),
 );
 
-/// Archivio del profilo: in `main` `JsonProfileRepository.open()`, nei test
+/// Archivio del profilo: in `main` `DriftProfileRepository`, nei test
 /// `InMemoryProfileRepository` o un repository su cartella temporanea.
 final profileRepositoryProvider = Provider<ProfileRepository>(
   (ref) =>
@@ -67,21 +67,22 @@ class ProfileNotifier extends Notifier<ProfileViewState> {
 
   @override
   ProfileViewState build() =>
-      ProfileViewState(profile: ref.watch(catalogProvider).fresh());
+      ProfileViewState(profile: ref.watch(catalogProvider).empty());
 
-  /// Carica l'archivio (o crea il profilo iniziale) e applica le evidence.
+  /// Carica l'archivio; se è vuoto crea e salva un profilo senza progressi.
+  /// I dati di un'altra installazione si recuperano solo da Backup → Importa.
   Future<void> initialize() async {
     if (state.busy) return;
     state = state.copyWith(busy: true);
     final catalog = _engine.catalog;
     try {
       final raw = await _repository.load();
-      final loaded = raw == null
-          ? catalog.fresh()
-          : ProfileValidator(catalog).profile(raw);
-      final next = _engine.applyEvidence(loaded);
-      if (raw == null || !identical(next, loaded)) {
+      final Profile next;
+      if (raw == null) {
+        next = catalog.empty();
         await _repository.save(next);
+      } else {
+        next = ProfileValidator(catalog).profile(raw);
       }
       if (!ref.mounted) return;
       state = ProfileViewState(profile: next);

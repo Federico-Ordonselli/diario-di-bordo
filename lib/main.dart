@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'application/profile_providers.dart';
 import 'domain/catalog.dart';
-import 'data/json_profile_repository.dart';
+import 'data/database/connection.dart';
+import 'data/drift_profile_repository.dart';
 import 'app/app.dart';
 
 Future<void> main() async {
@@ -17,7 +18,11 @@ Future<void> main() async {
       ['synthesis', 'completion', 'evidence', 'initial-profile'].map(read),
     );
     final catalog = Catalog(data[0], data[1], data[2], data[3]);
-    final repository = await JsonProfileRepository.open();
+    final path = await appDatabasePath();
+    final repository = DriftProfileRepository(
+      openAppDatabase(path),
+      location: path,
+    );
     final container = ProviderContainer(
       overrides: [
         catalogProvider.overrideWithValue(catalog),

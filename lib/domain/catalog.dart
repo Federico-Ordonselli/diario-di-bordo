@@ -28,9 +28,29 @@ class Catalog {
   List<Json> get items => (workbook['items'] as List).cast<Json>();
   List<Json> get categories => (workbook['categories'] as List).cast<Json>();
   List<Json> get guides => (workbook['guides'] as List).cast<Json>();
+
+  /// Profilo dall'asset `initial-profile.json`: forma completa del profilo e
+  /// base della validazione, ma con le scorte di partenza del dataset storico.
   Profile fresh() =>
       Profile(copyJson(initial))
         ..updatedAt = DateTime.now().toUtc().toIso8601String();
+
+  /// Profilo di un nuovo utente: stessa forma di [fresh], nessun progresso.
+  /// Scorte e conteggi a 0, nessuna ricetta creata, fonti sconosciute.
+  Profile empty() {
+    final p = fresh();
+    for (final id in p.inventory.keys.toList()) {
+      p.inventory[id] = 0;
+    }
+    for (final id in p.everCrafted.keys.toList()) {
+      p.everCrafted[id] = false;
+      p.craftCount[id] = 0;
+    }
+    for (final c in collections) {
+      p.setCollection(c['id'] as String, CollectionStatus.unknown);
+    }
+    return p;
+  }
 
   Json lookup(String category, String title) => items.firstWhere(
     (item) =>

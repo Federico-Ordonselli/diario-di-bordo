@@ -19,21 +19,18 @@ cd /home/federico/progetti/khapp
 
 `bootstrap.sh` genera i runner mancanti per Android, iOS, macOS e Windows dai template dell’SDK installato, senza sovrascrivere i file Dart o il runner Linux già incluso. Configura i permessi macOS per i file selezionati e il nome dell’app. Eseguire il bootstrap richiede l’SDK e l’accesso iniziale alle dipendenze pub. I runner Android, iOS, macOS e Windows sono stati generati con Flutter 3.47.7 e sono ora presenti nel progetto.
 
-`check.sh` formatta il Dart, esegue analisi e test e compila il bundle Linux. Il launcher apre il binario nativo e imposta `KH_DATA_DIR` sulla cartella `data/` già presente nel progetto. Il profilo esistente viene letto in quel percorso: le scorte e i progressi personali non sono distribuiti come asset. Per aggiornare il collegamento desktop, dopo la compilazione:
+`check.sh` formatta il Dart, esegue analisi e test e compila il bundle Linux. I dati stanno in un database SQLite (`diario_bordo.sqlite`, drift) nella cartella di supporto della piattaforma; il percorso effettivo è visibile in Altro → Backup. Al primo avvio il profilo è **vuoto** (0/794): i progressi si inseriscono a mano, oppure si recupera un backup JSON (anche il vecchio `data/profile.json`) da Altro → Backup → Importa. Il JSON importato non viene modificato.
+
+Il launcher desktop imposta `KH_DATA_DIR` sulla cartella `data/` del progetto, quindi il database personale resta lì (ignorato da git). Per aggiornare il collegamento desktop, dopo la compilazione:
 
 ```bash
 ./scripts/desktop/install.sh
 ```
 
-Per lo sviluppo, usando lo stesso profilo:
+`KH_DATA_DIR` (solo desktop, per sviluppo) sceglie la cartella del database. Per lo sviluppo con il proprio profilo, o su un archivio di prova:
 
 ```bash
 KH_DATA_DIR="$PWD/data" flutter run -d linux
-```
-
-Anche avviata direttamente senza `KH_DATA_DIR`, la build nel progetto ritrova automaticamente `data/` a partire dal percorso del binario o dalla cartella di lavoro. Un bundle autonomo fuori dal progetto usa la cartella di supporto fornita da `path_provider`. `KH_DATA_DIR` mantiene la priorità; il percorso effettivo è visibile in Backup. Per un profilo di prova usa una cartella separata:
-
-```bash
 KH_DATA_DIR=/tmp/diario-bordo-prova flutter run -d linux
 ```
 
