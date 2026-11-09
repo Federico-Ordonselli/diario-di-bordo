@@ -1,5 +1,7 @@
 # Diario di Bordo
 
+[![CI](https://github.com/Federico-Ordonselli/diario-di-bordo/actions/workflows/ci.yml/badge.svg)](https://github.com/Federico-Ordonselli/diario-di-bordo/actions/workflows/ci.yml)
+
 App per tenere traccia del completamento di **Kingdom Hearts 1** (Final Mix): checklist delle 794 voci, sintesi, inventario dei materiali, farming e lettura del salvataggio. Funziona offline, senza account. Pensata soprattutto per il telefono, gira anche su Linux.
 
 > **App non ufficiale.** Non è affiliata, approvata o sponsorizzata da Square Enix o Disney. *Kingdom Hearts* e tutti i nomi, i personaggi e i marchi collegati appartengono ai rispettivi proprietari, che ne detengono tutti i diritti. L'app non contiene loghi, artwork, musiche o file del gioco: è uno strumento gratuito, fatto da un fan per seguire i propri progressi.
