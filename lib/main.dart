@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'application/profile_providers.dart';
 import 'domain/catalog.dart';
 import 'data/json_profile_repository.dart';
-import 'ui/app.dart';
+import 'app/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
