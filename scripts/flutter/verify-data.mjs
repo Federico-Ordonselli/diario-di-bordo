@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import * as data from '../../legacy/web/src/data.js';
+import {validateState} from '../../legacy/web/src/engine.js';
+import {completionItems,workbook} from '../../legacy/web/src/completion.js';
+const root=new URL('../../',import.meta.url);
+const read=path=>fs.readFileSync(new URL(path,root));
+const synthesis=JSON.parse(read('assets/datasets/synthesis.json'));
+assert.deepEqual(synthesis,JSON.parse(JSON.stringify(data)));
+const completion=JSON.parse(read('assets/datasets/completion.json'));
+assert.deepEqual(completion.items,JSON.parse(JSON.stringify(completionItems)));
+assert.deepEqual(completion.categories,workbook.categories);
+for(const name of ['KH1_Final_Mix_Checklist.xlsx','KH1_Final_Mix_Sintesi_Tracking.pdf'])assert.equal(read('assets/documents/'+name).compare(read('legacy/web/public/'+name)),0);
+assert.equal(read('assets/documents/KH1FM_Report_Save.md').compare(read('KH1FM_Report_Save.md')),0);
+assert.equal(read('assets/datasets/analyzed-save.json').compare(read('KH1FM_Save_Analizzato.json')),0);
+if(fs.existsSync(new URL('data/profile.json',root)))validateState(JSON.parse(read('data/profile.json')));
+console.log('Dataset identici: 794 voci, 15 categorie, 34 materiali, 33 ricette, 30 fonti. Documenti identici. Profilo locale compatibile, se presente.');

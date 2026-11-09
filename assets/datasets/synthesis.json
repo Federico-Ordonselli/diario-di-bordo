@@ -1,0 +1,1889 @@
+{
+  "collections": [
+    {
+      "id": "dm_01",
+      "material": "dark_matter",
+      "world": "Wonderland",
+      "area": "Tea Party Garden",
+      "method": "Balcone della casetta; accesso dopo spostamento orso/orologio.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_02",
+      "material": "dark_matter",
+      "world": "Olympus Coliseum",
+      "area": "Pegasus Cup",
+      "method": "Vinci la prova a tempo.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_03",
+      "material": "dark_matter",
+      "world": "Deep Jungle",
+      "area": "Jungle Slider",
+      "method": "Tutti i frutti del terzo percorso.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_04",
+      "material": "dark_matter",
+      "world": "Agrabah",
+      "area": "Main Street",
+      "method": "Sporgenza nordovest, dal passaggio alto della Plaza.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_05",
+      "material": "dark_matter",
+      "world": "Monstro",
+      "area": "Chamber 6",
+      "method": "Trio Bianco, di fronte all'accesso a Chamber 3.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_06",
+      "material": "dark_matter",
+      "world": "Halloween Town",
+      "area": "Cemetery",
+      "method": "Dietro l'albero con scheletro appeso.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_07",
+      "material": "dark_matter",
+      "world": "Neverland",
+      "area": "Hold",
+      "method": "Trio Giallo: forziere piu lontano dalla porta.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_08",
+      "material": "dark_matter",
+      "world": "Hollow Bastion",
+      "area": "Waterway",
+      "method": "Congela la bolla con Blizzard e sali.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_09",
+      "material": "dark_matter",
+      "world": "Hollow Bastion",
+      "area": "Grand Hall",
+      "method": "Parete destra, presso le scale.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_10",
+      "material": "dark_matter",
+      "world": "End of the World",
+      "area": "Giant Crevasse",
+      "method": "Parte alta, vicino alle stalagmiti.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "dm_11",
+      "material": "dark_matter",
+      "world": "100 Acre Wood",
+      "area": "Bouncing Spot",
+      "method": "Nicchia dietro l'altalena di Tigro e Roo.",
+      "url": "https://www.khguides.com/kh/inventory/items/dark-matter/"
+    },
+    {
+      "id": "ori_01",
+      "material": "orichalcum",
+      "world": "Traverse Town",
+      "area": "Waterway",
+      "method": "Trio Bianco",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_02",
+      "material": "orichalcum",
+      "world": "Traverse Town",
+      "area": "First District",
+      "method": "Ottava cartolina",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_03",
+      "material": "orichalcum",
+      "world": "Traverse Town",
+      "area": "Dalmatian Plantation",
+      "method": "72 cuccioli restituiti",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_04",
+      "material": "orichalcum",
+      "world": "Wonderland",
+      "area": "Lotus Forest",
+      "method": "Sporgenza alta sudovest; Glide",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_05",
+      "material": "orichalcum",
+      "world": "Olympus Coliseum",
+      "area": "Gates",
+      "method": "Vaso viola destro; dopo Hades Cup",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_06",
+      "material": "orichalcum",
+      "world": "Olympus Coliseum",
+      "area": "Pegasus Cup",
+      "method": "Vittoria con Sora solo",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_07",
+      "material": "orichalcum",
+      "world": "Deep Jungle",
+      "area": "Waterfall Cavern",
+      "method": "Forziere presso parete con liane",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_08",
+      "material": "orichalcum",
+      "world": "Deep Jungle",
+      "area": "Cavern of Hearts",
+      "method": "Trio Bianco",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_09",
+      "material": "orichalcum",
+      "world": "Atlantica",
+      "area": "Undersea Gorge",
+      "method": "Forziere vicino Ariel's Grotto",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_10",
+      "material": "orichalcum",
+      "world": "Atlantica",
+      "area": "Triton's Palace",
+      "method": "Trio Bianco nella conchiglia viola",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_11",
+      "material": "orichalcum",
+      "world": "Halloween Town",
+      "area": "Oogie's Manor",
+      "method": "Gabbia di fronte alla porta",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_12",
+      "material": "orichalcum",
+      "world": "Neverland",
+      "area": "Hold",
+      "method": "Trio Giallo: forziere vicino alla porta",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_13",
+      "material": "orichalcum",
+      "world": "Neverland",
+      "area": "Pirate Ship",
+      "method": "Coffa verso la prua",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_14",
+      "material": "orichalcum",
+      "world": "Neverland",
+      "area": "Clock Tower",
+      "method": "Porta dell'ora 1:00",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_15",
+      "material": "orichalcum",
+      "world": "Neverland",
+      "area": "Clock Tower",
+      "method": "Porta dell'ora 9:00",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_16",
+      "material": "orichalcum",
+      "world": "Hollow Bastion",
+      "area": "Lift Stop",
+      "method": "Gravity sulla piattaforma sospesa",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_17",
+      "material": "orichalcum",
+      "world": "Hollow Bastion",
+      "area": "Castle Gates",
+      "method": "Pilastro isolato; piattaforme e Glide",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_18",
+      "material": "orichalcum",
+      "world": "Hollow Bastion",
+      "area": "Great Crest",
+      "method": "Forziere presso macerie all'uscita Lift Stop",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    },
+    {
+      "id": "ori_19",
+      "material": "orichalcum",
+      "world": "100 Acre Wood",
+      "area": "Bouncing Spot",
+      "method": "Quinta Rare Nut consegnata a Owl",
+      "url": "https://www.khguides.com/kh/inventory/items/orichalcum/"
+    }
+  ],
+  "farming": [
+    {
+      "material": "lucid_shard",
+      "enemy": "Shadow 3%",
+      "world": "Molti mondi",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Shadow 3%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "spirit_shard",
+      "enemy": "Soldier 6%; Large Body 10%",
+      "world": "Molti mondi",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Soldier 6%; Large Body 10%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "power_shard",
+      "enemy": "Powerwild 4%; Bouncywild 8%",
+      "world": "Deep Jungle",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Powerwild 4%; Bouncywild 8%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "blaze_shard",
+      "enemy": "Red Nocturne 6%",
+      "world": "Traverse Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Red Nocturne 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "blaze_shard",
+      "enemy": "Red Nocturne 6%",
+      "world": "Agrabah",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Red Nocturne 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "blaze_shard",
+      "enemy": "Red Nocturne 6%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Red Nocturne 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "frost_shard",
+      "enemy": "Blue Rhapsody 12%",
+      "world": "Traverse Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Blue Rhapsody 12%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "frost_shard",
+      "enemy": "Blue Rhapsody 12%",
+      "world": "Wonderland",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Blue Rhapsody 12%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "frost_shard",
+      "enemy": "Blue Rhapsody 12%",
+      "world": "Agrabah",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Blue Rhapsody 12%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "thunder_shard",
+      "enemy": "Yellow Opera 6%",
+      "world": "Traverse Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Yellow Opera 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "thunder_shard",
+      "enemy": "Yellow Opera 6%",
+      "world": "Agrabah",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Yellow Opera 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "thunder_shard",
+      "enemy": "Yellow Opera 6%",
+      "world": "Monstro",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Yellow Opera 6%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_shard",
+      "enemy": "Green Requiem 10%",
+      "world": "Deep Jungle",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Green Requiem 10%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_shard",
+      "enemy": "Green Requiem 10%",
+      "world": "Agrabah",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Green Requiem 10%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_shard",
+      "enemy": "Green Requiem 10%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Green Requiem 10%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "spirit_gem",
+      "enemy": "Air Soldier 4%",
+      "world": "Molti mondi",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Air Soldier 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "blaze_gem",
+      "enemy": "Bandit 4%; Fat Bandit 8%",
+      "world": "Agrabah",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Bandit 4%; Fat Bandit 8%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "frost_gem",
+      "enemy": "Sea Neon 2%; Sheltering Zone 8%",
+      "world": "Atlantica",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Sea Neon 2%; Sheltering Zone 8%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "thunder_gem",
+      "enemy": "Screwdiver 4%; Aquatank 8%",
+      "world": "Atlantica",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Screwdiver 4%; Aquatank 8%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "lucid_gem",
+      "enemy": "Wight Knight 2%; Gargoyle 2%",
+      "world": "Halloween Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Wight Knight 2%; Gargoyle 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_gem",
+      "enemy": "Search Ghost 4%",
+      "world": "Monstro",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Search Ghost 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_gem",
+      "enemy": "Search Ghost 4%",
+      "world": "Halloween Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Search Ghost 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_gem",
+      "enemy": "Search Ghost 4%",
+      "world": "Atlantica",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Search Ghost 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "power_gem",
+      "enemy": "Pirate 4%; Air Pirate 4%",
+      "world": "Neverland",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Pirate 4%; Air Pirate 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia. Battleship: drop dalle parti, 8% base.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "lucid_crystal",
+      "enemy": "Darkball 1%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Darkball 1%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "lucid_crystal",
+      "enemy": "Darkball 1%",
+      "world": "mondi a fine storia",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Darkball 1%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_crystal",
+      "enemy": "Defender 2%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Defender 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "bright_crystal",
+      "enemy": "Defender 2%",
+      "world": "Traverse Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Defender 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "power_crystal",
+      "enemy": "Wyvern 2%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Wyvern 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "shiny_crystal",
+      "enemy": "Wizard 2%",
+      "world": "Hollow Bastion",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Wizard 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "shiny_crystal",
+      "enemy": "Wizard 2%",
+      "world": "Traverse Town",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Wizard 2%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "gale",
+      "enemy": "Invisible 4%; Angel Star 4%",
+      "world": "End of the World",
+      "area": "Non specificata nel PDF; consulta la fonte",
+      "rate": "Invisible 4%; Angel Star 4%",
+      "method": "Drop diretto; ripeti le ondate. Scegli un percorso adatto alla progressione.",
+      "conditions": "Probabilità base per evento, non una garanzia.",
+      "reset": "Cambia area e torna.",
+      "page": 8,
+      "url": "https://www.khguides.com/kh/combat/enemies/"
+    },
+    {
+      "material": "fury_stone",
+      "enemy": "Gigas Shadow",
+      "world": "Wonderland",
+      "area": "Bizarre Room",
+      "method": "Lo spawn giusto inizia con Shadow normali. Elimina tre ondate; quando arrivano i giganti evoca Dumbo e usa Splash. Un gigante sparisce appena riesce a colpire Sora.",
+      "rate": "Soglie dopo 3/4/5/6 giganti: 10/20/35/50% base. Con tutti e sette: due Fury Stone garantiti. Raccogli anche Lucid Shard.",
+      "conditions": "Soglie dopo 3/4/5/6 giganti: 10/20/35/50% base. Con tutti e sette: due Fury Stone garantiti. Raccogli anche Lucid Shard.",
+      "reset": "Bizarre Room → Queen's Castle → Lotus Forest → ritorno. La sola partenza in gummiship non basta.",
+      "page": 10,
+      "url": "https://www.khguides.com/kh/combat/enemies/gigas-shadow/",
+      "rules": {
+        "kind": "defeat_threshold",
+        "events": [
+          {
+            "defeats": 3,
+            "base": 10
+          },
+          {
+            "defeats": 4,
+            "base": 20
+          },
+          {
+            "defeats": 5,
+            "base": 35
+          },
+          {
+            "defeats": 6,
+            "base": 50
+          },
+          {
+            "defeats": 7,
+            "guaranteed": 2
+          }
+        ],
+        "vanishOnHit": true
+      }
+    },
+    {
+      "material": "power_stone",
+      "enemy": "Sniperwild",
+      "world": "Traverse Town",
+      "area": "Second District",
+      "method": "Attacca senza farti vedere. Stop e combo, oppure Mushu da lontano. Le ondate sono 1, poi 2, poi 3, ripetute. Se scatta l'allarme e compaiono rinforzi continui, interrompi il tentativo.",
+      "rate": "Dopo 6/12/18/24 eliminazioni senza allarme: 35/50/60/100% base. A 30: due pietre garantite. Il drop si controlla ogni sei, non su ogni scimmia.",
+      "conditions": "Dopo 6/12/18/24 eliminazioni senza allarme: 35/50/60/100% base. A 30: due pietre garantite. Il drop si controlla ogni sei, non su ogni scimmia.",
+      "reset": "Allontanati di due stanze e torna.",
+      "page": 10,
+      "url": "https://www.khguides.com/kh/combat/enemies/sniperwild/",
+      "rules": {
+        "kind": "stealth_waves",
+        "alarmAllowed": false,
+        "checkEvery": 6,
+        "events": [
+          {
+            "defeats": 6,
+            "base": 35
+          },
+          {
+            "defeats": 12,
+            "base": 50
+          },
+          {
+            "defeats": 18,
+            "base": 60
+          },
+          {
+            "defeats": 24,
+            "base": 100
+          },
+          {
+            "defeats": 30,
+            "guaranteed": 2
+          }
+        ]
+      }
+    },
+    {
+      "material": "mythril_stone",
+      "enemy": "Pot Scorpion",
+      "world": "Agrabah",
+      "area": "Palace Gates",
+      "method": "Cerca dodici vasi. Spingili camminando: quelli mobili sono sicuri da rompere; quello fermo contiene lo scorpione. Rompi gli undici altri vasi, poi para il nemico per ribaltarlo e colpirlo. Aeroga puo aiutare.",
+      "rate": "Ultimo vaso sicuro: 10% base. Scorpione dopo undici vasi: 35%, altrimenti 20%. Mythril Shard: 20%.",
+      "conditions": "Ultimo vaso sicuro: 10% base. Scorpione dopo undici vasi: 35%, altrimenti 20%. Mythril Shard: 20%.",
+      "reset": "Due stanze di distanza prima di tornare.",
+      "page": 10,
+      "url": "https://www.khguides.com/kh/combat/enemies/pot-scorpion/",
+      "rules": {
+        "kind": "pot_challenge",
+        "safePots": 11,
+        "events": [
+          {
+            "event": "last_safe_pot",
+            "base": 10
+          },
+          {
+            "event": "scorpion_after_11",
+            "base": 35
+          },
+          {
+            "event": "scorpion_other",
+            "base": 20
+          }
+        ],
+        "mythrilShardBase": 20
+      }
+    },
+    {
+      "material": "lightning_stone",
+      "enemy": "Black Ballade",
+      "world": "Deep Jungle",
+      "area": "Bamboo Thicket",
+      "method": "Prima del mescolamento quello vero salta. Seguilo tra le copie e colpiscilo dopo che si fermano. Usa brevi pause se perdi la posizione; evita attacchi ampi che coinvolgono piu copie.",
+      "rate": "Colpire quello vero: 10% base. Quattro risposte corrette danno una pietra garantita.",
+      "conditions": "Colpire quello vero: 10% base. Quattro risposte corrette danno una pietra garantita.",
+      "reset": "Allontanati di due stanze e torna.",
+      "page": 11,
+      "url": "https://www.khguides.com/kh/combat/enemies/black-ballade/",
+      "rules": {
+        "kind": "find_original",
+        "base": 10,
+        "correctForGuaranteed": 4,
+        "guaranteed": 1
+      }
+    },
+    {
+      "material": "blazing_stone",
+      "enemy": "Chimera",
+      "world": "Halloween Town",
+      "area": "Manor Ruins",
+      "method": "Supera le ondate iniziali di Wight Knight. Abbassa gli HP della Chimera, poi respingi le tre teste. Aeroga e un Keyblade lungo aiutano; non serve possedere Ultima Weapon.",
+      "rate": "Uccisione completa: 35% base. Sei deviazioni consecutive: occasione al 20%; nove: una garantita e un'occasione al 40%. Non sommare deviazioni di cicli diversi.",
+      "conditions": "Uccisione completa: 35% base. Sei deviazioni consecutive: occasione al 20%; nove: una garantita e un'occasione al 40%. Non sommare deviazioni di cicli diversi.",
+      "reset": "Due stanze di distanza.",
+      "page": 11,
+      "url": "https://www.khguides.com/kh/combat/enemies/chimera/",
+      "rules": {
+        "kind": "deflect_streak",
+        "killBase": 35,
+        "events": [
+          {
+            "consecutiveDeflects": 6,
+            "base": 20
+          },
+          {
+            "consecutiveDeflects": 9,
+            "guaranteed": 1,
+            "base": 40
+          }
+        ],
+        "cumulativeAcrossCycles": false
+      }
+    },
+    {
+      "material": "frost_stone",
+      "enemy": "Grand Ghost",
+      "world": "Monstro",
+      "area": "Stomach",
+      "method": "Avvicinati e usa un curativo scegliendo Ghost come destinatario. Ha 300 HP. Potion infligge 50, Hi-Potion 70, Mega-Potion 100, Elixir 200, Megalixir 300. Armi e magie non sostituiscono gli oggetti.",
+      "rate": "Sconfiggendolo hai una Frost Stone garantita; curativi piu pregiati possono produrre ricompense aggiuntive. Sei Potion o cinque Hi-Potion bastano. Prepara le scorte prima del loop.",
+      "conditions": "Sconfiggendolo hai una Frost Stone garantita; curativi piu pregiati possono produrre ricompense aggiuntive. Sei Potion o cinque Hi-Potion bastano. Prepara le scorte prima del loop.",
+      "reset": "Allontanati di due stanze e torna.",
+      "page": 11,
+      "url": "https://www.khguides.com/kh/combat/enemies/grand-ghost/",
+      "rules": {
+        "kind": "healing_items",
+        "hp": 300,
+        "damage": {
+          "Potion": 50,
+          "Hi-Potion": 70,
+          "Mega-Potion": 100,
+          "Elixir": 200,
+          "Megalixir": 300
+        },
+        "guaranteed": 1
+      }
+    },
+    {
+      "material": "energy_stone",
+      "enemy": "Stealth Soldier",
+      "world": "Hollow Bastion",
+      "area": "Entrance Hall oppure Grand Hall",
+      "method": "Il bersaglio nasce invisibile. Individua con lock-on, usa Stop e combo. Tieni vivo un altro Heartless della sua ondata: se Stealth Soldier resta l'ultimo, sparisce.",
+      "rate": "35% base per nemico sconfitto; con tre Lucky Strike, 87,5%. MP elevati e una magia Stop disponibile aiutano.",
+      "conditions": "35% base per nemico sconfitto; con tre Lucky Strike, 87,5%. MP elevati e una magia Stop disponibile aiutano.",
+      "reset": "Due stanze di distanza.",
+      "page": 12,
+      "url": "https://www.khguides.com/kh/combat/enemies/stealth-soldier/",
+      "rules": {
+        "kind": "defeat",
+        "base": 35,
+        "keepOtherEnemyAlive": true
+      }
+    },
+    {
+      "material": "dazzling_stone",
+      "enemy": "Jet Balloon",
+      "world": "Neverland",
+      "area": "ponte della nave, dopo la storia del mondo",
+      "method": "Vola sotto il bersaglio, proteggiti con Aeroga e lancia Stop quando sei vicino. I proiettili fanno perdere Munny; recuperali con Treasure Magnet. Il tempo disponibile dipende dal denaro posseduto.",
+      "rate": "Una pietra garantita e 20% base per un'altra, ma soltanto se hai almeno 100 Munny quando lo sconfiggi. Con meno denaro il drop non avviene.",
+      "conditions": "Una pietra garantita e 20% base per un'altra, ma soltanto se hai almeno 100 Munny quando lo sconfiggi. Con meno denaro il drop non avviene.",
+      "reset": "Usa due stanze di distanza; la guida cita anche uscita/rientro dal mondo come tentativo.",
+      "page": 12,
+      "url": "https://www.khguides.com/kh/combat/enemies/jet-balloon/",
+      "rules": {
+        "kind": "munny_limit",
+        "minMunny": 100,
+        "guaranteed": 1,
+        "extraBase": 20
+      }
+    },
+    {
+      "material": "stormy_stone",
+      "enemy": "Neoshadow",
+      "world": "End of the World",
+      "area": "Linked Worlds, prima di Final Rest",
+      "method": "Completa la sfida di sette Neoshadow. Colpisci nelle finestre in cui sono vulnerabili; Aeroga aiuta. Quando ne resta uno, attacca subito: cerca di riportare in campo gli altri.",
+      "rate": "35% base dopo l'ultimo nemico; 87,5% con tre Lucky Strike. Un incontro fallito o lasciato a meta non e un tentativo di drop concluso.",
+      "conditions": "35% base dopo l'ultimo nemico; 87,5% con tre Lucky Strike. Un incontro fallito o lasciato a meta non e un tentativo di drop concluso.",
+      "reset": "Due stanze di distanza. Uscire in gummiship dal save di Final Rest e tornare non basta.",
+      "page": 12,
+      "url": "https://www.khguides.com/kh/combat/enemies/neoshadow/",
+      "rules": {
+        "kind": "complete_challenge",
+        "requiredDefeats": 7,
+        "base": 35
+      }
+    },
+    {
+      "material": "serenity_power",
+      "enemy": "Pink Agaricus",
+      "world": "Deep Jungle",
+      "area": "Treehouse",
+      "rate": "40/50/60 colpi: 10%; 70/80/90: 20%; 100: Serenity Power e Mystery Goo garantiti.",
+      "conditions": "Stop sui tre White Mushroom immobili. Su PS3 separa i compagni; problema risolto su PS4.",
+      "method": "MP elevati ed Ether. Aggancia la testa; Aerora/Aeroga, Stop, Ragnarok e Impact al massimo, combo aeree. Ultima Weapon non è un requisito.",
+      "reset": "Allontanati di due stanze e torna.",
+      "page": 13,
+      "url": "https://www.khguides.com/kh/combat/enemies/pink-agaricus/",
+      "rules": {
+        "kind": "hit_threshold",
+        "spawnStopMushrooms": 3,
+        "events": [
+          {
+            "hits": 40,
+            "base": 10
+          },
+          {
+            "hits": 50,
+            "base": 10
+          },
+          {
+            "hits": 60,
+            "base": 10
+          },
+          {
+            "hits": 70,
+            "base": 20
+          },
+          {
+            "hits": 80,
+            "base": 20
+          },
+          {
+            "hits": 90,
+            "base": 20
+          },
+          {
+            "hits": 100,
+            "guaranteed": 1,
+            "mysteryGooGuaranteed": 1
+          }
+        ]
+      }
+    },
+    {
+      "material": "mystery_goo",
+      "enemy": "White Mushroom / Rare Truffle",
+      "world": "Neverland",
+      "area": "Ponte della nave per Rare Truffle; altri mondi per White Mushroom",
+      "rate": "White Mushroom: 20% con tre magie uguali. Rare Truffle: 10 colpi 20%, 50 colpi 40%, 100 colpi 100%.",
+      "conditions": "White Mushroom: trema Fire; si sventola Blizzard; luce Thunder; a terra Cure; levita Gravity; immobile Stop; ruota Aero. Black Fungus richiede condizioni di colpo finale.",
+      "method": "Sul ponte vola per tenere Rare Truffle in aria. A 50 colpi anche Elixir, a 100 Megalixir; utili per Grand Ghost.",
+      "reset": "Verifica lo spawn nella guida.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/enemies/mushroom-heartless/",
+      "rules": {
+        "kind": "mushrooms",
+        "white": {
+          "sameSpells": 3,
+          "base": 20
+        },
+        "truffle": [
+          {
+            "hits": 10,
+            "base": 20
+          },
+          {
+            "hits": 50,
+            "base": 40
+          },
+          {
+            "hits": 100,
+            "base": 100
+          }
+        ]
+      }
+    },
+    {
+      "material": "blaze_shard",
+      "enemy": "Bambi",
+      "world": "Traverse Town",
+      "area": "Gizmo Shop",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "blaze_gem",
+      "enemy": "Bambi",
+      "world": "Traverse Town",
+      "area": "Gizmo Shop",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "frost_shard",
+      "enemy": "Bambi",
+      "world": "Wonderland",
+      "area": "Bizarre Room, Lotus Forest",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "frost_gem",
+      "enemy": "Bambi",
+      "world": "Wonderland",
+      "area": "Bizarre Room, Lotus Forest",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "thunder_shard",
+      "enemy": "Bambi",
+      "world": "Deep Jungle",
+      "area": "Camp, Bamboo Thicket, Cliff, Treehouse",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "thunder_gem",
+      "enemy": "Bambi",
+      "world": "Deep Jungle",
+      "area": "Camp, Bamboo Thicket, Cliff, Treehouse",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "bright_shard",
+      "enemy": "Bambi",
+      "world": "Agrabah",
+      "area": "Desert, Hall, Treasure Room",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "bright_gem",
+      "enemy": "Bambi",
+      "world": "Agrabah",
+      "area": "Desert, Hall, Treasure Room",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "lucid_shard",
+      "enemy": "Bambi",
+      "world": "Monstro",
+      "area": "Chamber 5, Chamber 6",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "lucid_gem",
+      "enemy": "Bambi",
+      "world": "Monstro",
+      "area": "Chamber 5, Chamber 6",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "power_shard",
+      "enemy": "Bambi",
+      "world": "Halloween Town",
+      "area": "Graveyard, Moonlight Hill, Manor Ruins",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "power_gem",
+      "enemy": "Bambi",
+      "world": "Halloween Town",
+      "area": "Graveyard, Moonlight Hill, Manor Ruins",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "spirit_shard",
+      "enemy": "Bambi",
+      "world": "Neverland",
+      "area": "Hold, Captain’s Cabin, Pirate Ship",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "spirit_gem",
+      "enemy": "Bambi",
+      "world": "Neverland",
+      "area": "Hold, Captain’s Cabin, Pirate Ship",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "lucid_gem",
+      "enemy": "Bambi",
+      "world": "Hollow Bastion",
+      "area": "Entrance Hall, Grand Crest, Grand Hall",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "lucid_crystal",
+      "enemy": "Bambi",
+      "world": "Hollow Bastion",
+      "area": "Entrance Hall, Grand Crest, Grand Hall",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "mythril_shard",
+      "enemy": "Bambi",
+      "world": "End of the World",
+      "area": "World Terminus: Deep Jungle",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "mythril",
+      "enemy": "Bambi",
+      "world": "End of the World",
+      "area": "World Terminus: Deep Jungle",
+      "rate": "20% base",
+      "conditions": "Barra ogni 6 nemici nella stessa evocazione/stanza; frammenti da 12, gemme da 18. A fine storia Gizmo Shop può non raggiungere 18. Linked Worlds valido solo nella prima battaglia.",
+      "method": "Continua dopo il terzo riempimento, ogni 6 uccisioni. A World Terminus servono rinforzi Bouncywild.",
+      "reset": "Nuova evocazione nella stanza adatta.",
+      "page": 9,
+      "url": "https://www.khguides.com/kh/combat/summons/",
+      "rules": {
+        "kind": "kills_same_summon_room",
+        "refillEvery": 6,
+        "shardsFrom": 12,
+        "gemsFrom": 18,
+        "base": 20
+      }
+    },
+    {
+      "material": "dark_matter",
+      "enemy": "Ricompense / sintesi",
+      "world": "Collezionabili e laboratorio",
+      "area": "Checklist delle fonti",
+      "rate": "1 per fonte unica o sintesi",
+      "conditions": "Sintesi: gruppo V, 9 Lucid Shard, 1 Gale, 2 Mythril. Le 11 fonti uniche sono nella checklist.",
+      "method": "Usa le checklist e il piano; non dedurre raccolte dalla scorta.",
+      "reset": "Fonte unica; sintesi ripetibile.",
+      "page": 14,
+      "url": "https://www.khguides.com/kh/inventory/synthesis/"
+    },
+    {
+      "material": "orichalcum",
+      "enemy": "Ricompense / acquisto",
+      "world": "Collezionabili e laboratorio",
+      "area": "Checklist delle fonti",
+      "rate": "1 per ricompensa o sintesi",
+      "conditions": "5.000 Munny per unità. Verifica accesso a Oogie’s Manor e Clock Tower; ore di gioco, non del PC.",
+      "method": "Usa le checklist e il piano; non dedurre raccolte dalla scorta.",
+      "reset": "Fonte unica; sintesi ripetibile.",
+      "page": 15,
+      "url": "https://www.khguides.com/kh/inventory/synthesis/"
+    },
+    {
+      "material": "mythril_shard",
+      "enemy": "Pot Scorpion",
+      "world": "Agrabah",
+      "area": "Palace Gates",
+      "rate": "20% base",
+      "conditions": "Drop separato da Mythril Stone; non è prodotto da una ricetta.",
+      "method": "Para lo scorpione per ribaltarlo e colpirlo; segui il metodo di Mythril Stone.",
+      "reset": "Due stanze di distanza.",
+      "page": 10,
+      "url": "https://www.khguides.com/kh/combat/enemies/pot-scorpion/",
+      "rules": {
+        "kind": "pot_challenge",
+        "safePots": 11,
+        "events": [
+          {
+            "event": "last_safe_pot",
+            "base": 10
+          },
+          {
+            "event": "scorpion_after_11",
+            "base": 35
+          },
+          {
+            "event": "scorpion_other",
+            "base": 20
+          }
+        ],
+        "mythrilShardBase": 20
+      }
+    },
+    {
+      "material": "mythril",
+      "enemy": "Ricompense / sintesi",
+      "world": "Collezionabili e laboratorio",
+      "area": "Moogle Shop",
+      "rate": "1 prodotto per sintesi",
+      "conditions": "Gruppo III sbloccato; 5 Mythril Shard, 1 Mythril Stone, 1 Mystery Goo.",
+      "method": "Usa le checklist e il piano; non dedurre raccolte dalla scorta.",
+      "reset": "Fonte unica; sintesi ripetibile.",
+      "page": 6,
+      "url": "https://www.khguides.com/kh/inventory/synthesis/"
+    }
+  ],
+  "materials": [
+    {
+      "id": "lucid_shard",
+      "name": "Lucid Shard",
+      "initial": 19
+    },
+    {
+      "id": "lucid_gem",
+      "name": "Lucid Gem",
+      "initial": 2
+    },
+    {
+      "id": "lucid_crystal",
+      "name": "Lucid Crystal",
+      "initial": null
+    },
+    {
+      "id": "spirit_shard",
+      "name": "Spirit Shard",
+      "initial": 12
+    },
+    {
+      "id": "spirit_gem",
+      "name": "Spirit Gem",
+      "initial": 7
+    },
+    {
+      "id": "power_shard",
+      "name": "Power Shard",
+      "initial": 1
+    },
+    {
+      "id": "power_gem",
+      "name": "Power Gem",
+      "initial": 1
+    },
+    {
+      "id": "power_crystal",
+      "name": "Power Crystal",
+      "initial": null
+    },
+    {
+      "id": "blaze_shard",
+      "name": "Blaze Shard",
+      "initial": 10
+    },
+    {
+      "id": "blaze_gem",
+      "name": "Blaze Gem",
+      "initial": 8
+    },
+    {
+      "id": "frost_shard",
+      "name": "Frost Shard",
+      "initial": 4
+    },
+    {
+      "id": "frost_gem",
+      "name": "Frost Gem",
+      "initial": 10
+    },
+    {
+      "id": "thunder_shard",
+      "name": "Thunder Shard",
+      "initial": 4
+    },
+    {
+      "id": "thunder_gem",
+      "name": "Thunder Gem",
+      "initial": 5
+    },
+    {
+      "id": "bright_shard",
+      "name": "Bright Shard",
+      "initial": 2
+    },
+    {
+      "id": "bright_gem",
+      "name": "Bright Gem",
+      "initial": 3
+    },
+    {
+      "id": "bright_crystal",
+      "name": "Bright Crystal",
+      "initial": 1
+    },
+    {
+      "id": "shiny_crystal",
+      "name": "Shiny Crystal",
+      "initial": null
+    },
+    {
+      "id": "gale",
+      "name": "Gale",
+      "initial": 3
+    },
+    {
+      "id": "mystery_goo",
+      "name": "Mystery Goo",
+      "initial": 1
+    },
+    {
+      "id": "fury_stone",
+      "name": "Fury Stone",
+      "initial": 1
+    },
+    {
+      "id": "power_stone",
+      "name": "Power Stone",
+      "initial": 0
+    },
+    {
+      "id": "mythril_stone",
+      "name": "Mythril Stone",
+      "initial": 0
+    },
+    {
+      "id": "lightning_stone",
+      "name": "Lightning Stone",
+      "initial": 0
+    },
+    {
+      "id": "blazing_stone",
+      "name": "Blazing Stone",
+      "initial": 0
+    },
+    {
+      "id": "frost_stone",
+      "name": "Frost Stone",
+      "initial": 0
+    },
+    {
+      "id": "energy_stone",
+      "name": "Energy Stone",
+      "initial": 2
+    },
+    {
+      "id": "dazzling_stone",
+      "name": "Dazzling Stone",
+      "initial": 0
+    },
+    {
+      "id": "stormy_stone",
+      "name": "Stormy Stone",
+      "initial": 0
+    },
+    {
+      "id": "serenity_power",
+      "name": "Serenity Power",
+      "initial": 0
+    },
+    {
+      "id": "mythril_shard",
+      "name": "Mythril Shard",
+      "initial": 29
+    },
+    {
+      "id": "mythril",
+      "name": "Mythril",
+      "initial": 16
+    },
+    {
+      "id": "orichalcum",
+      "name": "Orichalcum",
+      "initial": 9
+    },
+    {
+      "id": "dark_matter",
+      "name": "Dark Matter",
+      "initial": 6
+    }
+  ],
+  "recipes": [
+    {
+      "id": "mega_potion",
+      "name": "Mega-Potion",
+      "group": 1,
+      "costs": {
+        "spirit_shard": 1,
+        "power_shard": 1,
+        "mythril_shard": 4
+      }
+    },
+    {
+      "id": "cottage",
+      "name": "Cottage",
+      "group": 1,
+      "costs": {
+        "lucid_shard": 1,
+        "bright_shard": 1
+      }
+    },
+    {
+      "id": "energy_bangle",
+      "name": "Energy Bangle",
+      "group": 1,
+      "costs": {
+        "spirit_shard": 2,
+        "bright_shard": 1
+      }
+    },
+    {
+      "id": "power_chain",
+      "name": "Power Chain",
+      "group": 1,
+      "costs": {
+        "power_shard": 2,
+        "lucid_shard": 1
+      }
+    },
+    {
+      "id": "magic_armlet",
+      "name": "Magic Armlet",
+      "group": 1,
+      "costs": {
+        "blaze_shard": 3,
+        "frost_shard": 3,
+        "thunder_shard": 3
+      }
+    },
+    {
+      "id": "exp_earring",
+      "name": "EXP Earring",
+      "group": 1,
+      "costs": {
+        "fury_stone": 1,
+        "power_stone": 1,
+        "mythril_stone": 1,
+        "serenity_power": 1,
+        "dark_matter": 3
+      }
+    },
+    {
+      "id": "mega_ether",
+      "name": "Mega-Ether",
+      "group": 2,
+      "costs": {
+        "blaze_shard": 1,
+        "frost_shard": 1,
+        "thunder_shard": 1,
+        "mythril": 2
+      }
+    },
+    {
+      "id": "guard_earring",
+      "name": "Guard Earring",
+      "group": 2,
+      "costs": {
+        "bright_shard": 3,
+        "frost_shard": 1,
+        "mythril_shard": 3
+      }
+    },
+    {
+      "id": "angel_bangle",
+      "name": "Angel Bangle",
+      "group": 2,
+      "costs": {
+        "thunder_shard": 3,
+        "bright_gem": 1
+      }
+    },
+    {
+      "id": "golem_chain",
+      "name": "Golem Chain",
+      "group": 2,
+      "costs": {
+        "blaze_shard": 3,
+        "spirit_gem": 1
+      }
+    },
+    {
+      "id": "rune_armlet",
+      "name": "Rune Armlet",
+      "group": 2,
+      "costs": {
+        "blaze_gem": 3,
+        "frost_gem": 3,
+        "thunder_gem": 3
+      }
+    },
+    {
+      "id": "moogle_badge",
+      "name": "Moogle Badge",
+      "group": 2,
+      "costs": {
+        "blazing_stone": 1,
+        "frost_stone": 1,
+        "lightning_stone": 1,
+        "mythril": 5,
+        "orichalcum": 3
+      }
+    },
+    {
+      "id": "ap_up",
+      "name": "AP Up",
+      "group": 3,
+      "costs": {
+        "blaze_gem": 2,
+        "frost_gem": 2,
+        "thunder_gem": 2,
+        "mythril": 4
+      }
+    },
+    {
+      "id": "dark_ring",
+      "name": "Dark Ring",
+      "group": 3,
+      "costs": {
+        "lucid_gem": 2,
+        "bright_gem": 2
+      }
+    },
+    {
+      "id": "master_earring",
+      "name": "Master Earring",
+      "group": 3,
+      "costs": {
+        "spirit_shard": 5,
+        "spirit_gem": 3,
+        "fury_stone": 1
+      }
+    },
+    {
+      "id": "gaia_bangle",
+      "name": "Gaia Bangle",
+      "group": 3,
+      "costs": {
+        "lucid_shard": 5,
+        "lucid_gem": 3,
+        "lightning_stone": 1
+      }
+    },
+    {
+      "id": "titan_chain",
+      "name": "Titan Chain",
+      "group": 3,
+      "costs": {
+        "power_shard": 5,
+        "power_gem": 3,
+        "power_stone": 1
+      }
+    },
+    {
+      "id": "mythril",
+      "name": "Mythril",
+      "group": 3,
+      "costs": {
+        "mythril_shard": 5,
+        "mythril_stone": 1,
+        "mystery_goo": 1
+      },
+      "output": "mythril"
+    },
+    {
+      "id": "elixir",
+      "name": "Elixir",
+      "group": 4,
+      "costs": {
+        "power_crystal": 1,
+        "shiny_crystal": 1,
+        "bright_crystal": 2,
+        "orichalcum": 3
+      }
+    },
+    {
+      "id": "defense_up",
+      "name": "Defense Up",
+      "group": 4,
+      "costs": {
+        "lucid_shard": 3,
+        "bright_shard": 3,
+        "bright_gem": 2,
+        "power_crystal": 1,
+        "orichalcum": 5
+      }
+    },
+    {
+      "id": "heartguard",
+      "name": "Heartguard",
+      "group": 4,
+      "costs": {
+        "lucid_gem": 3,
+        "lucid_crystal": 1,
+        "bright_crystal": 1
+      }
+    },
+    {
+      "id": "three_stars",
+      "name": "Three Stars",
+      "group": 4,
+      "costs": {
+        "power_gem": 5,
+        "mystery_goo": 3,
+        "shiny_crystal": 1
+      }
+    },
+    {
+      "id": "atlas_armlet",
+      "name": "Atlas Armlet",
+      "group": 4,
+      "costs": {
+        "blaze_shard": 5,
+        "frost_shard": 5,
+        "thunder_shard": 5,
+        "mystery_goo": 1,
+        "dark_matter": 3
+      }
+    },
+    {
+      "id": "crystal_crown",
+      "name": "Crystal Crown",
+      "group": 4,
+      "costs": {
+        "lucid_crystal": 5,
+        "power_crystal": 1,
+        "shiny_crystal": 1,
+        "blazing_stone": 3,
+        "frost_stone": 3
+      }
+    },
+    {
+      "id": "dark_matter",
+      "name": "Dark Matter",
+      "group": 5,
+      "costs": {
+        "lucid_shard": 9,
+        "gale": 1,
+        "mythril": 2
+      },
+      "output": "dark_matter"
+    },
+    {
+      "id": "megalixir",
+      "name": "Megalixir",
+      "group": 5,
+      "costs": {
+        "lucid_gem": 5,
+        "lucid_crystal": 3,
+        "gale": 2,
+        "dark_matter": 1
+      }
+    },
+    {
+      "id": "power_up",
+      "name": "Power Up",
+      "group": 5,
+      "costs": {
+        "spirit_shard": 5,
+        "spirit_gem": 3,
+        "power_shard": 5,
+        "power_gem": 3,
+        "dark_matter": 1
+      }
+    },
+    {
+      "id": "cosmic_arts",
+      "name": "Cosmic Arts",
+      "group": 5,
+      "costs": {
+        "bright_shard": 5,
+        "bright_gem": 3,
+        "bright_crystal": 1,
+        "mythril_stone": 3
+      }
+    },
+    {
+      "id": "exp_bracelet",
+      "name": "EXP Bracelet",
+      "group": 5,
+      "costs": {
+        "energy_stone": 1,
+        "dazzling_stone": 1,
+        "stormy_stone": 1,
+        "orichalcum": 8,
+        "dark_matter": 3
+      }
+    },
+    {
+      "id": "ribbon",
+      "name": "Ribbon",
+      "group": 5,
+      "costs": {
+        "blaze_gem": 5,
+        "frost_gem": 5,
+        "thunder_gem": 5,
+        "gale": 1,
+        "serenity_power": 3
+      }
+    },
+    {
+      "id": "fantasista",
+      "name": "Fantasista",
+      "group": 6,
+      "costs": {
+        "fury_stone": 3,
+        "power_stone": 3,
+        "mythril_stone": 3,
+        "energy_stone": 5
+      }
+    },
+    {
+      "id": "seven_elements",
+      "name": "Seven Elements",
+      "group": 6,
+      "costs": {
+        "blazing_stone": 3,
+        "frost_stone": 3,
+        "lightning_stone": 3,
+        "dazzling_stone": 5
+      }
+    },
+    {
+      "id": "ultima_weapon",
+      "name": "Ultima Weapon",
+      "group": 6,
+      "costs": {
+        "thunder_gem": 5,
+        "mystery_goo": 5,
+        "serenity_power": 3,
+        "stormy_stone": 3,
+        "dark_matter": 3
+      }
+    }
+  ],
+  "route15": [
+    "mega_potion",
+    "cottage",
+    "magic_armlet",
+    "mega_ether",
+    "golem_chain",
+    "rune_armlet",
+    "guard_earring",
+    "ap_up",
+    "dark_ring",
+    "master_earring",
+    "gaia_bangle",
+    "titan_chain",
+    "mythril"
+  ]
+}

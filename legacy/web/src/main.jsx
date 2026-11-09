@@ -1,0 +1,10 @@
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App.jsx';
+import {initializeStorage} from './storage.js';
+import './style.css';
+import './kh-theme.css';
+import './completion.css';
+import './save-import.css';
+const root=createRoot(document.getElementById('root'));
+initializeStorage().then(()=>root.render(<App/>)).catch(e=>root.render(<p role="alert">{e.message} Ricarica la pagina per riprovare.</p>));

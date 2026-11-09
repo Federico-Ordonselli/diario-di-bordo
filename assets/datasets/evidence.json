@@ -1,0 +1,1539 @@
+{
+  "id": "achievements-screenshots-2026-10-09",
+  "items": [
+    {
+      "id": "achievements-r40",
+      "title": "Top Dog",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r14",
+      "title": "Artisan Hero",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r13",
+      "title": "Novice Hero",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r51",
+      "title": "Top Gun",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r34",
+      "title": "End of the World",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r55",
+      "title": "Oathkeeper",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r27",
+      "title": "Junior Hero",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r15",
+      "title": "Hero of the Coliseum",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r44",
+      "title": "First Synthesis",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r24",
+      "title": "Heartless Hunter",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r33",
+      "title": "Pixie Dust",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r31",
+      "title": "Master of the Seas",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r22",
+      "title": "Treasure Hunter",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r32",
+      "title": "Pumpkin Prince",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r30",
+      "title": "Honest Soul",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r29",
+      "title": "Magic Lamp",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r25",
+      "title": "Where the Bells Toll",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r28",
+      "title": "Member of the Tribe",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r26",
+      "title": "The Rabbit Hole",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r50",
+      "title": "Customizer",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "achievements-r52",
+      "title": "Test Pilot",
+      "categoryId": "achievements",
+      "reason": "Achievement visibile come sbloccato negli screenshot.",
+      "kind": "direct"
+    },
+    {
+      "id": "dalmatians-r5",
+      "title": "Puppies 1 - 2 - 3",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r6",
+      "title": "Puppies 4 - 5 - 6",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r7",
+      "title": "Puppies 7 - 8 - 9",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r8",
+      "title": "Puppies 10 - 11 - 12",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r9",
+      "title": "Puppies 13 - 14 - 15",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r10",
+      "title": "Puppies 16 - 17 - 18",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r11",
+      "title": "Puppies 19 - 20 - 21",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r12",
+      "title": "Puppies 22 - 23 - 24",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r13",
+      "title": "Puppies 25 - 26 - 27",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r14",
+      "title": "Puppies 28 - 29 - 30",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r15",
+      "title": "Puppies 31 - 32 - 33",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r16",
+      "title": "Puppies 34 - 35 - 36",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r17",
+      "title": "Puppies 37 - 38 - 39",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r18",
+      "title": "Puppies 40 - 41 - 42",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r19",
+      "title": "Puppies 43 - 44 - 45",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r20",
+      "title": "Puppies 46 - 47 - 48",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r21",
+      "title": "Puppies 49 - 50 - 51",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r22",
+      "title": "Puppies 52 - 53 - 54",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r23",
+      "title": "Puppies 55 - 56 - 57",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r24",
+      "title": "Puppies 58 - 59 - 60",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r25",
+      "title": "Puppies 61 - 62 - 63",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r26",
+      "title": "Puppies 64 - 65 - 66",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r27",
+      "title": "Puppies 67 - 68 - 69",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r28",
+      "title": "Puppies 70 - 71 - 72",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r29",
+      "title": "Puppies 73 - 74 - 75",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r30",
+      "title": "Puppies 76 - 77 - 78",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r31",
+      "title": "Puppies 79 - 80 - 81",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r32",
+      "title": "Puppies 82 - 83 - 84",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r33",
+      "title": "Puppies 85 - 86 - 87",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r34",
+      "title": "Puppies 88 - 89 - 90",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r35",
+      "title": "Puppies 91 - 92 - 93",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r36",
+      "title": "Puppies 94 - 95 - 96",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "dalmatians-r37",
+      "title": "Puppies 97 - 98 - 99",
+      "categoryId": "dalmatians",
+      "reason": "Top Dog conferma tutte le voci dei dalmata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r17",
+      "title": "Dalmatians (7-9)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r29",
+      "title": "Dalmatians (4-6)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r31",
+      "title": "Dalmatians (10-12)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r32",
+      "title": "Dalmatians (1-3)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r42",
+      "title": "Dalmatians (13-15)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r45",
+      "title": "Dalmatians (16-18)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r49",
+      "title": "Dalmatians (58-60)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r53",
+      "title": "Dalmatians (19-21)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r57",
+      "title": "Dalmatians (22-24)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r69",
+      "title": "Dalmatians (34-36)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r74",
+      "title": "Dalmatians (25-27)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r75",
+      "title": "Dalmatians (28-30)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r80",
+      "title": "Dalmatians (31-33)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r99",
+      "title": "Dalmatians (52-54)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r102",
+      "title": "Dalmatians (49-51)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r116",
+      "title": "Dalmatians (46-48)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r120",
+      "title": "Dalmatians (37-39)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r128",
+      "title": "Dalmatians (73-75)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r134",
+      "title": "Dalmatians (55-57)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r138",
+      "title": "Dalmatians (79-81)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r139",
+      "title": "Dalmatians (76-78)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r175",
+      "title": "Dalmatians (70-72)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r179",
+      "title": "Dalmatians (67-69)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r188",
+      "title": "Dalmatians (40-42)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r191",
+      "title": "Dalmatians (64-66)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r195",
+      "title": "Dalmatians (82-84)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r198",
+      "title": "Dalmatians (85-87)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r202",
+      "title": "Dalmatians (88-90)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r204",
+      "title": "Dalmatians (43-45)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r208",
+      "title": "Dalmatians (91-93)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r228",
+      "title": "Dalmatians (97-99)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r234",
+      "title": "Puppies (94-96)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "treasures-r243",
+      "title": "Puppies (61-63)",
+      "categoryId": "treasures",
+      "reason": "Top Dog conferma anche la raccolta dei gruppi di dalmata in queste fonti specifiche.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r13",
+      "title": "Trinity Jump · 8",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r14",
+      "title": "Trinity Jump · 9",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r24",
+      "title": "Trinity Charge · 1",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r44",
+      "title": "Trinity Push · 4",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r53",
+      "title": "Trinity Detect · 8",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r54",
+      "title": "Trinity Detect · 9",
+      "categoryId": "trinities",
+      "reason": "Top Dog conferma i marchi Trio necessari a raccogliere questi dalmata, come indicato nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "trinities-r42",
+      "title": "Trinity Push · 2",
+      "categoryId": "trinities",
+      "reason": "Junior Hero conferma la serratura del Monte Olimpo, sigillata con questo marchio Trio.",
+      "kind": "inferred"
+    },
+    {
+      "id": "coliseum-r4",
+      "title": "Phil Cup (Standard)",
+      "categoryId": "coliseum",
+      "reason": "Novice Hero, Artisan Hero e Hero of the Coliseum confermano le coppe standard. Le varianti Solo e Time Trial non sono deducibili.",
+      "kind": "inferred"
+    },
+    {
+      "id": "coliseum-r7",
+      "title": "Pegasus Cup (Standard)",
+      "categoryId": "coliseum",
+      "reason": "Novice Hero, Artisan Hero e Hero of the Coliseum confermano le coppe standard. Le varianti Solo e Time Trial non sono deducibili.",
+      "kind": "inferred"
+    },
+    {
+      "id": "coliseum-r10",
+      "title": "Hercules Cup (Standard)",
+      "categoryId": "coliseum",
+      "reason": "Novice Hero, Artisan Hero e Hero of the Coliseum confermano le coppe standard. Le varianti Solo e Time Trial non sono deducibili.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r17",
+      "title": "Oathkeeper",
+      "categoryId": "keyblades",
+      "reason": "Oathkeeper conferma direttamente l’ottenimento del Keyblade.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r5",
+      "title": "Jungle King",
+      "categoryId": "keyblades",
+      "reason": "Ricompensa della serratura del relativo mondo, confermata dall’achievement e dalla condizione nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r6",
+      "title": "Three Wishes",
+      "categoryId": "keyblades",
+      "reason": "Ricompensa della serratura del relativo mondo, confermata dall’achievement e dalla condizione nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r7",
+      "title": "Crabclaw",
+      "categoryId": "keyblades",
+      "reason": "Ricompensa della serratura del relativo mondo, confermata dall’achievement e dalla condizione nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r8",
+      "title": "Pumpkinhead",
+      "categoryId": "keyblades",
+      "reason": "Ricompensa della serratura del relativo mondo, confermata dall’achievement e dalla condizione nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r9",
+      "title": "Fairy Harp",
+      "categoryId": "keyblades",
+      "reason": "Ricompensa della serratura del relativo mondo, confermata dall’achievement e dalla condizione nell’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r12",
+      "title": "Metal Chocobo",
+      "categoryId": "keyblades",
+      "reason": "La coppa Ercole standard completata comprende la vittoria su Cloud, che assegna Metal Chocobo.",
+      "kind": "inferred"
+    },
+    {
+      "id": "keyblades-r4",
+      "title": "Kingdom Key",
+      "categoryId": "keyblades",
+      "reason": "Arma iniziale necessaria per la progressione della storia confermata dagli screenshot.",
+      "kind": "inferred"
+    },
+    {
+      "id": "staves-r4",
+      "title": "Mage's Staff",
+      "categoryId": "staves",
+      "reason": "Arma iniziale di Paperino; la storia avanzata è confermata dagli screenshot.",
+      "kind": "inferred"
+    },
+    {
+      "id": "shields-r4",
+      "title": "Knight's Shield",
+      "categoryId": "shields",
+      "reason": "Scudo iniziale di Pippo e ricompensa della coppa Ercole standard confermata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "shields-r12",
+      "title": "Herc's Shield",
+      "categoryId": "shields",
+      "reason": "Scudo iniziale di Pippo e ricompensa della coppa Ercole standard confermata.",
+      "kind": "inferred"
+    },
+    {
+      "id": "reports-r4",
+      "title": "Ansem Report 1",
+      "categoryId": "reports",
+      "reason": "Rapporto assegnato dalla storia nel relativo mondo completato, secondo l’Excel. I rapporti che richiedono parlare ad Aerith restano da verificare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "reports-r6",
+      "title": "Ansem Report 3",
+      "categoryId": "reports",
+      "reason": "Rapporto assegnato dalla storia nel relativo mondo completato, secondo l’Excel. I rapporti che richiedono parlare ad Aerith restano da verificare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "reports-r8",
+      "title": "Ansem Report 5",
+      "categoryId": "reports",
+      "reason": "Rapporto assegnato dalla storia nel relativo mondo completato, secondo l’Excel. I rapporti che richiedono parlare ad Aerith restano da verificare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "reports-r10",
+      "title": "Ansem Report 7",
+      "categoryId": "reports",
+      "reason": "Rapporto assegnato dalla storia nel relativo mondo completato, secondo l’Excel. I rapporti che richiedono parlare ad Aerith restano da verificare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "reports-r12",
+      "title": "Ansem Report 9",
+      "categoryId": "reports",
+      "reason": "Rapporto assegnato dalla storia nel relativo mondo completato, secondo l’Excel. I rapporti che richiedono parlare ad Aerith restano da verificare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r5",
+      "title": "Fire",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r6",
+      "title": "Fira",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r7",
+      "title": "Firaga",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r8",
+      "title": "Blizzard",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r9",
+      "title": "Blizzara",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r11",
+      "title": "Thunder",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r12",
+      "title": "Thundara",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r14",
+      "title": "Cure",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r15",
+      "title": "Cura",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r17",
+      "title": "Gravity",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r18",
+      "title": "Gravira",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r20",
+      "title": "Stop",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r23",
+      "title": "Aero",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r27",
+      "title": "Genie",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "magic-r30",
+      "title": "Tinker Bell",
+      "categoryId": "magic",
+      "reason": "Sblocco o potenziamento assegnato dalla storia dei mondi e dalla coppa Fil confermati. Non sono inclusi oggetti in forzieri o gemme da consegnare.",
+      "kind": "inferred"
+    },
+    {
+      "id": "blueprints-r4",
+      "title": "Kingdom",
+      "categoryId": "blueprints",
+      "reason": "Progetto iniziale della Gummiship; Top Gun e Customizer ne confermano l’utilizzo.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r5",
+      "title": "Sora",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r6",
+      "title": "Riku",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r7",
+      "title": "Kairi",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r8",
+      "title": "Mickey Mouse",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r9",
+      "title": "Donald Duck",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r10",
+      "title": "Goofy",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r11",
+      "title": "Minnie Mouse",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r12",
+      "title": "Daisy Duck",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r13",
+      "title": "Pluto",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r14",
+      "title": "Chip",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r15",
+      "title": "Dale",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r16",
+      "title": "Huey",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r17",
+      "title": "Dewey",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r18",
+      "title": "Louie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r24",
+      "title": "Brooms",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r25",
+      "title": "Leon",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r26",
+      "title": "Yuffie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r27",
+      "title": "Aerith",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r28",
+      "title": "Cloud",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r30",
+      "title": "Cid",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r31",
+      "title": "Tidus",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r32",
+      "title": "Selphie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r33",
+      "title": "Wakka",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r34",
+      "title": "Moogles",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r39",
+      "title": "Beast",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r40",
+      "title": "Maleficent",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r41",
+      "title": "Dragon",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r42",
+      "title": "Ansem",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r49",
+      "title": "Alice",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r50",
+      "title": "Queen of Hearts",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r51",
+      "title": "Cards (Hearts)",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r52",
+      "title": "Cards (Spades)",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r53",
+      "title": "White Rabbit",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r54",
+      "title": "Cheshire Cat",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r55",
+      "title": "Doorknob",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r56",
+      "title": "Hercules",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r57",
+      "title": "Philoctetes",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r59",
+      "title": "Cerberus",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r62",
+      "title": "Tarzan",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r63",
+      "title": "Jane Porter",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r64",
+      "title": "Clayton",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r65",
+      "title": "Terk",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r66",
+      "title": "Kerchak",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r67",
+      "title": "Kala",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r68",
+      "title": "Sabor",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r69",
+      "title": "Aladdin",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r70",
+      "title": "Genie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r71",
+      "title": "Jasmine",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r72",
+      "title": "Jafar",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r73",
+      "title": "Jafar-Genie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r74",
+      "title": "Abu",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r75",
+      "title": "Iago",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r76",
+      "title": "Carpet",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r79",
+      "title": "Jiminy Cricket",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r80",
+      "title": "Ariel",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r81",
+      "title": "King Triton",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r82",
+      "title": "Ursula",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r83",
+      "title": "Sebastian",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r84",
+      "title": "Flounder",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r85",
+      "title": "Jetsam",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r86",
+      "title": "Flotsam",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r87",
+      "title": "Jack Skellington",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r88",
+      "title": "Sally",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r89",
+      "title": "Oogie Boogie",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r90",
+      "title": "Dr. Finkelstein",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r91",
+      "title": "Zero",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r92",
+      "title": "Lock",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r93",
+      "title": "Shock",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r94",
+      "title": "Barrel",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r95",
+      "title": "The Mayor",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r96",
+      "title": "Peter Pan",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r97",
+      "title": "Tinker Bell",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r98",
+      "title": "Wendy",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r99",
+      "title": "Captain Hook",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r100",
+      "title": "Mr. Smee",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r101",
+      "title": "The Crocodile",
+      "categoryId": "characters",
+      "reason": "Voce assegnata durante la storia dei mondi completati e visibili negli screenshot. Esclusi finale e Bosco dei 100 Acri.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r58",
+      "title": "Hades",
+      "categoryId": "characters",
+      "reason": "KHGuides conferma la prima voce durante i preliminari del Monte Olimpo o la visita della storia a Monstro; non si presume il successivo aggiornamento del diario.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r77",
+      "title": "Pinocchio",
+      "categoryId": "characters",
+      "reason": "KHGuides conferma la prima voce durante i preliminari del Monte Olimpo o la visita della storia a Monstro; non si presume il successivo aggiornamento del diario.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r78",
+      "title": "Geppetto",
+      "categoryId": "characters",
+      "reason": "KHGuides conferma la prima voce durante i preliminari del Monte Olimpo o la visita della storia a Monstro; non si presume il successivo aggiornamento del diario.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r157",
+      "title": "Guard Armor",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r159",
+      "title": "Opposite Armor",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r160",
+      "title": "Trickmaster",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r161",
+      "title": "Stealth Sneak",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r163",
+      "title": "Pot Centipede",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r164",
+      "title": "Parasite Cage",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r110",
+      "title": "Shadow",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r156",
+      "title": "Darkside",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r146",
+      "title": "Behemoth",
+      "categoryId": "characters",
+      "reason": "Nemico della storia già completata: la voce è automatica secondo l’Excel.",
+      "kind": "inferred"
+    },
+    {
+      "id": "characters-r158",
+      "title": "Red Armor",
+      "categoryId": "characters",
+      "reason": "Presente nella coppa Fil standard confermata da Novice Hero.",
+      "kind": "inferred"
+    }
+  ],
+  "facts": [
+    "21 achievement risultano sbloccati nei due screenshot.",
+    "Treasure Hunter conferma almeno 100 forzieri aperti. Si identificano solo le fonti dei dalmata; gli altri forzieri restano da verificare.",
+    "Top Gun conferma tutte le rotte Gummi. Test Pilot conferma l’achievement di livello 1, ma non identifica una missione dell’Excel: nessuna missione specifica viene spuntata.",
+    "Heartless Hunter conferma oltre 2.000 Heartless sconfitti, senza identificare tutti i tipi incontrati.",
+    "Olimpia richiede aprire il forziere; Curaga e vari rapporti richiedono parlare ad Aerith. Queste azioni non risultano dagli screenshot.",
+    "Gli sblocchi certi sono storici: non indicano scorte attuali, equipaggiamento attivo o ricompense già ritirate."
+  ]
+}

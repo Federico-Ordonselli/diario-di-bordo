@@ -1,0 +1,24 @@
+name: kh_diario
+description: Diario offline per Kingdom Hearts Final Mix, checklist e laboratorio.
+publish_to: none
+version: 2.0.0+1
+environment:
+  sdk: '>=3.9.0 <4.0.0'
+  flutter: '>=3.35.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.7
+  file_selector: ^1.0.3
+  path_provider: ^2.1.4
+  share_plus: ^10.1.4
+  url_launcher: ^6.3.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/datasets/
+    - assets/documents/
