@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'profile.dart';
 
 typedef Json = Map<String, dynamic>;
 Json copyJson(Json value) => jsonDecode(jsonEncode(value)) as Json;
@@ -27,11 +28,9 @@ class Catalog {
   List<Json> get items => (workbook['items'] as List).cast<Json>();
   List<Json> get categories => (workbook['categories'] as List).cast<Json>();
   List<Json> get guides => (workbook['guides'] as List).cast<Json>();
-  Json fresh() {
-    final state = copyJson(initial);
-    state['updatedAt'] = DateTime.now().toUtc().toIso8601String();
-    return state;
-  }
+  Profile fresh() =>
+      Profile(copyJson(initial))
+        ..updatedAt = DateTime.now().toUtc().toIso8601String();
 
   Json lookup(String category, String title) => items.firstWhere(
     (item) =>
@@ -39,18 +38,18 @@ class Catalog {
         normalize(item['title'] as String) == normalize(title),
     orElse: () => throw FormatException('Voce non mappata: $title'),
   );
-  bool completed(Json state, Json item) => item['recipeId'] != null
-      ? state['everCrafted'][item['recipeId']] == true
-      : state['completion'][item['id']] == true;
-  String status(Json state, Json item) =>
+  bool completed(Profile state, Json item) => item['recipeId'] != null
+      ? state.everCrafted[item['recipeId']] == true
+      : state.completion[item['id']] == true;
+  String status(Profile state, Json item) =>
       item['recipeId'] == null &&
-          (state['completion'] as Map).containsKey(item['id']) &&
-          state['completion'][item['id']] == null
+          state.completion.containsKey(item['id']) &&
+          state.completion[item['id']] == null
       ? 'unknown'
       : completed(state, item)
       ? 'done'
       : 'todo';
-  Json summary(Json state, [String? category]) {
+  Json summary(Profile state, [String? category]) {
     final pool = items
         .where((item) => category == null || item['categoryId'] == category)
         .toList();

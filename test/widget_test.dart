@@ -1,19 +1,20 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/domain/engine.dart';
 import 'package:diario_bordo/storage/controller.dart';
-import 'package:diario_bordo/storage/profile_store.dart';
 import 'package:diario_bordo/ui/app.dart';
 import 'package:diario_bordo/ui/widgets.dart';
+import 'fakes.dart';
 import 'test_catalog.dart';
 
 void main() {
   testWidgets('Il diario si adatta a desktop e telefono senza overflow', (
     tester,
   ) async {
-    final dir = Directory.systemTemp.createTempSync('kh-widget-');
-    final c = ProfileController(Engine(testCatalog()), ProfileStore(dir));
+    final c = ProfileController(
+      Engine(testCatalog()),
+      InMemoryProfileRepository(),
+    );
     try {
       for (final size in [const Size(1440, 1000), const Size(390, 844)]) {
         tester.view.devicePixelRatio = 1;
@@ -28,15 +29,16 @@ void main() {
       c.dispose();
       tester.view.resetPhysicalSize();
       tester.view.resetDevicePixelRatio();
-      dir.deleteSync(recursive: true);
     }
   });
   for (final size in [const Size(1440, 1000), const Size(390, 844)]) {
     testWidgets('Navigazione in tutte le sezioni a ${size.width.toInt()}px', (
       tester,
     ) async {
-      final dir = Directory.systemTemp.createTempSync('kh-nav-');
-      final c = ProfileController(Engine(testCatalog()), ProfileStore(dir));
+      final c = ProfileController(
+        Engine(testCatalog()),
+        InMemoryProfileRepository(),
+      );
       c.state = fixture()['imported'];
       tester.view.devicePixelRatio = 1;
       tester.view.physicalSize = size;
@@ -72,7 +74,6 @@ void main() {
         c.dispose();
         tester.view.resetPhysicalSize();
         tester.view.resetDevicePixelRatio();
-        dir.deleteSync(recursive: true);
       }
     });
   }

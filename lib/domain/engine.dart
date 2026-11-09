@@ -1,13 +1,11 @@
 import 'dart:math' as math;
 import 'catalog.dart';
+import 'profile.dart';
 
 bool validQuantity(dynamic value, [int max = 999999]) =>
     value is int && value >= 0 && value <= max;
-String scope(Json snapshot) =>
-    '${snapshot['source']['filename']}#slot:${snapshot['slotNumber']}';
-String currentScope(Json state) => state['activeSaveId'] == null
-    ? 'app'
-    : scope(state['saveSnapshots'][state['activeSaveId']] as Json);
+String scope(Json snapshot) => SaveSnapshot(snapshot).scope;
+String currentScope(Profile state) => state.activeSave?.scope ?? 'app';
 dynamic targetValue(Json state, String key) {
   final parts = key.split('.');
   final kind = parts.removeAt(0), id = parts.join('.');
@@ -47,36 +45,31 @@ List<String> changedTargets(Json before, Json after) {
 class Engine {
   Engine(this.catalog);
   final Catalog catalog;
-  int distinct(Json s) =>
-      catalog.recipes.where((r) => s['everCrafted'][r['id']] == true).length;
-  bool unlocked(Json s, int group) {
+  int distinct(Profile s) =>
+      catalog.recipes.where((r) => s.everCrafted[r['id']] == true).length;
+  bool unlocked(Profile s, int group) {
     if (group == 1) return true;
     final previous = catalog.recipes.where((r) => (r['group'] as int) < group);
-    final count = previous
-        .where((r) => s['everCrafted'][r['id']] == true)
-        .length;
+    final count = previous.where((r) => s.everCrafted[r['id']] == true).length;
     return group == 6
         ? count == 30
         : count >= ({2: 3, 3: 9, 4: 15, 5: 21}[group] ?? 999);
   }
 
-  Json recipeStatus(Json s, Json recipe) {
-    final costs = recipe['costs'] as Json;
+  Json recipeStatus(Profile s, Json recipe) {
+    final costs = recipe['costs'] as Json, inventory = s.inventory;
     final unknown =
-        costs.keys.any((id) => s['inventory'][id] == null) ||
-        recipe['output'] != null && s['inventory'][recipe['output']] == null;
+        costs.keys.any((id) => inventory[id] == null) ||
+        recipe['output'] != null && inventory[recipe['output']] == null;
     final deficits = costs.entries
         .map(
           (e) => <String, dynamic>{
             'id': e.key,
             'need': e.value,
-            'have': s['inventory'][e.key],
-            'missing': s['inventory'][e.key] == null
+            'have': inventory[e.key],
+            'missing': inventory[e.key] == null
                 ? null
-                : math.max(
-                    0,
-                    (e.value as int) - (s['inventory'][e.key] as int),
-                  ),
+                : math.max(0, (e.value as int) - inventory[e.key]!),
           },
         )
         .toList();
@@ -89,33 +82,33 @@ class Engine {
     };
   }
 
-  List<String> routeRemaining(Json s) {
+  List<String> routeRemaining(Profile s) {
     final completed = catalog.recipes
         .where(
-          (r) => (r['group'] as int) <= 3 && s['everCrafted'][r['id']] == true,
+          (r) => (r['group'] as int) <= 3 && s.everCrafted[r['id']] == true,
         )
         .length;
     return catalog.route15
-        .where((id) => s['everCrafted'][id] != true)
+        .where((id) => s.everCrafted[id] != true)
         .take(math.max(0, 15 - completed))
         .toList();
   }
 
-  Json plan(Json s) {
-    final mode = s['plan']['mode'];
-    final ids = mode == 'all'
-        ? catalog.recipes.map((r) => r['id']).toList()
-        : mode == '15'
-        ? routeRemaining(s)
-        : s['plan']['selected'] as List;
+  Json plan(Profile s) {
+    final mode = s.plan.mode, inventory = s.inventory;
+    final ids = switch (mode) {
+      PlanMode.all => catalog.recipes.map((r) => r['id']).toList(),
+      PlanMode.route15 => routeRemaining(s),
+      PlanMode.selected => s.plan.selected,
+    };
     final counts = <String, dynamic>{
       for (final r in catalog.recipes)
         r['id'] as String:
-            ids.contains(r['id']) && s['everCrafted'][r['id']] != true ? 1 : 0,
+            ids.contains(r['id']) && s.everCrafted[r['id']] != true ? 1 : 0,
     };
     final rewards = <String, dynamic>{
-      'dark_matter': mode == '15' ? 0 : s['plan']['rewards']['dark_matter'],
-      'orichalcum': mode == '15' ? 0 : s['plan']['rewards']['orichalcum'],
+      for (final id in ['dark_matter', 'orichalcum'])
+        id: mode == PlanMode.route15 ? 0 : s.plan.rewards[id],
     };
     final uncertain = <String>{};
     Json totals() {
@@ -139,10 +132,10 @@ class Engine {
 
     for (final id in ['dark_matter', 'mythril']) {
       final t = totals();
-      if (s['inventory'][id] == null && (t['gross'][id] as int) > 0) {
+      if (inventory[id] == null && (t['gross'][id] as int) > 0) {
         uncertain.add(id);
         uncertain.addAll((catalog.recipesById[id]!['costs'] as Json).keys);
-        if (id == 'dark_matter' && s['inventory']['mythril'] == null) {
+        if (id == 'dark_matter' && inventory['mythril'] == null) {
           uncertain.addAll(
             (catalog.recipesById['mythril']!['costs'] as Json).keys,
           );
@@ -154,7 +147,7 @@ class Engine {
             0,
             (t['gross'][id] as int) -
                 (t['produced'][id] as int) -
-                ((s['inventory'][id] ?? 0) as int) -
+                (inventory[id] ?? 0) -
                 ((rewards[id] ?? 0) as int),
           );
     }
@@ -166,9 +159,9 @@ class Engine {
         0,
         (t['gross'][id] as int) - (t['produced'][id] as int),
       );
-      final int? missing = s['inventory'][id] == null || uncertain.contains(id)
+      final int? missing = inventory[id] == null || uncertain.contains(id)
           ? null
-          : math.max(0, external - (s['inventory'][id] as int));
+          : math.max(0, external - inventory[id]!);
       final int? planned = missing == null
           ? null
           : math.min(missing, (rewards[id] ?? 0) as int);
@@ -193,13 +186,14 @@ class Engine {
     };
   }
 
-  Json simulate(Json s, [Json? computed]) {
-    final p = computed ?? plan(s), virtual = copyJson(s);
+  Json simulate(Profile s, [Json? computed]) {
+    final p = computed ?? plan(s), virtual = Profile(copyJson(s));
+    final inventory = virtual.inventory;
     final left = Map<String, dynamic>.from(p['counts'] as Json),
         steps = <String>[];
     for (final e in (p['rewards'] as Json).entries) {
-      if (virtual['inventory'][e.key] != null) {
-        virtual['inventory'][e.key] += e.value;
+      if (inventory[e.key] != null) {
+        inventory[e.key] = inventory[e.key]! + (e.value as int);
       }
     }
     for (var i = 0; i < 500; i++) {
@@ -211,10 +205,11 @@ class Engine {
       if (ready.isEmpty) break;
       final r = ready.first;
       for (final cost in (r['costs'] as Json).entries) {
-        virtual['inventory'][cost.key] -= cost.value;
+        inventory[cost.key] = inventory[cost.key]! - (cost.value as int);
       }
-      if (r['output'] != null) virtual['inventory'][r['output']]++;
-      virtual['everCrafted'][r['id']] = true;
+      final output = r['output'] as String?;
+      if (output != null) inventory[output] = inventory[output]! + 1;
+      virtual.everCrafted[r['id'] as String] = true;
       left[r['id'] as String] = (left[r['id']] as int) - 1;
       steps.add(r['id'] as String);
     }
@@ -228,112 +223,109 @@ class Engine {
     };
   }
 
-  Json transact(
-    Json s,
+  Profile transact(
+    Profile s,
     String label,
-    void Function(Json) action, {
-    String origin = 'manual',
+    void Function(Profile) action, {
+    TransactionOrigin origin = TransactionOrigin.manual,
   }) {
     // Cronologia e snapshot non vengono mai modificati sul posto: si
     // condividono invece di copiarli in profondità a ogni operazione.
     final rest = {...s}
       ..remove('transactions')
       ..remove('saveSnapshots');
-    final next = copyJson(rest)
-          ..['saveSnapshots'] = {...s['saveSnapshots'] as Json},
+    final next = Profile(
+          copyJson(rest)..['saveSnapshots'] = {...s['saveSnapshots'] as Json},
+        ),
         before = copyJson(rest);
     action(next);
-    if (origin == 'manual') {
-      final editScope = currentScope(s);
-      final overrides = next['manualOverrides'] as Json;
-      overrides[editScope] ??= <String, dynamic>{};
+    if (origin == TransactionOrigin.manual) {
+      final overrides = next.manualOverrides[currentScope(s)] ??=
+          <String, dynamic>{};
       for (final key in changedTargets(s, next)) {
-        overrides[editScope][key] = targetValue(next, key);
+        overrides[key] = targetValue(next, key);
       }
     }
-    next['updatedAt'] = DateTime.now().toUtc().toIso8601String();
+    next.updatedAt = DateTime.now().toUtc().toIso8601String();
     final history = [
-      ...s['transactions'] as List,
-      {
+      ...s.transactions,
+      ProfileTransaction({
         'label': label,
-        'at': next['updatedAt'],
-        'origin': origin,
+        'at': next.updatedAt,
+        'origin': origin.name,
         'before': before,
-      },
+      }),
     ];
-    next['transactions'] = history
+    next.transactions = history
         .skip(math.max(0, history.length - 100))
         .toList();
     return next;
   }
 
-  Json quantity(Json s, String id, dynamic value) {
+  Profile quantity(Profile s, String id, dynamic value) {
     if (!catalog.materialsById.containsKey(id) ||
         !(value == null || validQuantity(value))) {
       throw const FormatException(
         'Inserisci un intero tra 0 e 999999, oppure lascia vuoto.',
       );
     }
-    if (s['inventory'][id] == value) return s;
+    if (s.inventory[id] == value) return s;
     return transact(
       s,
-      '${catalog.materialsById[id]!['name']}: ${s['inventory'][id] ?? '?'} → ${value ?? '?'}',
-      (n) => n['inventory'][id] = value,
+      '${catalog.materialsById[id]!['name']}: ${s.inventory[id] ?? '?'} → ${value ?? '?'}',
+      (n) => n.inventory[id] = value as int?,
     );
   }
 
-  Json increment(Json s, String id, int delta) {
-    if (s['inventory'][id] == null) {
+  Profile increment(Profile s, String id, int delta) {
+    final current = s.inventory[id];
+    if (current == null) {
       throw const FormatException('Conferma prima la scorta reale.');
     }
-    return quantity(
-      s,
-      id,
-      ((s['inventory'][id] as int) + delta).clamp(0, 999999),
-    );
+    return quantity(s, id, (current + delta).clamp(0, 999999));
   }
 
-  Json completion(Json s, String id, bool? done) {
+  Profile completion(Profile s, String id, bool? done) {
     final item = catalog.itemsById[id];
     if (item == null || item['recipeId'] != null && done == null) {
       throw const FormatException('Voce non valida.');
     }
     if (item['recipeId'] != null
         ? catalog.completed(s, item) == done
-        : (s['completion'] as Map).containsKey(id) &&
-              s['completion'][id] == done) {
+        : s.completion.containsKey(id) && s.completion[id] == done) {
       return s;
     }
     return transact(
       s,
       '${done == true ? 'Completato' : 'Da completare'}: ${item['title']}',
       (n) {
-        if (item['recipeId'] != null) {
-          n['everCrafted'][item['recipeId']] = done;
-          n['craftCount'][item['recipeId']] = null;
+        final recipeId = item['recipeId'] as String?;
+        if (recipeId != null) {
+          n.everCrafted[recipeId] = done!;
+          n.craftCount[recipeId] = null;
         } else {
-          n['completion'][id] = done;
+          n.completion[id] = done;
         }
       },
     );
   }
 
-  Json markCrafted(Json s, String id) {
+  Profile markCrafted(Profile s, String id) {
     if (!catalog.recipesById.containsKey(id)) {
       throw const FormatException('Ricetta non valida.');
     }
-    if (s['everCrafted'][id] == true) return s;
+    if (s.everCrafted[id] == true) return s;
     return transact(
       s,
       'Già sintetizzato: ${catalog.recipesById[id]!['name']}',
       (n) {
-        n['everCrafted'][id] = true;
-        n['craftCount'][id] = null;
+        n.everCrafted[id] = true;
+        n.craftCount[id] = null;
       },
     );
   }
 
-  Json craft(Json s, String id) {
+  Profile craft(Profile s, String id) {
     final r = catalog.recipesById[id];
     if (r == null || recipeStatus(s, r)['ready'] != true) {
       throw const FormatException(
@@ -341,100 +333,98 @@ class Engine {
       );
     }
     return transact(s, 'Sintesi: ${r['name']}', (n) {
+      final inventory = n.inventory, count = n.craftCount[id];
       for (final cost in (r['costs'] as Json).entries) {
-        n['inventory'][cost.key] -= cost.value;
+        inventory[cost.key] = inventory[cost.key]! - (cost.value as int);
       }
-      if (r['output'] != null) {
-        if (n['inventory'][r['output']] == 999999) {
+      final output = r['output'] as String?;
+      if (output != null) {
+        if (inventory[output] == 999999) {
           throw const FormatException('Scorta al limite.');
         }
-        n['inventory'][r['output']]++;
+        inventory[output] = inventory[output]! + 1;
       }
-      n['everCrafted'][id] = true;
-      if (n['craftCount'][id] != null) n['craftCount'][id]++;
+      n.everCrafted[id] = true;
+      if (count != null) n.craftCount[id] = count + 1;
     });
   }
 
-  Json collect(
-    Json s,
+  Profile collect(
+    Profile s,
     String id, {
     bool now = false,
     String status = 'collected',
   }) {
     final source = catalog.collections.firstWhere((c) => c['id'] == id);
-    if (!['unknown', 'collected', 'not_collected'].contains(status)) {
-      throw const FormatException('Stato non valido.');
-    }
-    if (now && s['collections'][id] == 'collected') {
+    final material = source['material'] as String,
+        target = CollectionStatus.parse(status);
+    if (now && s.collection(id) == CollectionStatus.collected) {
       throw const FormatException('Fonte già raccolta.');
     }
-    if (now && s['inventory'][source['material']] == null) {
+    if (now && s.inventory[material] == null) {
       throw const FormatException('Conferma prima la scorta.');
     }
-    if (!now && s['collections'][id] == status) return s;
+    if (!now && s.collection(id) == target) return s;
     return transact(
       s,
       '${now ? 'Raccolto adesso' : 'Stato fonte'}: ${source['world']} / ${source['area']}',
       (n) {
-        n['collections'][id] = status;
+        n.setCollection(id, target);
         if (now) {
-          if (n['inventory'][source['material']] >= 999999) {
+          final have = n.inventory[material]!;
+          if (have >= 999999) {
             throw const FormatException('Scorta al limite.');
           }
-          n['inventory'][source['material']]++;
-          n['plan']['rewards'][source['material']] = math.max(
-            0,
-            (n['plan']['rewards'][source['material']] as int) - 1,
-          );
+          n.inventory[material] = have + 1;
+          final rewards = n.plan.rewards;
+          rewards[material] = math.max(0, rewards[material]! - 1);
         }
       },
     );
   }
 
-  Json sessionCollect(Json s, String id, int delta) => transact(
+  Profile sessionCollect(Profile s, String id, int delta) => transact(
     s,
     'Raccolta sessione: ${catalog.materialsById[id]!['name']} +$delta',
     (n) {
-      if (n['inventory'][id] == null) {
+      final have = n.inventory[id], session = n.session[id] ?? 0;
+      if (have == null) {
         throw const FormatException('Conferma prima la scorta.');
       }
-      if (!validQuantity((n['inventory'][id] as int) + delta) ||
-          !validQuantity(((n['session'][id] ?? 0) as int) + delta)) {
+      if (!validQuantity(have + delta) || !validQuantity(session + delta)) {
         throw const FormatException('Contatore al limite.');
       }
-      n['inventory'][id] += delta;
-      n['session'][id] = ((n['session'][id] ?? 0) as int) + delta;
+      n.inventory[id] = have + delta;
+      n.session[id] = session + delta;
     },
   );
-  Json undo(Json s) {
-    final history = s['transactions'] as List;
+  Profile undo(Profile s) {
+    final history = s.transactions;
     if (history.isEmpty) return s;
-    return {
-      ...copyJson(history.last['before'] as Json),
+    return Profile({
+      ...copyJson(history.last.before),
       'saveSnapshots': copyJson(s['saveSnapshots'] as Json),
-      'appliedEvidence': [...s['appliedEvidence'] as List],
+      'appliedEvidence': [...s.appliedEvidence],
       'transactions': history.take(history.length - 1).toList(),
       'updatedAt': DateTime.now().toUtc().toIso8601String(),
-    };
+    });
   }
 
-  Json applyEvidence(Json s) {
-    if ((s['appliedEvidence'] as List).contains(catalog.evidence['id'])) {
-      return s;
-    }
+  Profile applyEvidence(Profile s) {
+    if (s.appliedEvidence.contains(catalog.evidence['id'])) return s;
     return transact(
       s,
       'Progressi dagli screenshot: 21 achievement e sblocchi certi',
       (n) {
         for (final item in catalog.evidence['items'] as List) {
-          n['completion'][item['id']] = true;
+          n.completion[item['id'] as String] = true;
         }
-        n['appliedEvidence'].add(catalog.evidence['id']);
-        n['settings']['Trio Bianco'] = true;
-        n['settings']['Trio Giallo'] = true;
-        n['settings']['Stop'] = true;
+        n.appliedEvidence.add(catalog.evidence['id'] as String);
+        for (final unlock in ['Trio Bianco', 'Trio Giallo', 'Stop']) {
+          n.settings.setFlag(unlock, true);
+        }
       },
-      origin: 'evidence',
+      origin: TransactionOrigin.evidence,
     );
   }
 }

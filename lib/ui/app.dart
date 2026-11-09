@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../domain/catalog.dart';
 import '../domain/engine.dart';
+import '../domain/profile.dart';
 import '../domain/save_adapter.dart';
 import '../domain/save_decoder.dart';
 import '../domain/validation.dart';
@@ -89,7 +90,7 @@ class _DiaryHomeState extends State<DiaryHome> {
   ProfileController get controller => widget.controller;
   Catalog get catalog => controller.engine.catalog;
   Engine get engine => controller.engine;
-  Json get state => controller.state;
+  Profile get state => controller.state;
   Json get plan => engine.plan(state);
   int page = 0;
   String category = 'all',
@@ -102,7 +103,8 @@ class _DiaryHomeState extends State<DiaryHome> {
   Set<String>? inventorySelection;
   bool showSufficient = false;
   int limit = 40;
-  Json? saveRaw, backupCandidate, saveReference;
+  Json? saveRaw, saveReference;
+  Profile? backupCandidate;
   String? saveOrigin;
   bool readingSave = false;
   int slot = 1;
@@ -110,7 +112,7 @@ class _DiaryHomeState extends State<DiaryHome> {
   Json decisions = {};
   final scroll = ScrollController();
   final searchText = TextEditingController();
-  Future<void> update(Json Function(Json) action) async {
+  Future<void> update(Profile Function(Profile) action) async {
     await controller.commit(action);
   }
 
@@ -2128,7 +2130,7 @@ class _DiaryHomeState extends State<DiaryHome> {
             'Il backup JSON include inventario, checklist, piano, cronologia, snapshot e override. Compatibile con i backup della precedente app.',
           ),
           SelectableText(
-            'Archivio: ${controller.store.directory.path}',
+            'Archivio: ${controller.repository.location}',
             style: const TextStyle(color: muted),
           ),
           const SizedBox(height: 16),
@@ -2144,10 +2146,10 @@ class _DiaryHomeState extends State<DiaryHome> {
               OutlinedButton(
                 onPressed: () async {
                   try {
-                    if (!await controller.store.backup.exists()) {
+                    final bytes = await controller.repository.previousBackup();
+                    if (bytes == null) {
                       throw const FormatException('Nessun backup precedente.');
                     }
-                    final bytes = await controller.store.backup.readAsBytes();
                     await exportBytes(
                       bytes,
                       'kh1fm-backup-precedente.json',
@@ -2177,7 +2179,7 @@ class _DiaryHomeState extends State<DiaryHome> {
               try {
                 final raw = await pickJson();
                 if (raw == null) return;
-                final candidate = ProfileValidator(catalog).validate(raw);
+                final candidate = ProfileValidator(catalog).profile(raw);
                 if (mounted) setState(() => backupCandidate = candidate);
               } catch (e) {
                 report(e);
@@ -2208,7 +2210,7 @@ class _DiaryHomeState extends State<DiaryHome> {
                       return;
                     }
                     if (await controller.commit(
-                          (_) => copyJson(candidate),
+                          (_) => Profile(copyJson(candidate)),
                           importing: true,
                         ) &&
                         mounted) {

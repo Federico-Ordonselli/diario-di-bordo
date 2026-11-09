@@ -1,5 +1,6 @@
 import 'catalog.dart';
 import 'engine.dart';
+import 'profile.dart';
 
 class ProfileValidator {
   ProfileValidator(this.catalog);
@@ -46,6 +47,9 @@ class ProfileValidator {
     }
     return false;
   }
+
+  /// Valida un profilo completo (backup o archivio) e lo normalizza.
+  Profile profile(dynamic raw) => Profile(validate(raw));
 
   /// [snapshots] sono snapshot già validati: la cronologia li riusa invece di
   /// copiarli e ricontrollarli per ogni operazione.

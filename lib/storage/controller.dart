@@ -1,15 +1,15 @@
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import '../domain/catalog.dart';
 import '../domain/engine.dart';
+import '../domain/profile.dart';
+import '../domain/profile_repository.dart';
 import '../domain/validation.dart';
-import 'profile_store.dart';
 
 class ProfileController extends ChangeNotifier {
-  ProfileController(this.engine, this.store) : state = engine.catalog.fresh();
+  ProfileController(this.engine, this.repository)
+    : state = engine.catalog.fresh();
   final Engine engine;
-  final ProfileStore store;
-  Json state;
+  final ProfileRepository repository;
+  Profile state;
   bool busy = false, blocked = false;
   String? error;
   Future<void> initialize() async {
@@ -17,12 +17,12 @@ class ProfileController extends ChangeNotifier {
     busy = true;
     notifyListeners();
     try {
-      final raw = await store.loadRaw();
+      final raw = await repository.load();
       state = raw == null
           ? engine.catalog.fresh()
-          : ProfileValidator(engine.catalog).validate(jsonDecode(raw));
+          : ProfileValidator(engine.catalog).profile(raw);
       final next = engine.applyEvidence(state);
-      if (raw == null || !identical(next, state)) await store.save(next);
+      if (raw == null || !identical(next, state)) await repository.save(next);
       state = next;
       blocked = false;
       error = null;
@@ -36,7 +36,7 @@ class ProfileController extends ChangeNotifier {
   }
 
   Future<bool> commit(
-    Json Function(Json) change, {
+    Profile Function(Profile) change, {
     bool importing = false,
   }) async {
     if (busy) return false;
@@ -50,8 +50,8 @@ class ProfileController extends ChangeNotifier {
       }
       final next = change(state);
       if (!identical(next, state)) {
-        final validated = ProfileValidator(engine.catalog).validate(next);
-        await store.save(validated, beforeImport: importing);
+        final validated = ProfileValidator(engine.catalog).profile(next);
+        await repository.save(validated, beforeImport: importing);
         state = validated;
       }
       blocked = false;

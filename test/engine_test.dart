@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/domain/catalog.dart';
 import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/domain/validation.dart';
 import 'test_catalog.dart';
 
@@ -18,7 +19,7 @@ void main() {
   );
   for (final scenario in (expected['scenarios'] as List).cast<Json>()) {
     test('Parità col motore originale: ${scenario['name']}', () {
-      final s = scenario['state'] as Json;
+      final s = Profile(scenario['state'] as Json);
       expect(engine.plan(s), scenario['plan']);
       expect(engine.simulate(s), scenario['simulation']);
       expect(

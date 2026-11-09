@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'domain/catalog.dart';
 import 'domain/engine.dart';
 import 'storage/controller.dart';
-import 'storage/profile_store.dart';
+import 'data/json_profile_repository.dart';
 import 'ui/app.dart';
 
 Future<void> main() async {
@@ -19,14 +19,14 @@ Future<void> main() async {
     final catalog = Catalog(data[0], data[1], data[2], data[3]);
     final controller = ProfileController(
       Engine(catalog),
-      await ProfileStore.open(),
+      await JsonProfileRepository.open(),
     );
     await controller.initialize();
-    debugPrint('Diario di Bordo: archivio ${controller.store.profile.path}');
+    debugPrint('Diario di Bordo: archivio ${controller.repository.location}');
     if (!controller.blocked) {
       final summary = catalog.summary(controller.state);
       debugPrint(
-        'Diario di Bordo: ${summary['done']}/${summary['total']} obiettivi, ${controller.engine.distinct(controller.state)}/33 sintesi, livello ${controller.state['settings']['level'] ?? '?'}',
+        'Diario di Bordo: ${summary['done']}/${summary['total']} obiettivi, ${controller.engine.distinct(controller.state)}/33 sintesi, livello ${controller.state.settings.level ?? '?'}',
       );
     }
     runApp(DiaryApp(controller: controller));

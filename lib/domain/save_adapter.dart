@@ -1,5 +1,6 @@
 import 'catalog.dart';
 import 'engine.dart';
+import 'profile.dart';
 
 class SaveAdapter {
   SaveAdapter(this.engine);
@@ -383,52 +384,49 @@ class SaveAdapter {
     };
   }
 
-  Json legacyOverrides(Json s) {
+  Json legacyOverrides(Profile s) {
     final values = Map<String, dynamic>.from(
-      (s['manualOverrides']['app'] ?? <String, dynamic>{}) as Json,
+      s.manualOverrides['app'] ?? <String, dynamic>{},
     );
-    if (s['activeSaveId'] == null) {
-      final baseline = catalog.fresh();
+    if (s.activeSaveId == null) {
+      final baseline = catalog.fresh().inventory, inventory = s.inventory;
       for (final m in catalog.materials) {
-        if (s['inventory'][m['id']] != baseline['inventory'][m['id']]) {
-          values['inventory.${m['id']}'] = s['inventory'][m['id']];
+        if (inventory[m['id']] != baseline[m['id']]) {
+          values['inventory.${m['id']}'] = inventory[m['id']];
         }
       }
       final evidenceIds = (catalog.evidence['items'] as List)
           .map((i) => i['id'])
           .toSet();
-      for (final e in (s['completion'] as Json).entries) {
+      for (final e in s.completion.entries) {
         if (e.value == true && !evidenceIds.contains(e.key) ||
             e.value == false ||
             e.value == null) {
           values['completion.${e.key}'] = e.value;
         }
       }
-      for (final e in (s['settings'] as Json).entries) {
+      for (final e in s.settings.entries) {
         if (e.value != null &&
             e.value != '' &&
             !(['Stop', 'Trio Bianco', 'Trio Giallo'].contains(e.key) &&
-                (s['appliedEvidence'] as List).isNotEmpty)) {
+                s.appliedEvidence.isNotEmpty)) {
           values['settings.${e.key}'] = e.value;
         }
       }
-      final history = s['transactions'] as List;
+      final history = s.transactions;
       for (var index = 0; index < history.length; index++) {
         final t = history[index];
-        if (['save', 'evidence'].contains(t['origin']) ||
-            (t['label'] as String).startsWith('Progressi dagli screenshot')) {
+        if (t.origin != TransactionOrigin.manual ||
+            t.label.startsWith('Progressi dagli screenshot')) {
           continue;
         }
         final after = index + 1 < history.length
             ? {
-                ...history[index + 1]['before'] as Json,
+                ...history[index + 1].before,
                 'saveSnapshots': s['saveSnapshots'],
               }
             : s;
-        final before = {
-          ...t['before'] as Json,
-          'saveSnapshots': s['saveSnapshots'],
-        };
+        final before = {...t.before, 'saveSnapshots': s['saveSnapshots']};
         for (final key in changedTargets(before, after)) {
           values[key] = targetValue(s, key);
         }
@@ -438,36 +436,29 @@ class SaveAdapter {
   }
 
   /// Data dell'ultima modifica manuale di ogni chiave ancora in cronologia.
-  Map<String, DateTime> manualEdits(Json s) {
-    final history = s['transactions'] as List, edits = <String, DateTime>{};
+  Map<String, DateTime> manualEdits(Profile s) {
+    final history = s.transactions, edits = <String, DateTime>{};
     for (var index = 0; index < history.length; index++) {
       final t = history[index];
-      if (t['origin'] != 'manual') continue;
-      final after = index + 1 < history.length
-          ? history[index + 1]['before'] as Json
-          : s;
-      for (final key in changedTargets(t['before'] as Json, after)) {
-        edits[key] = DateTime.parse(t['at'] as String);
+      if (t.origin != TransactionOrigin.manual) continue;
+      final after = index + 1 < history.length ? history[index + 1].before : s;
+      for (final key in changedTargets(t.before, after)) {
+        edits[key] = DateTime.parse(t.at);
       }
     }
     return edits;
   }
 
-  Json preview(Json s, Json raw, int number, [Json decisions = const {}]) {
-    final snapshot = normalizeSlot(raw, number),
-        slotScope = scope(snapshot),
+  Json preview(Profile s, Json raw, int number, [Json decisions = const {}]) {
+    final snapshot = SaveSnapshot(normalizeSlot(raw, number)),
+        slotScope = snapshot.scope,
         appOverrides = legacyOverrides(s);
-    final overrides = {
-      ...appOverrides,
-      ...(s['manualOverrides'][slotScope] ?? <String, dynamic>{}) as Json,
-    };
+    final overrides = {...appOverrides, ...?s.manualOverrides[slotScope]};
     // Una modifica manuale anteriore al salvataggio è superata dal save; ciò
     // che precede la cronologia conservata conta come la sua voce più vecchia.
-    final savedAt = DateTime.parse(snapshot['savedAt'] as String),
-        history = s['transactions'] as List,
-        oldest = history.isEmpty
-            ? null
-            : DateTime.parse(history.first['at'] as String),
+    final savedAt = DateTime.parse(snapshot.savedAt),
+        history = s.transactions,
+        oldest = history.isEmpty ? null : DateTime.parse(history.first.at),
         edits = manualEdits(s);
     final rows = (snapshot['observations'] as Json).entries.map((e) {
       final observation = e.value as Json, before = targetValue(s, e.key);
@@ -475,7 +466,7 @@ class SaveAdapter {
           manualValue = overrides[e.key],
           differs = manual && manualValue != observation['value'];
       final historical =
-          s['activeSaveId'] == null &&
+          s.activeSaveId == null &&
           e.key.startsWith('completion.') &&
           before == true &&
           observation['value'] != true;
@@ -511,17 +502,19 @@ class SaveAdapter {
     };
   }
 
-  Json apply(Json s, Json raw, int number, [Json decisions = const {}]) {
+  Profile apply(Profile s, Json raw, int number, [Json decisions = const {}]) {
     validate(raw);
     final p = preview(s, raw, number, decisions),
-        snapshot = p['snapshot'] as Json;
+        snapshot = SaveSnapshot(p['snapshot'] as Json),
+        slotScope = p['scope'] as String;
     return engine.transact(
       s,
-      'Importazione save · slot $number · ${snapshot['savedAt']}',
+      'Importazione save · slot $number · ${snapshot.savedAt}',
       (n) {
-        n['manualOverrides']['app'] = p['appOverrides'];
+        final overrides = n.manualOverrides,
+            app = overrides['app'] = p['appOverrides'] as Json;
         final scoped = Map<String, dynamic>.from(
-          (n['manualOverrides'][p['scope']] ?? <String, dynamic>{}) as Json,
+          overrides[slotScope] ?? <String, dynamic>{},
         );
         for (final row in (p['rows'] as List).cast<Json>()) {
           writeTarget(n, row['key'] as String, row['after']);
@@ -530,26 +523,25 @@ class SaveAdapter {
           } else {
             // Superata dal save o confermata dal save: non serve più.
             scoped.remove(row['key']);
-            (n['manualOverrides']['app'] as Json).remove(row['key']);
+            app.remove(row['key']);
           }
         }
-        n['manualOverrides'][p['scope']] = scoped;
-        n['saveSnapshots'][snapshot['id']] = {
+        overrides[slotScope] = scoped;
+        n.saveSnapshots[snapshot.id] = SaveSnapshot({
           ...snapshot,
           'importedAt': DateTime.now().toUtc().toIso8601String(),
-        };
-        n['activeSaveId'] = snapshot['id'];
+        });
+        n.activeSaveId = snapshot.id;
       },
-      origin: 'save',
+      origin: TransactionOrigin.save,
     );
   }
 
-  Json edit(Json s, String id, dynamic value) {
-    if (s['activeSaveId'] == null) {
+  Profile edit(Profile s, String id, dynamic value) {
+    final observation = s.activeSave?.observations['save.$id'];
+    if (s.activeSaveId == null) {
       throw const FormatException('Importa prima uno snapshot.');
     }
-    final observation =
-        s['saveSnapshots'][s['activeSaveId']]['observations']['save.$id'];
     if (observation == null) {
       throw const FormatException('Campo save non riconosciuto.');
     }
@@ -567,11 +559,11 @@ class SaveAdapter {
                   0,
       );
     }
-    if (s['saveValues'][id] == value) return s;
+    if (s.saveValues[id] == value) return s;
     return engine.transact(
       s,
-      'Correzione save: ${observation['label']}',
-      (n) => n['saveValues'][id] = value,
+      'Correzione save: ${observation.label}',
+      (n) => n.saveValues[id] = value,
     );
   }
 }

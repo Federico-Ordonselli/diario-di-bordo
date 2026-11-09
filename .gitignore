@@ -10,7 +10,7 @@ coverage/
 **/__pycache__/
 *.log
 *.tmp
-data/
+/data/
 android/local.properties
 android/.gradle/
 ios/Pods/

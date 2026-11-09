@@ -7,7 +7,9 @@ void main() {
   setUp(() {
     temporary = Directory.systemTemp.createTempSync('kh-location-');
     project = Directory('${temporary.path}/project')..createSync();
-    File('${project.path}/pubspec.yaml').writeAsStringSync('name: diario_bordo\n');
+    File(
+      '${project.path}/pubspec.yaml',
+    ).writeAsStringSync('name: diario_bordo\n');
     Directory('${project.path}/assets/datasets').createSync(recursive: true);
     File(
       '${project.path}/assets/datasets/initial-profile.json',

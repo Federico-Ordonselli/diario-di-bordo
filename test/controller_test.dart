@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:diario_bordo/domain/engine.dart';
+import 'package:diario_bordo/domain/profile.dart';
 import 'package:diario_bordo/storage/controller.dart';
+import 'package:diario_bordo/data/json_profile_repository.dart';
 import 'package:diario_bordo/storage/profile_store.dart';
 import 'test_catalog.dart';
 
@@ -11,14 +13,14 @@ void main() {
     final dir = await Directory.systemTemp.createTemp('kh-controller-');
     final controller = ProfileController(
       Engine(testCatalog()),
-      ProfileStore(dir),
+      JsonProfileRepository(ProfileStore(dir)),
     );
     try {
       await controller.initialize();
       final previous = controller.state;
       final foreign = ProfileStore(dir);
       await foreign.loadRaw();
-      final newer = {...previous, 'storyPoint': 'another-window'};
+      final newer = Profile({...previous, 'storyPoint': 'another-window'});
       await foreign.save(newer);
       final accepted = await controller.commit(
         (s) => controller.engine.increment(s, 'gale', 1),
@@ -36,7 +38,10 @@ void main() {
     () async {
       final dir = await Directory.systemTemp.createTemp('kh-corrupt-');
       final store = ProfileStore(dir), engine = Engine(testCatalog());
-      final controller = ProfileController(engine, store);
+      final controller = ProfileController(
+        engine,
+        JsonProfileRepository(store),
+      );
       try {
         await store.profile.writeAsString('{broken');
         await controller.initialize();
